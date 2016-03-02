@@ -1,4 +1,5 @@
 from flask import Flask
+from flask.ext.cache import Cache
 from flask.ext.sqlalchemy import SQLAlchemy
 from coin import views
 
@@ -16,4 +17,5 @@ coin.config.from_envvar('APP_CONFIG_FILE')
 
 db = SQLAlchemy(coin)
 
+cache = Cache(coin)
 
