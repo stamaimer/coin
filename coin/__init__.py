@@ -1,10 +1,19 @@
 from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
 from coin import views
 
 coin = Flask(__name__, instance_relative_config=True)
 
+# load the default configuration
 coin.config.from_object('config.default')
 
+# load the configuration from the instance folder
 coin.config.from_pyfile('config.py')
 
+# load the file specified by the APP_CONFIG_FILE environment variable
+# variables defined here will override those in the default configuration
 coin.config.from_envvar('APP_CONFIG_FILE')
+
+db = SQLAlchemy(coin)
+
+
