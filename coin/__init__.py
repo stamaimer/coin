@@ -1,9 +1,8 @@
 from flask import Flask
 from flask.ext.cache import Cache
 from flask.ext.sqlalchemy import SQLAlchemy
-from coin import views
 
-coin = Flask(__name__, instance_relative_config=True)
+coin = Flask(__name__, instance_relative_config=True)  # __name__
 
 # load the default configuration
 coin.config.from_object('config.default')
@@ -15,7 +14,11 @@ coin.config.from_pyfile('config.py')
 # variables defined here will override those in the default configuration
 coin.config.from_envvar('APP_CONFIG_FILE')
 
+coin.debug      = coin.config["DEBUG"]
+coin.secret_key = coin.config["SECRET_KEY"]
+
 db = SQLAlchemy(coin)
 
 cache = Cache(coin)
 
+import views.views

@@ -1,5 +1,5 @@
 # start.sh
 
-APP_CONFIG_FILE=./config/development.py
+export APP_CONFIG_FILE=../config/development.py
 
 python run.py
