@@ -1,5 +1,6 @@
-from flask import flash, redirect, render_template, request, url_for
-
+from flask import flash, redirect, render_template, request, send_from_directory, url_for
+from werkzeug import secure_filename
+import os
 from coin import coin
 
 @coin.route('/')
@@ -33,3 +34,27 @@ def signin():
             return redirect(url_for("index"))
 
     return render_template("signin.html", error=error)
+
+
+@coin.route("/upload/", methods=["GET", "POST"])
+def upload():
+
+    if request.method == "POST":
+
+        file = request.files["file"]
+
+        if file:
+
+            filename = secure_filename(file.filename)
+
+            file.save(os.path.join(coin.config["UPLOAD_DIR"], filename))
+
+            return redirect(url_for("show", filename=filename))
+
+    return render_template("upload.html")
+
+
+@coin.route("/upload/<filename>")
+def show(filename):
+
+    return send_from_directory(coin.config["UPLOAD_DIR"], filename)

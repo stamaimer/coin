@@ -17,6 +17,8 @@ coin.config.from_envvar('APP_CONFIG_FILE')
 coin.debug      = coin.config["DEBUG"]
 coin.secret_key = coin.config["SECRET_KEY"]
 
+print coin.config["UPLOAD_DIR"]
+
 db = SQLAlchemy(coin)
 
 cache = Cache(coin)
