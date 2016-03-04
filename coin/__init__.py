@@ -17,7 +17,16 @@ coin.config.from_envvar('APP_CONFIG_FILE')
 coin.debug      = coin.config["DEBUG"]
 coin.secret_key = coin.config["SECRET_KEY"]
 
-print coin.config["UPLOAD_DIR"]
+
+if not coin.debug:
+
+    import logging
+
+    from logging import FileHandler
+
+    file_handler = FileHandler("./log/coin.log")
+
+    file_handler.setLevel(logging.WARNING)
 
 db = SQLAlchemy(coin)
 

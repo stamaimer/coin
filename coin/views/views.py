@@ -1,4 +1,4 @@
-from flask import abort, flash, redirect, render_template, request, send_from_directory, url_for
+from flask import abort, escape, flash, g, redirect, render_template, request, send_from_directory, session, url_for
 from werkzeug import secure_filename
 import os
 from coin import coin
@@ -64,3 +64,15 @@ def show(filename):
 def four04(error):
 
     return render_template("404.html"), 404
+
+
+@coin.before_request
+def before_request():
+
+    pass
+
+
+@coin.teardown_request
+def teardown_request(exception):
+
+    pass
