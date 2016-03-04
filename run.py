@@ -1,3 +1,3 @@
 from coin import coin
 
-coin.run(host="0.0.0.0")
+coin.run(host=coin.config["HOST"], port=coin.config["PORT"])
