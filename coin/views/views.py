@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, request, send_from_directory, url_for
+from flask import abort, flash, redirect, render_template, request, send_from_directory, url_for
 from werkzeug import secure_filename
 import os
 from coin import coin
@@ -58,3 +58,9 @@ def upload():
 def show(filename):
 
     return send_from_directory(coin.config["UPLOAD_DIR"], filename)
+
+
+@coin.errorhandler(404)
+def four04(error):
+
+    return render_template("404.html"), 404

@@ -23,4 +23,4 @@ db = SQLAlchemy(coin)
 
 cache = Cache(coin)
 
-import views.views
+import views
