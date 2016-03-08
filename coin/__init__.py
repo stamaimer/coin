@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import Flask
 from flask.ext.cache import Cache
 from flask.ext.bcrypt import Bcrypt
@@ -14,10 +16,6 @@ coin.config.from_pyfile('config.py')
 # load the file specified by the APP_CONFIG_FILE environment variable
 # variables defined here will override those in the default configuration
 coin.config.from_envvar('APP_CONFIG_FILE')
-
-coin.debug      = coin.config["DEBUG"]
-coin.secret_key = coin.config["SECRET_KEY"]
-
 
 if not coin.debug:
 
