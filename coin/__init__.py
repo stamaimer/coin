@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask
+from flask.ext.admin import Admin
+from flask_admin import helpers as admin_helpers
 from flask.ext.cache import Cache
 from flask.ext.bcrypt import Bcrypt
+from flask.ext.security import Security, SQLAlchemyUserDatastore, current_user, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
 
 coin = Flask(__name__, instance_relative_config=True)  # __name__
@@ -17,24 +20,51 @@ coin.config.from_pyfile('config.py')
 # variables defined here will override those in the default configuration
 coin.config.from_envvar('APP_CONFIG_FILE')
 
-if not coin.debug:
 
-    import logging
+def init_logger():
 
-    from logging import Formatter
+    if not coin.debug:
 
-    from logging import FileHandler
+        from logging import Formatter
 
-    file_handler = FileHandler("./log/coin.log")
+        from logging import FileHandler
 
-    file_handler.setFormatter(Formatter("%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"))
+        file_handler = FileHandler("./log/coin.log")
 
-    coin.logger.addHandler(file_handler)
+        file_handler.setFormatter(Formatter("%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"))
+
+        coin.logger.addHandler(file_handler)
+
+admin = Admin(coin, name="Coin Dashboard", template_mode="bootstrap3")
+
+cache = Cache(coin)
 
 db = SQLAlchemy(coin)
 
 bcrypt = Bcrypt(coin)
 
-cache = Cache(coin)
+from models import init_db, Role, User, Task
 
-import views
+init_db()
+
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+
+security = Security(coin, user_datastore)
+
+user_datastore.create_user(email="stamaimer@gmail.com", password="stamaimer")
+
+db.session.commit()
+
+
+@security.context_processor
+def security_context_processor():
+
+    return dict(
+        admin_base_template=admin.base_template,
+        admin_view=admin.index_view,
+        h=admin_helpers,
+    )
+
+import admin
+
+from views  import *

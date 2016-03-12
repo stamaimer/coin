@@ -1,26 +1,36 @@
 # -*- coding: utf-8 -*-
 
-import sqlalchemy
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, MetaData, Table
-from sqlalchemy.orm import scoped_session, sessionmaker, relationship
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.sql import select, text
+from coin import coin, db
+from flask.ext.security import UserMixin, RoleMixin
 
-print sqlalchemy.__version__
+roles_users = db.Table('roles_users',
+        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
 
-engine = create_engine("", convert_unicode=True)
+from role import Role
+from user import User
+from task import Task
 
-Base = declarative_base()
 
-Base.metadata.bind = engine
+def init_db():
 
-import user
+    if coin.config["DEBUG"]:
 
-import task
+        print coin.config["SQLALCHEMY_DATABASE_URI"]
 
-import record
+        db.drop_all()
 
-Base.metadata.create_all()
+    db.create_all()
 
-session = scoped_session(sessionmaker(bind=engine))
+    admin = User("admin@example.com", "admin")
+    guest = User("guest@example.com", "guest")
 
+    db.session.add(admin)
+    db.session.add(guest)
+
+    db.session.add(Task("task", "The First Task", admin))
+
+    db.session.add(Role("admin"))
+    db.session.add(Role("guest"))
+
+    db.session.commit()
