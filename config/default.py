@@ -4,7 +4,7 @@ DEBUG = True
 
 HOST = "0.0.0.0"
 
-PORT = 80
+PORT = 4096
 
 UPLOAD_DIR = os.getcwd() + "/coin/static/upload"
 
@@ -14,8 +14,8 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 CACHE_TYPE = "simple"
 
-SECURITY_TRACKABLE = True
+SECURITY_TRACKABLE = False
 
-SECURITY_CONFIRMABLE = True
+SECURITY_CONFIRMABLE = False
 
 

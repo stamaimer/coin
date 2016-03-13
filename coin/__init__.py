@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask
-from flask.ext.admin import Admin
-from flask_admin import helpers as admin_helpers
 from flask.ext.cache import Cache
 from flask.ext.bcrypt import Bcrypt
-from flask.ext.security import Security, SQLAlchemyUserDatastore, current_user, login_required
-from flask.ext.sqlalchemy import SQLAlchemy
 
 coin = Flask(__name__, instance_relative_config=True)  # __name__
 
@@ -35,36 +31,18 @@ def init_logger():
 
         coin.logger.addHandler(file_handler)
 
-admin = Admin(coin, name="Coin Dashboard", template_mode="bootstrap3")
 
 cache = Cache(coin)
 
-db = SQLAlchemy(coin)
-
 bcrypt = Bcrypt(coin)
 
-from models import init_db, Role, User, Task
+from models import init_db
 
 init_db()
 
-user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-
-security = Security(coin, user_datastore)
-
-user_datastore.create_user(email="stamaimer@gmail.com", password="stamaimer")
-
-db.session.commit()
-
-
-@security.context_processor
-def security_context_processor():
-
-    return dict(
-        admin_base_template=admin.base_template,
-        admin_view=admin.index_view,
-        h=admin_helpers,
-    )
-
 import admin
 
-from views  import *
+import security
+
+import views
+

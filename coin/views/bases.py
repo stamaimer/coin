@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-
 from . import *
 
-@login_required
+
 @coin.route('/')
 @coin.route("/index/")
 def index():
 
     return render_template("index.html")
+
 
 @coin.route("/signup/", methods=["POST"])
 def signup():

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from flask.ext.sqlalchemy import SQLAlchemy
+from coin import coin
 
-from coin import coin, db
-from flask.ext.security import UserMixin, RoleMixin
+db = SQLAlchemy(coin)
 
 roles_users = db.Table('roles_users',
         db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
@@ -14,9 +15,7 @@ from task import Task
 
 def init_db():
 
-    if coin.config["DEBUG"]:
-
-        print coin.config["SQLALCHEMY_DATABASE_URI"]
+    if coin.debug:
 
         db.drop_all()
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from . import *
+from coin.models import db
+from flask.ext.security import RoleMixin
 
 
 class Role(db.Model, RoleMixin):

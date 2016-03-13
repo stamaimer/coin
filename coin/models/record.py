@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
+from coin.models import db
 
-from . import *
 
-
-class Record(Base):
-
+class Record(db.Model):
 
     pass

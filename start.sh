@@ -2,7 +2,7 @@
 
 export APP_CONFIG_FILE=../config/development.py
 
-# source ./venv/bin/activate
+source ./venv/bin/activate
 
 # pip install --upgrade pip
 
