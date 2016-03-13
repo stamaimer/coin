@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask
-from flask.ext.cache import Cache
-from flask.ext.bcrypt import Bcrypt
 
 coin = Flask(__name__, instance_relative_config=True)  # __name__
 
@@ -32,17 +30,13 @@ def init_logger():
         coin.logger.addHandler(file_handler)
 
 
-cache = Cache(coin)
-
-bcrypt = Bcrypt(coin)
-
 from models import init_db
 
 init_db()
 
-import admin
-
 import security
+
+import admin
 
 import views
 
