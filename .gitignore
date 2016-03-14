@@ -4,3 +4,4 @@ venv/
 .idea/
 *.pyc
 coin/static/upload/
+log/coin.log
