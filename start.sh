@@ -1,6 +1,9 @@
+#!/usr/bin/env bash
 # start.sh
 
 export APP_CONFIG_FILE=../config/development.py
+
+# virtualenv venv
 
 source ./venv/bin/activate
 

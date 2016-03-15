@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
+from flask.ext.debugtoolbar import DebugToolbarExtension
 
 coin = Flask(__name__, instance_relative_config=True)  # __name__
 
@@ -11,7 +12,9 @@ coin.config.from_pyfile('config.py')
 
 # load the file specified by the APP_CONFIG_FILE environment variable
 # variables defined here will override those in the default configuration
-coin.config.from_envvar('APP_CONFIG_FILE')
+coin.config.from_envvar('APP_CONFIG_FILE', silent=True)
+
+debugger = DebugToolbarExtension(coin)
 
 from logger import init_logger
 

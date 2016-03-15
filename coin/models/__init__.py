@@ -17,6 +17,8 @@ def init_db():
 
     if coin.debug:
 
+        coin.logger.info(coin.config["SQLALCHEMY_DATABASE_URI"])
+
         db.drop_all()
 
     db.create_all()
