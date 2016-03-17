@@ -2,9 +2,9 @@
 from . import *
 
 
-@login_required
 @coin.route('/')
 @coin.route("/index/")
+@login_required
 def index():
 
     return render_template("index.html")

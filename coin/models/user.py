@@ -45,4 +45,6 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
 
-        return "<User(id=%d, email='%s', password='%s')>" % (self.id, self.email, self.password)
+        # return "<User(id=%d, email='%s', password='%s')>" % (self.id, self.email, self.password)
+
+        return self.email

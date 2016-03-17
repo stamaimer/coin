@@ -21,5 +21,7 @@ class Role(db.Model, RoleMixin):
 
     def __repr__(self):
 
-        return "<Role(id=%d, name='%s', description='%s')>" % (self.id, self.name, self.description)
+        # return "<Role(id=%d, name='%s', description='%s')>" % (self.id, self.name, self.description)
+
+        return self.name
 

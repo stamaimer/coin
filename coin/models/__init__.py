@@ -23,15 +23,20 @@ def init_db():
 
     db.create_all()
 
-    admin = User("admin@example.com", "admin")
-    guest = User("guest@example.com", "guest")
+    admin_role = Role("admin")
+    guest_role = Role("guest")
 
+    db.session.add(admin_role)
+    db.session.add(guest_role)
+
+    test = User("test@example.com", "中文", True, [guest_role])
+    admin = User("admin@example.com", "admin", True, [admin_role])
+    guest = User("guest@example.com", "guest", False, [guest_role])
+
+    db.session.add(test)
     db.session.add(admin)
     db.session.add(guest)
 
     db.session.add(Task("task", "The First Task", admin))
-
-    db.session.add(Role("admin"))
-    db.session.add(Role("guest"))
 
     db.session.commit()

@@ -24,9 +24,11 @@ from models import init_db
 
 init_db()
 
-import security
-
 import admin
 
+import security
+
 import views
+
+import mail
 
