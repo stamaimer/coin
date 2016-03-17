@@ -1,2 +1,8 @@
 .vagrant/
+instance/
 venv/
+.idea/
+*.pyc
+.DS_Store
+coin/static/upload/
+log/coin.log
