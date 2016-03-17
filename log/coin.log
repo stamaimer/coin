@@ -1,0 +1,2 @@
+2016-03-15 12:45:45,123 INFO: mysql+pymysql://stamaimer:123456@192.168.33.10/coin [in /Users/stamaimer/Workspace/coin/coin/models/__init__.py:20]
+2016-03-15 12:45:45,592 INFO: mysql+pymysql://stamaimer:123456@192.168.33.10/coin [in /Users/stamaimer/Workspace/coin/coin/models/__init__.py:20]

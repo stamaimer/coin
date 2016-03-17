@@ -1,5 +1,7 @@
 ### Vagrant Flow
 - `vagrant init`
+- search base box
+- `vagrant box add path2box --name boxname`
 - modify Vagrantfile
 - `vagrant up`
 - `vagrant ssh`
