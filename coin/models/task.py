@@ -26,4 +26,6 @@ class Task(db.Model):
 
     def __repr__(self):
 
-        return "<Task(id='%d', name='%s', desc='%s')>" % (self.id, self.name, self.desc)
+        # return "<Task(id='%d', name='%s', desc='%s')>" % (self.id, self.name, self.desc)
+
+        return self.name

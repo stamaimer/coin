@@ -1,4 +1,8 @@
 {% extends 'admin/master.html' %}
 {% block body %}
-    <p>Coin Dashboard</p>
+    {% if current_user.has_role("admin") %}
+        <p>Welcome</p>
+    {% else %}
+        <a href="{{ url_for('security.login', next=request.url) }}">Login</a>
+    {% endif %}
 {% endblock body %}

@@ -31,7 +31,7 @@ class User(db.Model, UserMixin):
 
         current_login_ip = db.Column(db.String(255))
 
-    roles = db.relationship("Role", secondary=roles_users, backref=db.backref("user", lazy="dynamic"))
+    roles = db.relationship("Role", secondary=roles_users, backref=db.backref("user", lazy="select"))
 
     def __init__(self, email, password, active=False, roles=[]):
 
