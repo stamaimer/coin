@@ -31,6 +31,7 @@ admin.add_view(CoinModelView(Role, db.session))
 admin.add_view(UserModelView(User, db.session))
 admin.add_view(CoinModelView(Task, db.session))
 
+
 @coin.context_processor
 def coin_context_processor():
 

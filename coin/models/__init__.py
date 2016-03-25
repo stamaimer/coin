@@ -29,7 +29,7 @@ def init_db():
     db.session.add(admin_role)
     db.session.add(guest_role)
 
-    test = User("test@example.com", "中文", True, [guest_role])
+    test = User("test@example.com", "test", True, [guest_role])
     admin = User("admin@example.com", "admin", True, [admin_role])
     guest = User("guest@example.com", "guest", False, [guest_role])
 
