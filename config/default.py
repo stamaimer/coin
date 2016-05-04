@@ -10,7 +10,7 @@ DEBUG_TB_TEMPLATE_EDITOR_ENABLED = True
 
 HOST = "0.0.0.0"
 
-PORT = 4096
+PORT = 5000
 
 UPLOAD_DIR = os.getcwd() + "/coin/static/upload"
 
