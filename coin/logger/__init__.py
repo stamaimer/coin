@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from coin import coin
 
 
@@ -37,7 +38,7 @@ def init_logger():
         %(message)s
         '''))
 
-        mail_handler.setLevel(logging.INFO)
+        mail_handler.setLevel(logging.ERROR)
 
         coin.logger.addHandler(file_handler)
 
