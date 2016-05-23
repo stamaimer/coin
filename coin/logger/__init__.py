@@ -27,7 +27,7 @@ def init_logger():
                                    "Coin Failed")
 
         mail_handler.setFormatter(Formatter('''
-        Message type:       %(levelname)s
+        Message Type:       %(levelname)s
         Location:           %(pathname)s:%(lineno)d
         Module:             %(module)s
         Function:           %(funcName)s

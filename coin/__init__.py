@@ -32,18 +32,6 @@ debugger = DebugToolbarExtension(coin)
 
 babel = Babel(coin)
 
-from logger import init_logger
-
-init_logger()
-
-from coin.utils.create_db import create_db
-
-create_db()
-
-from models import init_db
-
-init_db()
-
 import admin
 
 import security

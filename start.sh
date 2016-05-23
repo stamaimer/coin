@@ -11,4 +11,4 @@ source ./venv/bin/activate
 
 # pip install -r requirements.txt
 
-python run.py
+gunicorn -w 10 -k sync coin:coin -p coin.pid ¬
