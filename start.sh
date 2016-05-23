@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # start.sh
 
-vagrant up
+# vagrant up
 
 export APP_CONFIG_FILE=../config/development.py
 
@@ -15,4 +15,4 @@ source ./venv/bin/activate
 
 python initial.py
 
-gunicorn -w 30 -k gevent coin:coin -p coin.pid
+gunicorn -w 10 -k gevent coin:coin -p coin.pid
