@@ -10,23 +10,28 @@
 from coin import coin
 
 from coin.models import db
+from coin.models.role import Role
+from coin.models.user import User
 
 import pymysql
 
 import sys
 
 
-def create_db():
+def create_user(password):
 
     try:
 
-        connection = pymysql.connect(host=coin.config["DB_HOST"], user=coin.config["DB_USER"], passwd=coin.config["DB_PSWD"])
+        connection = pymysql.connect(host=coin.config["DB_HOST"], user="root", passwd=password)
 
         cursor = connection.cursor()
 
-        cursor.execute("create database if not exists %s character set utf8 collate utf8_general_ci" % coin.config["DB_NAME"])
+        cursor.execute("grant all on %s.* to '%s' identified by '%s'",
+                       (coin.config["DB_NAME"],
+                        coin.config["DB_USER"],
+                        coin.config["DB_PSWD"]))
 
-        coin.logger.info("database %s created" % coin.config["DB_NAME"])
+        coin.logger.info(cursor._last_executed)
 
     except:
 
@@ -39,11 +44,31 @@ def create_db():
         connection.close()
 
 
-from coin.models.role import Role
-from coin.models.user import User
+def create_database(password):
+
+    try:
+
+        connection = pymysql.connect(host=coin.config["DB_HOST"], user="root", passwd=password)
+
+        cursor = connection.cursor()
+
+        cursor.execute("create database if not exists %s character set utf8 collate utf8_general_ci",
+                       (coin.config["DB_NAME"]))
+
+        coin.logger.info(cursor._last_executed)
+
+    except:
+
+        coin.logger.error(sys.exc_info()[1][1])
+
+    finally:
+
+        cursor.close()
+
+        connection.close()
 
 
-def init_db():
+def resets_database():
 
     if coin.debug:
 

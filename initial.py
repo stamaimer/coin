@@ -3,8 +3,10 @@ from coin.logger import init_logger
 
 init_logger()
 
-from coin.utils import create_db, init_db
+from coin.utils import create_database, resets_database, create_user
 
-create_db()
+create_database("123456")
 
-init_db()
+create_user("123456")
+
+resets_database()
