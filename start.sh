@@ -13,6 +13,6 @@ source ./venv/bin/activate
 
 # pip install -r requirements.txt
 
-python initial.py
+python initial.py $1
 
 gunicorn -w 10 -k gevent coin:coin -p coin.pid

@@ -31,9 +31,9 @@ def create_user(password):
                         coin.config["DB_USER"],
                         coin.config["DB_PSWD"]))
 
-        coin.logger.info(cursor._last_executed)
-
     except:
+
+        coin.logger.info(cursor._last_executed)
 
         coin.logger.error(sys.exc_info()[1][1])
 
@@ -55,9 +55,9 @@ def create_database(password):
         cursor.execute("create database if not exists %s character set utf8 collate utf8_general_ci",
                        (coin.config["DB_NAME"]))
 
-        coin.logger.info(cursor._last_executed)
-
     except:
+
+        coin.logger.info(cursor._last_executed)
 
         coin.logger.error(sys.exc_info()[1][1])
 
