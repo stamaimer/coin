@@ -37,6 +37,8 @@ import admin
 
 import security
 
+import api
+
 import views
 
 import mail

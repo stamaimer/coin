@@ -90,3 +90,5 @@ def resets_database():
     db.session.add(admin_user)
 
     db.session.add(guest_user)
+
+    db.session.commit()
