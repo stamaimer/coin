@@ -26,7 +26,7 @@ def create_user(password):
 
         cursor = connection.cursor()
 
-        cursor.execute("grant all on %s.* to '%s' identified by '%s'",
+        cursor.execute("grant all on %s.* to '%s' identified by '%s'" %
                        (coin.config["DB_NAME"],
                         coin.config["DB_USER"],
                         coin.config["DB_PSWD"]))
@@ -52,8 +52,7 @@ def create_database(password):
 
         cursor = connection.cursor()
 
-        cursor.execute("create database if not exists %s character set utf8 collate utf8_general_ci",
-                       (coin.config["DB_NAME"]))
+        cursor.execute("create database if not exists %s character set utf8 collate utf8_general_ci" % coin.config["DB_NAME"])
 
     except:
 
