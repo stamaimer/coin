@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from flask.ext.security import Security, SQLAlchemyUserDatastore
 from coin import coin
-from coin.models import db, Role, User
+from coin.models import db
+from coin.models.role import Role
+from coin.models.user import User
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
