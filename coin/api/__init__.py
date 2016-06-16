@@ -13,9 +13,10 @@ from coin import coin
 
 from coin.models import db
 
+
 from coin.models.user import User
 
-api = APIManager(coin, flask_sqlalchemy_db=db)
+api_manager = APIManager(coin, flask_sqlalchemy_db=db)
 
-api.create_api(User, methods=["GET", "POST", "DELETE"])
+api_manager.create_api(User, methods=["GET", "POST", "DELETE"])
 

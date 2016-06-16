@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = False
 
 DEBUG_TB_PROFILER_ENABLED = True
 
