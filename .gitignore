@@ -2,4 +2,5 @@
 .idea/
 .vagrant/
 venv/
+instance/
 *.pyc

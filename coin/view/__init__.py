@@ -9,8 +9,8 @@
 
 """
 
-
-from coin import coin
+from flask import Blueprint
+from flask import abort, make_response, redirect, render_template, request
 
 
 @coin.before_first_request
