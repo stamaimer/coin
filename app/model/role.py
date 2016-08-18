@@ -2,15 +2,15 @@
 
 """
 
-    coin.model.role
-    ~~~~~~~~~~~~~~~
+    app.model.role
+    ~~~~~~~~~~~~~~
 
     stamaimer 08/16/16
 
 """
 
 from flask_security import RoleMixin
-from coin.model import db
+from app.model import db
 
 
 class Role(db.Model, RoleMixin):

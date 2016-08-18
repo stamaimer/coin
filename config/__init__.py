@@ -13,6 +13,10 @@ class Config(object):
 
     # configuration of flask
 
+    HOST = "0.0.0.0"
+
+    PORT = 5000
+
     DEBUG = 1
 
     TESTING = 1
@@ -20,6 +24,8 @@ class Config(object):
     # configuration of flask-debugtoolbar
 
     DEBUG_TB_PROFILER_ENABLED = 1
+
+    DEBUG_TB_INTERCEPT_REDIRECTS = 0
 
     DEBUG_TB_TEMPLATE_EDITOR_ENABLED = 1
 
@@ -38,3 +44,16 @@ class Config(object):
     # configuration of flask-sqlalchemy
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    # configuration of flask-security
+
+    SECURITY_CONFIRMABLE = 0
+
+    SECURITY_REGISTERABLE = True
+
+    SECURITY_RECOVERABLE = 1
+
+    SECURITY_TRACKABLE = 1
+
+    SECURITY_PASSWORD_HASH = "bcrypt"
+

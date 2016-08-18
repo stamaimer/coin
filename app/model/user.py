@@ -2,17 +2,16 @@
 
 """
 
-    coin.model.user
-    ~~~~~~~~~~~~~~~
+    app.model.user
+    ~~~~~~~~~~~~~~
 
     stamaimer 08/16/16
 
 """
 
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import current_app
 from flask_security import UserMixin
-from coin.model import db, roles_users
+from app.model import db, roles_users
 
 
 class User(db.Model, UserMixin):
@@ -23,53 +22,45 @@ class User(db.Model, UserMixin):
 
     email = db.Column(db.String(255), unique=True, nullable=False, index=True)
 
-    # password = db.Column(db.String(255), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
-    password_hash = db.Column(db.String(255))
+    # password_hash = db.Column(db.String(255))
 
-    @property
-    def password(self):
+    # @property
+    # def password(self):
 
-        raise AttributeError("password is not a readable attribute")
+    #     raise AttributeError("password is not a readable attribute")
 
-    @password.setter
-    def password(self, password):
+    # @password.setter
+    # def password(self, password):
 
-        self.password = generate_password_hash(password)
+    #     self.password_hash = generate_password_hash(password)
 
-    def verify_password(self, password):
+    # def verify_password(self, password):
 
-        return check_password_hash(self.password_hash, password)
+    #     return check_password_hash(self.password_hash, password)
 
-    active = db.Column(db.Boolean(), default=False)
+    active = db.Column(db.Boolean())
 
-    # if current_app.config["SECURITY_CONFIRMABLE"]:
-    #
-    #     confirmed_at = db.Column(db.DateTime())
-    #
-    # if current_app.config["SECURITY_TRACKABLE"]:
-    #
-    #     login_count = db.Column(db.Integer())
-    #
-    #     last_login_at = db.Column(db.DateTime())
-    #
-    #     last_login_ip = db.Column(db.String(15))
-    #
-    #     current_login_at = db.Column(db.DateTime())
-    #
-    #     current_login_ip = db.Column(db.String(15))
+    confirmed_at = db.Column(db.DateTime())
 
-    roles = db.relation("Role", secondary=roles_users, backref=db.backref("users", lazy="dynamic"))
+    login_count = db.Column(db.Integer())
 
-    def __init__(self, email="", password="", active=0, roles=[]):
+    last_login_at = db.Column(db.DateTime())
 
-        self.email = email
+    last_login_ip = db.Column(db.String(15))
 
-        self.roles = roles
+    current_login_at = db.Column(db.DateTime())
 
-        self.active = active
+    current_login_ip = db.Column(db.String(15))
 
-        self.password = password
+    roles = db.relationship("Role", secondary=roles_users, backref=db.backref("users", lazy="dynamic"))
+
+    # def __init__(self, email="", password=""):
+
+    #     self.email = email
+
+    #     self.password = password
 
     def __repr__(self):
 
@@ -87,20 +78,16 @@ class User(db.Model, UserMixin):
 
         user["active"] = self.active
 
-        # if current_app.config["SECURITY_CONFIRMABLE"]:
-        #
-        #     user["confirmed_at"] = self.confirmed_at
-        #
-        # if current_app.config["SECURITY_TRACKABLE"]:
-        #
-        #     user["login_count"] = self.login_count
-        #
-        #     user["last_login_at"] = self.last_login_at
-        #
-        #     user["last_login_ip"] = self.last_login_ip
-        #
-        #     user["current_login_at"] = self.current_login_at
-        #
-        #     user["current_login_ip"] = self.current_login_ip
+        user["confirmed_at"] = self.confirmed_at
+
+        user["login_count"] = self.login_count
+
+        user["last_login_at"] = self.last_login_at
+
+        user["last_login_ip"] = self.last_login_ip
+
+        user["current_login_at"] = self.current_login_at
+
+        user["current_login_ip"] = self.current_login_ip
 
         return user
