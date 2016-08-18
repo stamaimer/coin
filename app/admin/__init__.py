@@ -11,4 +11,4 @@
 from flask import current_app
 from flask_admin import Admin
 
-admin = Admin(name="Coin Dashboard", template_mode="bootstrap3")
+admin = Admin(name=current_app.config["COIN_ADMIN"], template_mode="bootstrap3")

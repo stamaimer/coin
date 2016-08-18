@@ -23,6 +23,18 @@ class Config(object):
 
     DEBUG_TB_TEMPLATE_EDITOR_ENABLED = 1
 
+    # configuration of flask-mail
+
+    MAIL_SERVER = "smtp.gmail.com"
+
+    MAIL_PORT = "587"
+
+    MAIL_USE_TLS = 0
+
+    MAIL_USE_SSL = 0
+
+    MAIL_DEFAULT_SENDER = "noreply@coin.com"
+    
     # configuration of flask-sqlalchemy
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True

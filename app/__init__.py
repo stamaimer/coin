@@ -2,8 +2,8 @@
 
 """
 
-    coin
-    ~~~~
+    coin.app
+    ~~~~~~~~
 
     stamaimer 08/14/16
 
