@@ -43,6 +43,8 @@ class Config(object):
     
     # configuration of flask-sqlalchemy
 
+    SQLALCHEMY_RECORD_QUERIES = True
+
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     # configuration of flask-security
@@ -61,3 +63,6 @@ class Config(object):
 
     SECURITY_EMAIL_SENDER = "2518930466@qq.com"
 
+    def init_app(self):
+
+        pass

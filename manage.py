@@ -9,6 +9,7 @@
 
 """
 
+import os
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app
@@ -31,6 +32,36 @@ def make_shell_context():
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
 manager.add_command("db", MigrateCommand)
+
+
+@manager.command
+def create_db():
+
+    pass
+
+
+@manager.command
+def delete_db():
+
+    os.remove(os.path.join(os.getcwd(), "data.sqlite"))
+
+
+@manager.command
+def deploy():
+
+    from flask_migrate import upgrade
+
+    upgrade()
+
+
+@manager.command
+def profile(length=25, profile_dir=None):
+
+    from werkzeug.contrib.profiler import ProfilerMiddleware
+
+    app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length], profile_dir=profile)
+
+    app.run()
 
 
 if __name__ == "__main__":

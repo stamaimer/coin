@@ -11,27 +11,31 @@
 
 from flask import Blueprint
 from flask import abort, make_response, redirect, render_template, request
+from flask_sqlalchemy import get_debug_queries
 
 
-@coin.before_first_request
+view = Blueprint("view", __name__)
+
+
+@view.before_first_request
 def before_first_request():
 
     pass
 
 
-@coin.before_request
+@view.before_request
 def before_request():
 
     pass
 
 
-@coin.after_request
+@view.after_request
 def after_request():
 
     pass
 
 
-@coin.teardown_request
+@view.teardown_request
 def teardown_request():
 
     pass
