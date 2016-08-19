@@ -19,7 +19,7 @@ class Config(object):
 
     DEBUG = 1
 
-    TESTING = 1
+    TESTING = 0
 
     # configuration of flask-debugtoolbar
 
@@ -31,15 +31,15 @@ class Config(object):
 
     # configuration of flask-mail
 
-    MAIL_SERVER = "smtp.gmail.com"
+    MAIL_SERVER = "smtp.qq.com"
 
-    MAIL_PORT = "587"
+    MAIL_PORT = "465"
 
     MAIL_USE_TLS = 0
 
-    MAIL_USE_SSL = 0
+    MAIL_USE_SSL = 1
 
-    MAIL_DEFAULT_SENDER = "noreply@coin.com"
+    MAIL_DEFAULT_SENDER = "2518930466@qq.com"
     
     # configuration of flask-sqlalchemy
 
@@ -47,7 +47,7 @@ class Config(object):
 
     # configuration of flask-security
 
-    SECURITY_CONFIRMABLE = 0
+    SECURITY_CONFIRMABLE = 1
 
     SECURITY_REGISTERABLE = True
 
@@ -56,4 +56,8 @@ class Config(object):
     SECURITY_TRACKABLE = 1
 
     SECURITY_PASSWORD_HASH = "bcrypt"
+
+    SECURITY_SEND_REGISTER_EMAIL = 1
+
+    SECURITY_EMAIL_SENDER = "2518930466@qq.com"
 
