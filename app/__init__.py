@@ -14,13 +14,15 @@ from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-
+from raven.contrib.flask import Sentry
 
 debug_toolbar = DebugToolbarExtension()
 
 bootstrap = Bootstrap()
 
 moment = Moment()
+
+sentry = Sentry()
 
 
 def create_app(config_name):
@@ -37,6 +39,8 @@ def create_app(config_name):
 
     moment.init_app(app)
 
+    if not app.config["DEBUG"]: sentry.init_app(app)
+
     from admin import admin
 
     admin.init_app(app)
@@ -52,5 +56,9 @@ def create_app(config_name):
     from security import security
 
     security.init_app(app)
+
+    from view import view
+
+    app.register_blueprint(view)
 
     return app
