@@ -16,7 +16,7 @@ from app.model import db, roles_users
 
 class User(db.Model, UserMixin):
 
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 

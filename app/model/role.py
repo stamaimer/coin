@@ -15,7 +15,7 @@ from app.model import db
 
 class Role(db.Model, RoleMixin):
 
-    __tablename__ = "role"
+    __tablename__ = "roles"
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 

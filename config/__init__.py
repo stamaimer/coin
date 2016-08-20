@@ -47,6 +47,8 @@ class Config(object):
 
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+
     # configuration of flask-security
 
     SECURITY_CONFIRMABLE = 1
