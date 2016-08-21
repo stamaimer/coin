@@ -34,7 +34,7 @@ def create_app(config_name):
 
     app.config.from_pyfile("config.py")
 
-    debug_toolbar.init_app(app)
+    # debug_toolbar.init_app(app)
 
     bootstrap.init_app(app)
 

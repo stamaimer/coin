@@ -1,11 +1,22 @@
 {% extends "bootstrap/base.html" %}
 
+{% block html_attribs %} lang="en"{% endblock %}
+
+{% block metas %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {{ super() }}
+
+{% endblock %}
+
 {% block title %}Coin{% endblock %}
 
 {% block head %}
 
     {{ super() }}
 
+    <!-- favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
 

@@ -10,8 +10,9 @@
 """
 
 from datetime import datetime
-from flask import Blueprint
+from flask import Blueprint, current_app
 from flask import abort, make_response, redirect, render_template, request
+from flask_security import login_required
 from flask_sqlalchemy import get_debug_queries
 
 
@@ -31,15 +32,19 @@ def before_app_request():
 
 
 @main.after_app_request
-def after_app_request():
+def after_app_request(response):
 
-    pass
+    for query in get_debug_queries():
+
+        current_app.logger.debug(query)
+
+    return response
 
 
 @main.teardown_app_request
-def teardown_app_request():
+def teardown_app_request(response):
 
-    pass
+    return response
 
 
 @main.route('/')
