@@ -2,8 +2,8 @@
 
 """
 
-    coin.mail
-    ~~~~~~~~~
+    coin.app.mail
+    ~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

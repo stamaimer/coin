@@ -2,8 +2,8 @@
 
 """
 
-    manage
-    ~~~~~~
+    coin.manage
+    ~~~~~~~~~~~
 
     stamaimer 08/15/16
 

@@ -2,8 +2,8 @@
 
 """
 
-    coin.form.signin_form
-    ~~~~~~~~~~~~~~~~~~~~~
+    coin.app.form.signin_form
+    ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/17/16
 

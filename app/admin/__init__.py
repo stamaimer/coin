@@ -2,8 +2,8 @@
 
 """
 
-    app.admin
-    ~~~~~~~~~
+    coin.app.admin
+    ~~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

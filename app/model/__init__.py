@@ -2,8 +2,8 @@
 
 """
 
-    coin.model
-    ~~~~~~~~~~
+    coin.app.model
+    ~~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

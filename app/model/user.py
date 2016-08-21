@@ -2,8 +2,8 @@
 
 """
 
-    app.model.user
-    ~~~~~~~~~~~~~~
+    coin.app.model.user
+    ~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/16/16
 

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    coin.form
-    ~~~~~~~~~
+    coin.app.form
+    ~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

@@ -2,8 +2,8 @@
 
 """
 
-    app.model.role
-    ~~~~~~~~~~~~~~
+    coin.app.model.role
+    ~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/16/16
 

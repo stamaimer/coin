@@ -2,8 +2,8 @@
 
 """
 
-    app.security
-    ~~~~~~~~~~~~
+    coin.app.security
+    ~~~~~~~~~~~~~~~~~
 
     stamaimer 08/16/16
 

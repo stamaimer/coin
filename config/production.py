@@ -2,8 +2,8 @@
 
 """
 
-    config.production
-    ~~~~~~~~~~~~~~~~~
+    coin.config.production
+    ~~~~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

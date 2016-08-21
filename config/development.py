@@ -2,8 +2,8 @@
 
 """
 
-    config.development
-    ~~~~~~~~~~~~~~~~~~
+    coin.config.development
+    ~~~~~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

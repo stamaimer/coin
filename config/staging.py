@@ -2,8 +2,8 @@
 
 """
 
-    config.staging
-    ~~~~~~~~~~~~~~
+    coin.config.staging
+    ~~~~~~~~~~~~~~~~~~~
 
     stamaimer 08/15/16
 

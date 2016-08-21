@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    config
-    ~~~~~~
+    coin.config
+    ~~~~~~~~~~~
 
     stamaimer 08/15/16
 
