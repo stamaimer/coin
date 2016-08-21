@@ -49,6 +49,12 @@ def delete_db():
 
 
 @manager.command
+def test():
+
+    pass
+
+
+@manager.command
 def deploy():
 
     from flask_migrate import upgrade
