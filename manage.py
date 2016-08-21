@@ -17,8 +17,10 @@ from app.model import db
 from app.model.user import User
 from app.model.role import Role
 from app.security import user_datastore
+from config import config
 
-app = create_app("config.development.DevelopmentConfig")
+
+app = create_app(config["default"])
 
 migrate = Migrate(app, db)
 

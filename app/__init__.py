@@ -16,6 +16,7 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from raven.contrib.flask import Sentry
 
+
 debug_toolbar = DebugToolbarExtension()
 
 bootstrap = Bootstrap()
@@ -57,8 +58,8 @@ def create_app(config_name):
 
     security.init_app(app)
 
-    from view import view
+    from main import main as main_blueprint
 
-    app.register_blueprint(view)
+    app.register_blueprint(main_blueprint)
 
     return app

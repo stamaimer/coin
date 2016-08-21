@@ -65,6 +65,19 @@ class Config(object):
 
     SECURITY_EMAIL_SENDER = "2518930466@qq.com"
 
-    def init_app(self):
+    @staticmethod
+    def init_app(app):
 
         pass
+
+
+from development import DevelopmentConfig
+from production import ProductionConfig
+from staging import StagingConfig
+
+config = {
+    "default": DevelopmentConfig,
+    "development": DevelopmentConfig,
+    "production": ProductionConfig,
+    "staging": StagingConfig
+}
