@@ -14,6 +14,7 @@ from flask import Blueprint, current_app
 from flask import abort, make_response, redirect, render_template, request
 from flask_security import login_required
 from flask_sqlalchemy import get_debug_queries
+from app.security import security
 
 
 main = Blueprint("main", __name__)
@@ -57,3 +58,8 @@ def index():
 def page_not_found():
 
     pass
+
+# @main.app_context_processor
+# def app_context_processor():
+#
+#     pass
