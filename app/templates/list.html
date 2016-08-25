@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    成绩列表
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/admin.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block body %}
+    <table class="table table-bordered" id="score">
+        <thead>
+        <tr>
+            <th><a class="icon" href="/input" title="添加">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a></th>
+            <th>考试名称</th>
+            <th>创建时间</th>
+            <th>推送情况</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="score">
+            <th scope="row">1</th>
+            <td>高一第一学期期中考试</td>
+            <td>2016.8.19</td>
+            <td>未推送</td>
+            <td class="list-buttons-column">
+                    <a class="icon" href="#" title="编辑">
+                    <span class="glyphicon glyphicon-pencil"></span>编辑
+                </a>
+                    <a class="icon" href="#" title="删除">
+                    <span class="glyphicon glyphicon-trash"></span>删除
+                </a>
+                    <a class="icon" href="#" title="推送">
+                    <span class="glyphicon glyphicon-share-alt"></span>推送
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+{% block script %}
+    {{ moment.include_moment() }}
+    <script src="{{ url_for('static', filename='scripts/input.js') }}"></script>
+{% endblock %}

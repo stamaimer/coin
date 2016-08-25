@@ -11,6 +11,10 @@
 
 from flask import Blueprint
 
-
 api = Blueprint("api", __name__)
+
+import exam
+import score
+import student
+import user
 

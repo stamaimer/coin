@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    成绩列表
+{% endblock %}
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/admin.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block body %}
+    <table class="table table-bordered" id="students">
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>学生姓名</th>
+            <th><a class="icon" id="plus" href="#" title="添加">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="score">
+            <th scope="row">1</th>
+            <td>沈宗存</td>
+            <td class="list-buttons-column">
+                <a class="icon" href="#" title="编辑">
+                    <span class="glyphicon glyphicon-pencil"></span>编辑
+                </a>
+                <a class="icon" href="#" title="删除">
+                    <span class="glyphicon glyphicon-trash"></span>删除
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='scripts/students.js') }}"></script>
+{% endblock %}

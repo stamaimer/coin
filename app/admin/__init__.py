@@ -49,7 +49,7 @@ class UserModelView(SecurityModelView):
     form_excluded_columns = list(set(column_details_list) - set(column_list)) + ["confirmed_at"]
 
 
-admin = Admin(name="Coin App Admin", template_mode="bootstrap3")
+admin = Admin(name="Coin Admin", template_mode="bootstrap3")
 
 admin.add_view(UserModelView(User, db.session))
 admin.add_view(RoleModelView(Role, db.session))

@@ -1,0 +1,12 @@
+a.icon {
+    margin-left: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+a.icon:hover{
+    text-decoration: none;
+}
+
+a.icon span{
+    margin-right:5px;
+}
