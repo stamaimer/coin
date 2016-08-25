@@ -53,6 +53,7 @@ class Score(db.Model):
     student_id = db.Column(db.Integer(), db.ForeignKey("student.id"))
 
     exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
+
     # def __init__(self, email="", password=""):
 
     #     self.email = email
