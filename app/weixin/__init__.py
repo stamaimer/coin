@@ -23,7 +23,7 @@ def before_request():
     g.access_token = current_app.test_client().get("/access_token").data
 
 
-@weixin.route('/', methods=["GET"])
+@weixin.route("/weixin", methods=["GET"])
 def verify():
 
     try:

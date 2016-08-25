@@ -58,9 +58,13 @@ def create_app(config_name):
 
     security.init_app(app)
 
+    from weixin import weixin as weixin_blueprint
+
     from main import main as main_blueprint
 
     from api import api as api_blueprint
+
+    app.register_blueprint(weixin_blueprint)
 
     app.register_blueprint(main_blueprint)
 
