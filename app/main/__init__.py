@@ -9,7 +9,6 @@
 
 """
 
-import requests
 from datetime import datetime
 from flask import Blueprint, current_app, url_for
 from flask import abort, make_response, redirect, render_template, request
