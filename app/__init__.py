@@ -14,6 +14,7 @@ from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_redis import FlaskRedis
 from raven.contrib.flask import Sentry
 
 
@@ -24,6 +25,8 @@ bootstrap = Bootstrap()
 moment = Moment()
 
 sentry = Sentry()
+
+redis = FlaskRedis()
 
 
 def create_app(config_name):
@@ -39,6 +42,8 @@ def create_app(config_name):
     bootstrap.init_app(app)
 
     moment.init_app(app)
+
+    redis.init_app(app)
 
     if not app.config["DEBUG"]: sentry.init_app(app)
 
@@ -64,7 +69,7 @@ def create_app(config_name):
 
     from api import api as api_blueprint
 
-    app.register_blueprint(weixin_blueprint)
+    app.register_blueprint(weixin_blueprint, url_prefix="/weixin")
 
     app.register_blueprint(main_blueprint)
 
