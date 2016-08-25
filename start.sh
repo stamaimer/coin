@@ -1,4 +1,7 @@
-virtualenv -p python2 venv
+#!/usr/bin/env bash
+# start.sh
+
+virtualenv venv
 
 source venv/bin/activate
 
