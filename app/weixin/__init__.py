@@ -10,7 +10,10 @@
 """
 
 import sys
+import time
 import hashlib
+import xmltodict
+from lxml.etree import CDATA, Element, SubElement, tostring
 from flask import Blueprint, current_app, g, request
 
 
@@ -20,7 +23,9 @@ weixin = Blueprint("weixin", __name__)
 @weixin.before_request
 def before_request():
 
-    g.access_token = current_app.test_client().get("/access_token").data
+    if request.endpoint != "weixin.get_access_token":
+
+        g.access_token = current_app.test_client().get("/access_token").data
 
 
 @weixin.route('/', methods=["GET"])
@@ -37,7 +42,7 @@ def verify():
 
         tmp_str = ''.join(sorted(tmp_arr))
 
-        tmp_str = hashlib.sha1(tmp_str).hexdigext()
+        tmp_str = hashlib.sha1(tmp_str).hexdigest()
 
         if tmp_str == signature:
 
@@ -51,6 +56,5 @@ def verify():
 
         current_app.logger.error(sys.exc_info())
 
-    finally:
 
-        return '', 204
+
