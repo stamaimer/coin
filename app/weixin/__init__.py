@@ -9,12 +9,14 @@
 
 """
 
+import re
 import sys
 import time
 import hashlib
+import requests
 import xmltodict
 from lxml.etree import CDATA, Element, SubElement, tostring
-from flask import Blueprint, current_app, g, request
+from flask import Blueprint, current_app, g, request, url_for
 
 
 weixin = Blueprint("weixin", __name__)
@@ -88,7 +90,23 @@ def message():
 
         if data["MsgType"] == "event" and data["Event"] == "subscribe":
 
-            Content.text = CDATA(u"感谢关注")
+            Content.text = CDATA(current_app.config["WEIXIN_SUBSCRIBE_RESPONSE"])
+
+        elif data["MsgType"] == "text" and re.match(u"绑定\+\d{10}\+.+", data["Content"]):
+
+            bind_data = data["Content"].split('+')
+
+            paylod = dict()
+
+            paylod["student_id"] = bind_data[1]
+
+            paylod["open_id"] = data["FromUserName"]
+
+            paylod["name"] = bind_data[2]
+
+            response = requests.patch(url_for("main.bind", _external=True), data=paylod)
+
+            Content.text = CDATA(response.data["description"])
 
         elif data["MsgType"] == "text" and data["Content"] == u"最新成绩":
 
@@ -96,7 +114,7 @@ def message():
 
         elif data["MsgType"] == "text" and data["Content"] == u"所有成绩":
 
-            Content.text = CDATA(u"历史成绩")
+            Content.text = CDATA(u"所有成绩")
 
         else:
 

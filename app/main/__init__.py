@@ -9,11 +9,13 @@
 
 """
 
+import sys
 from datetime import datetime
-from flask import Blueprint, current_app, url_for
-from flask import abort, make_response, redirect, render_template, request
+from flask import Blueprint, abort, current_app, jsonify, make_response, redirect, render_template, request, url_for
 from flask_security import login_required
 from flask_sqlalchemy import get_debug_queries
+from app.model import db
+from app.model.student import Student
 
 
 main = Blueprint("main", __name__)
@@ -50,7 +52,7 @@ def teardown_app_request(response):
 @main.route('/')
 def index():
 
-    return 'hhh'
+    return 'test'
 
     return render_template("index.html", current_time=datetime.utcnow())
 
@@ -59,6 +61,56 @@ def index():
 # def page_not_found(response):
 #
 #     pass
+
+
+@main.route("/bind", methods=["PATCH"])
+def bind():
+
+    response = dict()
+
+    try:
+
+        request_body = request.get_json(force=True)
+
+        student_id = request_body["student_id"]
+
+        open_id = request_body["open_id"]
+
+        name = request_body["name"]
+
+        student = Student.query.filter(Student.student_id == student_id).first()
+
+        if student.name == name:
+
+            if not student.open_id:
+
+                student.open_id = open_id
+
+                db.session.commit()
+
+                response["status"] = 1
+
+                response["description"] = u"绑定成功"
+
+            else:
+
+                response["status"] = 0
+
+                response["description"] = u"该学生已绑定"
+
+        else:
+
+            response["status"] = 0
+
+            response["description"] = u"学号和姓名不匹配"
+
+    except:
+
+        current_app.logger.error(sys.exc_info())
+
+    finally:
+
+        return jsonify(response)
 
 
 @main.route("/input", methods=["GET"])
