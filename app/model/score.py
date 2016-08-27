@@ -54,6 +54,8 @@ class Score(db.Model):
 
     exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
 
+    # __mapper_args__ = {"order_by": exam.create_time}
+
     # def __init__(self, email="", password=""):
 
     #     self.email = email

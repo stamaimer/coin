@@ -11,6 +11,7 @@
 
 import re
 import sys
+import json
 import time
 import hashlib
 import requests
@@ -92,7 +93,7 @@ def message():
 
             Content.text = CDATA(current_app.config["WEIXIN_SUBSCRIBE_RESPONSE"])
 
-        elif data["MsgType"] == "text" and re.match(u"绑定\+\d{10}\+.+", data["Content"]):
+        elif data["MsgType"] == "text" and re.match(u"绑定\+\d+\+.+", data["Content"]):
 
             bind_data = data["Content"].split('+')
 
@@ -104,19 +105,19 @@ def message():
 
             paylod["name"] = bind_data[2]
 
-            response = current_app.test_client().patch(url_for("main.bind", _external=True), data=paylod)
+            response = current_app.test_client().patch(url_for("main.bind", _external=True),
+                                                       data=json.dumps(paylod),
+                                                       content_type="application/json")
 
-            current_app.logger.debug(response.data)
-
-            Content.text = CDATA(response.json()["description"])
+            Content.text = CDATA(json.loads(response.data)["description"])
 
         elif data["MsgType"] == "text" and data["Content"] == u"最新成绩":
 
-            Content.text = CDATA(u"最新成绩")
+            Content.text = CDATA(url_for("main.get_grade", open_id=data["FromUserName"], flag="current", _external=True))
 
         elif data["MsgType"] == "text" and data["Content"] == u"所有成绩":
 
-            Content.text = CDATA(u"所有成绩")
+            Content.text = CDATA(url_for("main.get_grade", open_id=data["FromUserName"], flag="history", _external=True))
 
         else:
 

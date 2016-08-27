@@ -36,9 +36,9 @@ def before_app_request():
 @main.after_app_request
 def after_app_request(response):
 
-    for query in get_debug_queries():
-
-        current_app.logger.debug(query)
+    # for query in get_debug_queries():
+    #
+    #     current_app.logger.debug(query)
 
     return response
 
@@ -80,29 +80,37 @@ def bind():
 
         student = Student.query.filter(Student.student_id == student_id).first()
 
-        if student.name == name:
+        if student:
 
-            if not student.open_id:
+            if student.name == name:
 
-                student.open_id = open_id
+                if not student.open_id:
 
-                db.session.commit()
+                    student.open_id = open_id
 
-                response["status"] = 1
+                    db.session.commit()
 
-                response["description"] = u"绑定成功"
+                    response["status"] = 1
+
+                    response["description"] = u"绑定成功"
+
+                else:
+
+                    response["status"] = 0
+
+                    response["description"] = u"该学生已绑定"
 
             else:
 
                 response["status"] = 0
 
-                response["description"] = u"该学生已绑定"
+                response["description"] = u"学号和姓名不匹配"
 
         else:
 
             response["status"] = 0
 
-            response["description"] = u"学号和姓名不匹配"
+            response["description"] = u"该学生不存在"
 
     except:
 
@@ -111,6 +119,41 @@ def bind():
     finally:
 
         return jsonify(response)
+
+
+@main.route("/grade/<open_id>/<flag>", methods=["GET"])
+def get_grade(open_id, flag):
+
+    try:
+
+        student = Student.query.filter(Student.open_id == open_id).first()
+
+        if student:
+
+            if flag == "current":
+
+                score = student.scores[-1]
+
+                return render_template("current_grade.html", score=score)
+
+            elif flag == "history":
+
+                scores = student.scores
+
+                return render_template("history_grade.html", scores=scores)
+
+            else:
+
+                return "Flag Error"
+        else:
+
+            return "Student Not Exist"
+
+    except:
+
+        current_app.logger.error(sys.exc_info())
+
+        return "Exception Occur"
 
 
 @main.route("/input", methods=["GET"])
