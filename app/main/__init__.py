@@ -130,15 +130,15 @@ def get_grade(open_id, flag):
 
         if student:
 
-            if flag == "current":
+            scores = student.scores
 
-                score = student.scores[-1]
+            score = scores[-1] if scores else None
+
+            if flag == "current":
 
                 return render_template("current_grade.html", score=score)
 
             elif flag == "history":
-
-                scores = student.scores
 
                 return render_template("history_grade.html", scores=scores)
 
@@ -147,7 +147,7 @@ def get_grade(open_id, flag):
                 return "Flag Error"
         else:
 
-            return "Student Not Exist"
+            return "请先绑定"
 
     except:
 

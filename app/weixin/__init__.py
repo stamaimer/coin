@@ -113,11 +113,11 @@ def message():
 
         elif data["MsgType"] == "text" and data["Content"] == u"最新成绩":
 
-            Content.text = CDATA(url_for("main.get_grade", open_id=data["FromUserName"], flag="current", _external=True))
+            Content.text = CDATA(u"请点击<a href='" + url_for("main.get_grade", open_id=data["FromUserName"], flag="current", _external=True) + u"'>最新成绩</a>")
 
         elif data["MsgType"] == "text" and data["Content"] == u"所有成绩":
 
-            Content.text = CDATA(url_for("main.get_grade", open_id=data["FromUserName"], flag="history", _external=True))
+            Content.text = CDATA(u"请点击<a href='" + url_for("main.get_grade", open_id=data["FromUserName"], flag="history", _external=True) + u"'>所有成绩</a>")
 
         else:
 
