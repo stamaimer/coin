@@ -104,9 +104,11 @@ def message():
 
             paylod["name"] = bind_data[2]
 
-            response = requests.patch(url_for("main.bind", _external=True), data=paylod)
+            response = current_app.test_client().patch(url_for("main.bind", _external=True), data=paylod)
 
-            Content.text = CDATA(response.data["description"])
+            current_app.logger.debug(response.data)
+
+            Content.text = CDATA(response.json()["description"])
 
         elif data["MsgType"] == "text" and data["Content"] == u"最新成绩":
 
