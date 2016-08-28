@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+
+"""
+
+    coin.instance.config
+    ~~~~~~~~~~~~~~~~~~~~
+
+    stamaimer 08/15/16
+
+"""
+
+import os
+
+# load configuration from other module in instance package
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+# configuration of flask
+
+SECRET_KEY = os.urandom(47)
+
+ADMINS = ["admin@example.com"]
+
+# configuration of flask-mail
+
+MAIL_USERNAME = ""  # the username of your SMTP server
+
+MAIL_PASSWORD = ""  # the password of your SMTP server
+
+# configuration of flask-sqlalchemy
+
+DB = "mysql"
+
+DB_DRIVER = "pymysql"
+
+DB_USER = "root"
+DB_PSWD = "123456"
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
+DB_NAME = "coin"
+
+SQLALCHEMY_DATABASE_URI = "{db}+{db_driver}://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}".format(db=DB,
+                                                                                                        db_driver=DB_DRIVER,
+                                                                                                        db_user=DB_USER,
+                                                                                                        db_pswd=DB_PSWD,
+                                                                                                        db_host=DB_HOST,
+                                                                                                        db_port=DB_PORT,
+                                                                                                        db_name=DB_NAME)
+SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(os.getcwd(), "data.sqlite")
+
+# configuration of flask-security
+
+SECURITY_PASSWORD_SALT = "salt"
+
+# configuration of sentry
+
+SENTRY_DSN = ""
+
+# configuration of flask-redis
+
+REDIS_URL = ""

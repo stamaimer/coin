@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # start.sh
 
-virtualenv venv
+virtualenv venv -p python2.7
 
 source venv/bin/activate
 
