@@ -121,6 +121,50 @@ def bind():
         return jsonify(response)
 
 
+@main.route("/unbind", methods=["PATCH"])
+def unbind():
+
+    response = dict()
+
+    try:
+
+        open_id = request.get_json(force=True)["open_id"]
+
+        student = Student.query.filter(Student.open_id == open_id).first()
+
+        if student:
+
+            if student.open_id == open_id:
+
+                student.open_id = None
+
+                db.session.commit()
+
+                response["status"] = 1
+
+                response["description"] = u"解绑成功"
+
+            else:
+
+                response["status"] = 0
+
+                response["description"] = u"解绑失败"
+
+        else:
+
+            response["status"] = 0
+
+            response["description"] = u"还未绑定"
+
+    except:
+
+        current_app.logger.error(sys.exc_info())
+
+    finally:
+
+        return jsonify(response)
+
+
 @main.route("/grade/<open_id>/<flag>", methods=["GET"])
 def get_grade(open_id, flag):
 

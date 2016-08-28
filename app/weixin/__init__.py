@@ -111,6 +111,23 @@ def message():
 
             Content.text = CDATA(json.loads(response.data)["description"])
 
+        elif data["MsgType"] == "text" and data["Content"] == u"解绑":
+
+            paylod = dict()
+
+            paylod["open_id"] = data["FromUserName"]
+
+            # response = current_app.test_client().patch(url_for("main.unbind", _external=True),
+            #                                            data=json.dumps(paylod),
+            #                                            content_type="application/json")
+
+            response = requests.patch(url_for("main.unbind", _external=True),
+                                      json=paylod)
+
+            Content.text = CDATA(response.json()["description"])
+
+            # Content.text = CDATA(json.loads(response.data)["description"])
+
         elif data["MsgType"] == "text" and data["Content"] == u"最新成绩":
 
             Content.text = CDATA(u"请点击<a href='" + url_for("main.get_grade", open_id=data["FromUserName"], flag="current", _external=True) + u"'>最新成绩</a>")

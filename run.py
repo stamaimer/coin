@@ -13,4 +13,4 @@ from app import create_app
 
 app = create_app("config.development.DevelopmentConfig")
 
-app.run(host=app.config["HOST"], port=app.config["PORT"])
+app.run(host=app.config["HOST"], port=app.config["PORT"], threaded=1)

@@ -2,22 +2,26 @@
 
 {% block body %}
 
-    语文{{ score.yw }}
-    数学{{ score.sx }}
-    英语{{ score.yy }}
-    物理{{ score.wl }}
-    化学{{ score.hx }}
-    生物{{ score.sw }}
-    历史{{ score.ls }}
-    地理{{ score.dl }}
-    政治{{ score.zz }}
-    三门总分{{ score.sum_3 }}
-    五门总分{{ score.sum_5 }}
-    三门班级排名{{ score.class_rank_3 }}
-    五门班级排名{{ score.class_rank_5 }}
-    三门年纪排名{{ score.grade_rank_3 }}
-    五门年纪排名{{ score.grade_rank_5 }}
-    考试名称{{ score.exam.name }}
-    考试时间{{ score.exam.create_time }}
+    {% if score %}
+
+        语文{{ score.yw }}
+        数学{{ score.sx }}
+        英语{{ score.yy }}
+        物理{{ score.wl }}
+        化学{{ score.hx }}
+        生物{{ score.sw }}
+        历史{{ score.ls }}
+        地理{{ score.dl }}
+        政治{{ score.zz }}
+        三门总分{{ score.sum_3 }}
+        五门总分{{ score.sum_5 }}
+        三门班级排名{{ score.class_rank_3 }}
+        五门班级排名{{ score.class_rank_5 }}
+        三门年纪排名{{ score.grade_rank_3 }}
+        五门年纪排名{{ score.grade_rank_5 }}
+        考试名称{{ score.exam.name }}
+        考试时间{{ score.exam.create_time }}
+
+    {% endif %}
 
 {% endblock %}
