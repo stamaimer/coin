@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block body %}
+
+    <form method="post" action="/registration">
+
+        {{ registration_form.hidden_tag() }}
+
+        {{ registration_form.first_name.label }}{{ registration_form.first_name() }}
+
+        {{ registration_form.last_name.label }}{{ registration_form.last_name() }}
+
+        {{ registration_form.degrees.label }}{{ registration_form.degrees() }}
+
+        {{ registration_form.other_degrees.label }}{{ registration_form.other_degrees() }}
+
+        {{ registration_form.position.label }}{{ registration_form.position() }}
+
+        {{ registration_form.mailing_address() }}
+
+        {{ registration_form.work_phone.label }}{{ registration_form.work_phone() }}
+
+        {{ registration_form.fax.label }}{{ registration_form.fax() }}
+
+        {{ registration_form.email.label }}{{ registration_form.email() }}
+
+        {{ registration_form.alternate_email.label }}{{ registration_form.alternate_email() }}
+
+        {{ registration_form.work_environment.label }}{{ registration_form.work_environment() }}
+
+        {{ registration_form.primary_interests }}
+
+        {{ registration_form.submit() }}
+
+    </form>
+
+{#    {{ wtf.quick_form(registration_form) }}#}
+
+{% endblock %}
+

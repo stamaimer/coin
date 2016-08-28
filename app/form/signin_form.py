@@ -9,15 +9,16 @@
 
 """
 
+from flask_wtf import Form
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
-from wtforms.validators import Email, Length, Required
-from coin.form import Form
+from wtforms.validators import Email, Length, DataRequired
+
 
 class SignInForm(Form):
 
-    email = StringField("Email", validators=[Email(), Length(1, 64), Required()])
+    email = StringField("Email", validators=[Email(), Length(1, 64), DataRequired()])
 
-    password = PasswordField("Password", validators=[Required()])
+    password = PasswordField("Password", validators=[DataRequired()])
 
     remember = BooleanField("Remember me")
 
