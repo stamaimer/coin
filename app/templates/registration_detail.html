@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>ID</th>
+            <td>{{ registration.id }}</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>{{ registration.first_name }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ registration.last_name }}</td>
+        </tr>
+        <tr>
+            <th>Degrees</th>
+            <td>{{ registration.degrees }}</td>
+        </tr>
+        <tr>
+            <th>Other Degrees</th>
+            <td>{{ registration.other_degrees }}</td>
+        </tr>
+        <tr>
+            <th>Position</th>
+            <td>{{ registration.position }}</td>
+        </tr>
+        <tr>
+            <th>Organization</th>
+            <td>{{ registration.organization }}</td>
+        </tr>
+        <tr>
+            <th>Address1</th>
+            <td>{{ registration.address1 }}</td>
+        </tr>
+        <tr>
+            <th>Address2</th>
+            <td>{{ registration.address2 }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ registration.city }}</td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td>{{ registration.state }}</td>
+        </tr>
+        <tr>
+            <th>Zip/Postal Code</th>
+            <td>{{ registration.zip_code }}</td>
+        </tr>
+        <tr>
+            <th>Country</th>
+             <td>{{ registration.country }}</td>
+        </tr>
+        <tr>
+            <th>Work Phone</th>
+            <td>{{ registration.work_phone }}</td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>{{ registration.fax }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ registration.email }}</td>
+        </tr>
+        <tr>
+            <th>Alternate Email</th>
+            <td>{{ registration.alternate_email }}</td>
+        </tr>
+        <tr>
+            <th>Work Environment</th>
+            <td>{{ registration.work_environment }}</td>
+        </tr>
+        <tr>
+            <th>Health Research Topic</th>
+            <td>{{ registration.health_research_topic }}</td>
+        </tr>
+        <tr>
+            <th>Health Research Method</th>
+            <td>{{ registration.health_research_method }}</td>
+        </tr>
+    </table>
+
+{% endblock %}
