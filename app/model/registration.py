@@ -41,8 +41,6 @@ class Registration(db.Model):
 
     zip_code = db.Column(db.String(255))
 
-    country = db.Column(db.String(255))
-
     work_phone = db.Column(db.String(255))
 
     fax = db.Column(db.String(255))

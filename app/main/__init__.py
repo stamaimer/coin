@@ -90,7 +90,6 @@ def post_registration():
                                     form.mailing_address.data["city"],
                                     form.mailing_address.data["state"],
                                     form.mailing_address.data["zip_code"],
-                                    form.mailing_address.data["country"],
                                     form.work_phone.data,
                                     form.fax.data,
                                     form.email.data,

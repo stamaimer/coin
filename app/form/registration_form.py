@@ -16,53 +16,43 @@ from wtforms.validators import DataRequired, Email
 
 class MailingAddressForm(Form):
 
-    organization = StringField("Organization:", [DataRequired()])
+    organization = StringField(u"企业／学术组织名称:", [DataRequired()])
 
-    address1 = StringField("Address1:", [DataRequired()])
+    address1 = StringField(u"地址栏1:", [DataRequired()])
 
-    address2 = StringField("Address2:")
+    address2 = StringField(u"地址栏2:")
 
-    city = StringField("City:", [DataRequired()])
+    city = StringField(u"城市:", [DataRequired()])
 
-    state = SelectField("State:", choices=[("test", "test")])
+    state = SelectField(u"省:", choices=[("test", "test")])
 
-    zip_code = StringField("Zip/Postal Code:", [DataRequired()])
-
-    country = SelectField("Country:", choices=[("test", "test")])
+    zip_code = StringField(u"邮政编码:", [DataRequired()])
 
 
 class PrimaryInterestsForm(Form):
 
-    health_research_topic = SelectMultipleField("Health Research Topic",
-                                                choices=[("Clinical outcomes", "Clinical outcomes"),
-                                                         ("Economic evaluation", "Economic evaluation"),
-                                                         ("Health policy & systems", "Health policy & systems"),
-                                                         ("Health technology assessment", "Health technology assessment"),
-                                                         ("Patient-centered Outcomes(PRO/QOL)", "Patient-centered Outcomes(PRO/QOL)"),
-                                                         ("Personalized medicine", "Personalized medicine"),
-                                                         ("Population health", "Population health"),
-                                                         ("Other", "Other")],
+    health_research_topic = SelectMultipleField(u"卫生研究主题",
+                                                choices=[(u"临床效果", u"临床效果"), (u"经济学评价", u"经济学评价"),
+                                                         (u"卫生政策和卫生系统", u"卫生政策和卫生系统"),
+                                                         (u"卫生技术评估", u"卫生技术评估"), (u"人群健康", u"人群健康"),
+                                                         (u"其他", u"其他")],
                                                 option_widget=widgets.CheckboxInput(),
                                                 widget=widgets.ListWidget(prefix_label=0))
 
-    health_research_method = SelectMultipleField("Health Research Method",
-                                                 choices=[("Comparative methods", "Comparative methods"),
-                                                          ("Database methods", "Database methods"),
-                                                          ("Modeling methods", "Modeling methods"),
-                                                          ("Observational methods", "Observational methods"),
-                                                          ("Preference-based methods(including medication adherence)", "Preference-based methods(including medication adherence)"),
-                                                          ("Statistical methods", "Statistical methods")],
+    health_research_method = SelectMultipleField(u"卫生研究方法学",
+                                                 choices=[(u"比较方法", u"比较方法"), (u"数据库方法", u"数据库方法"),
+                                                          (u"模型方法", u"模型方法"), (u"观察法", u"观察法"), (u"统计学方法", u"统计学方法")],
                                                  option_widget=widgets.CheckboxInput(),
                                                  widget=widgets.ListWidget(prefix_label=0))
 
 
 class RegistrationForm(Form):
 
-    first_name = StringField("First Name:", [DataRequired()])
+    first_name = StringField(u"名:", [DataRequired()])
 
-    last_name = StringField("Last Name:", [DataRequired()])
+    last_name = StringField(u"姓:", [DataRequired()])
 
-    degrees = SelectMultipleField("Degrees", choices=[("None", "None"), ("BA", "BA"), ("BEc", "BEc"), ("BS", "BS"),
+    degrees = SelectMultipleField(u"学历", choices=[("None", "None"), ("BA", "BA"), ("BEc", "BEc"), ("BS", "BS"),
                                                       ("BSc", "BSc"), ("DPhil", "DPhil"), ("DrPH", "DrPH"),
                                                       ("EdD", "EdD"), ("JD", "JD"), ("MA", "MA"), ("MASc", "MASc"),
                                                       ("MBA", "MBA"), ("MCom", "MCom"), ("MD", "MD"), ("MEd", "MEd"),
@@ -72,29 +62,29 @@ class RegistrationForm(Form):
                                                       ("ScD", "ScD")],
                                   option_widget=widgets.CheckboxInput(), widget=widgets.ListWidget(prefix_label=0))
 
-    other_degrees = StringField("Other Degrees:")
+    other_degrees = StringField(u"其他学历:")
 
-    position = StringField("Position:")
+    position = StringField(u"职位:")
 
     mailing_address = FormField(MailingAddressForm)
 
-    work_phone = StringField("Work Phone:", [DataRequired()])
+    work_phone = StringField(u"电话:", [DataRequired()])
 
-    fax = StringField("Fax:", [DataRequired()])
+    fax = StringField(u"传真:", [DataRequired()])
 
-    email = StringField("Email:", [DataRequired(), Email()])
+    email = StringField(u"邮箱:", [DataRequired(), Email()])
 
-    alternate_email = StringField("Alternate Email:", [Email()])
+    alternate_email = StringField(u"备用邮箱:", [Email()])
 
-    work_environment = SelectField("Work Environment:", [DataRequired()],
-                                   choices=[("Academia", "Academia"),
-                                            ("Health Research/Consulting", "Health Research/Consulting"),
-                                            ("Industry/Pharmacentical/Medical Device/Diagnostic",
-                                             "Industry/Pharmacentical/Medical Device/Diagnostic")])
+    work_environment = SelectField(u"工作环境:", [DataRequired()],
+                                   choices=[(u"学术机构", u"学术机构"),
+                                            (u"卫生咨询公司", u"卫生咨询公司"),
+                                            (u"药物、器械、药品、诊断企业",
+                                             u"药物、器械、药品、诊断企业")])
 
     primary_interests = FormField(PrimaryInterestsForm)
 
-    submit = SubmitField("Submit")
+    submit = SubmitField(u"提交")
 
 
 
