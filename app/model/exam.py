@@ -45,3 +45,25 @@ class Exam(db.Model):
         exam["create_time"] = self.create_time
 
         return exam
+
+    @staticmethod
+    def generate_fake(count=47):
+
+        from random import seed
+        import forgery_py
+
+        seed()
+
+        for i in xrange(count):
+
+            e = Exam(name=u"高X第X学期期X考试", create_time=forgery_py.date.date())
+
+            db.session.add(e)
+
+            try:
+
+                db.session.commit()
+
+            except:
+
+                db.session.rollback()

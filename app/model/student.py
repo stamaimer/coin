@@ -28,38 +28,12 @@ class Student(db.Model):
 
 	open_id = db.Column(db.String(255))
 
-	# def __init__(self, email="", password=""):
-
-	#     self.email = email
-
-	#     self.password = password
-
-	# def __repr__(self):
-	#
-	#     return self.email
-
-	# def to_json(self):
-	#
-	#     user = dict()
-	#
-	#     user["id"] = self.id
-	#
-	#     user["email"] = self.email
-	#
-	#     user["roles"] = self.roles
-	#
-	#     user["active"] = self.active
-	#
-	#     user["confirmed_at"] = self.confirmed_at
-	#
-	#     user["login_count"] = self.login_count
-	#
-	#     user["last_login_at"] = self.last_login_at
-	#
-	#     user["last_login_ip"] = self.last_login_ip
-	#
-	#     user["current_login_at"] = self.current_login_at
-	#
-	#     user["current_login_ip"] = self.current_login_ip
-	#
-	#     return user
+    # @staticmethod
+    # def generate_fake(count=47):
+    #
+    #     from random import seed
+    #     import forgery_py
+    #
+    #     for i in xrange(count):
+    #
+    #         s = Student(name=)
