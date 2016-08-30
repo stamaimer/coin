@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
 # start.sh
 
-virtualenv venv -p python2.7
-
-source venv/bin/activate
-
-pip install --upgrade pip
-
-pip install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host=pypi.douban.com
+gunicorn -w 1 -k gevent coin:coin -p coin.pid -b 127.0.0.1:6666
