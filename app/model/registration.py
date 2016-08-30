@@ -56,7 +56,7 @@ class Registration(db.Model):
     health_research_method = db.Column(db.String(255))
 
     def __init__(self, first_name, last_name, degrees, other_degrees, position, organization, address1, address2, city,
-                 state, zip_code, country, work_phone, fax, email, alternate_email, work_environment,
+                 state, zip_code, work_phone, fax, email, alternate_email, work_environment,
                  health_research_topic, health_research_method):
 
         self.first_name = first_name
@@ -70,7 +70,6 @@ class Registration(db.Model):
         self.city = city
         self.state = state
         self.zip_code = zip_code
-        self.country = country
         self.work_phone = work_phone
         self.fax = fax
         self.email = email

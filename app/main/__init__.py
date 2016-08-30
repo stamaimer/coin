@@ -75,8 +75,6 @@ def post_registration():
 
     form = RegistrationForm()
 
-    current_app.logger.debug(form)
-
     if form.validate_on_submit():
 
         registration = Registration(form.first_name.data,
