@@ -1,84 +1,103 @@
-{% extends "base.html" %}
-
-{% block body %}
-
-    <table class="table table-striped table-bordered table-hover">
+<style>
+  h1{
+    text-align: center;
+    font-family: "Songti SC";
+  }
+  table{
+    font-family: "Songti SC";
+    width:70%;
+    margin:10px auto;
+    text-align: center;
+    font-size:18px;
+  }
+  table th{
+    width: 30%;
+    padding: 7px 0;
+  }
+  button{
+    position: absolute;}
+</style>
+<style type="text/css" media=print>
+.noprint{display : none }
+</style>
+<button class="noprint" onclick="javascript:window.print();">打印</button>
+<h1>中国卫生技术评估研讨会<br>
+21st Sept. 2016 | 上海</h1>
+    <table border="1" cellspacing="0" bordercolor="#BBBBBB" style="border-collapse:collapse;">
         <tr>
-            <th>ID</th>
+            <th>编号</th>
             <td>{{ registration.id }}</td>
         </tr>
         <tr>
-            <th>First Name</th>
-            <td>{{ registration.first_name }}</td>
-        </tr>
-        <tr>
-            <th>Last Name</th>
+            <th>姓</th>
             <td>{{ registration.last_name }}</td>
         </tr>
         <tr>
-            <th>Degrees</th>
+            <th>名</th>
+            <td>{{ registration.first_name }}</td>
+        </tr>
+        <tr>
+            <th>学历</th>
             <td>{{ registration.degrees }}</td>
         </tr>
         <tr>
-            <th>Other Degrees</th>
+            <th>其他学历</th>
             <td>{{ registration.other_degrees }}</td>
         </tr>
         <tr>
-            <th>Position</th>
+            <th>职位</th>
             <td>{{ registration.position }}</td>
         </tr>
         <tr>
-            <th>Organization</th>
-            <td>{{ registration.organization }}</td>
-        </tr>
-        <tr>
-            <th>Address1</th>
-            <td>{{ registration.address1 }}</td>
-        </tr>
-        <tr>
-            <th>Address2</th>
-            <td>{{ registration.address2 }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ registration.city }}</td>
-        </tr>
-        <tr>
-            <th>State</th>
-            <td>{{ registration.state }}</td>
-        </tr>
-        <tr>
-            <th>Zip/Postal Code</th>
-            <td>{{ registration.zip_code }}</td>
-        </tr>
-        <tr>
-            <th>Work Phone</th>
-            <td>{{ registration.work_phone }}</td>
-        </tr>
-        <tr>
-            <th>Fax</th>
-            <td>{{ registration.fax }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ registration.email }}</td>
-        </tr>
-        <tr>
-            <th>Alternate Email</th>
-            <td>{{ registration.alternate_email }}</td>
-        </tr>
-        <tr>
-            <th>Work Environment</th>
+            <th>工作环境</th>
             <td>{{ registration.work_environment }}</td>
         </tr>
         <tr>
-            <th>Health Research Topic</th>
+            <th>组织名称</th>
+            <td>{{ registration.organization }}</td>
+        </tr>
+        <tr>
+            <th>省份</th>
+            <td>{{ registration.state }}</td>
+        </tr>
+        <tr>
+            <th>城市</th>
+            <td>{{ registration.city }}</td>
+        </tr>
+        <tr>
+            <th>地址栏1</th>
+            <td>{{ registration.address1 }}</td>
+        </tr>
+        <tr>
+            <th>地址栏2</th>
+            <td>{{ registration.address2 }}</td>
+        </tr>
+        <tr>
+            <th>邮政编码</th>
+            <td>{{ registration.zip_code }}</td>
+        </tr>
+        <tr>
+            <th>电话</th>
+            <td>{{ registration.work_phone }}</td>
+        </tr>
+        <tr>
+            <th>传真</th>
+            <td>{{ registration.fax }}</td>
+        </tr>
+        <tr>
+            <th>邮箱</th>
+            <td>{{ registration.email }}</td>
+        </tr>
+        <tr>
+            <th>备用邮箱</th>
+            <td>{{ registration.alternate_email }}</td>
+        </tr>
+        <tr>
+            <th>卫生研究主题</th>
             <td>{{ registration.health_research_topic }}</td>
         </tr>
         <tr>
-            <th>Health Research Method</th>
+            <th>卫生研究方法学</th>
             <td>{{ registration.health_research_method }}</td>
         </tr>
     </table>
-
-{% endblock %}

@@ -3,38 +3,108 @@
 {% block body %}
   {{ super() }}
   <div class="container">
-    <form id='registration' method="post" action="/registration">
-    <h3>报名与会／Enroll</h3>
+    <div class="nav">
+      <div style="clear:both"></div>
+      <div id="nav">
+        <a href="#"><span>导航<br>Navigator</span></a>
+        <a href="#"><span>活动详情<br>Event Detail</span></a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="event-title">
+        <p>活动 / Event</p>
+        <p>卫生技术评估研讨会001期</p>
+      </div>
+      <form id='registration' method="post" action="/registration">
+        <h3>报名与会／Enroll</h3>
         {{ registration_form.hidden_tag() }}
-
-        {{ registration_form.first_name.label }}{{ registration_form.first_name() }}
-
-        {{ registration_form.last_name.label }}{{ registration_form.last_name() }}
-
-        {{ registration_form.degrees.label }}{{ registration_form.degrees() }}
-
-        {{ registration_form.other_degrees.label }}{{ registration_form.other_degrees() }}
-
-        {{ registration_form.position.label }}{{ registration_form.position() }}
-
-        {{ registration_form.mailing_address() }}
-
-        {{ registration_form.work_phone.label }}{{ registration_form.work_phone() }}
-
-        {{ registration_form.fax.label }}{{ registration_form.fax() }}
-
-        {{ registration_form.email.label }}{{ registration_form.email() }}
-
-        {{ registration_form.alternate_email.label }}{{ registration_form.alternate_email() }}
-
-        {{ registration_form.work_environment.label }}{{ registration_form.work_environment() }}
-
-        {{ registration_form.primary_interests }}
-
+        <h4>基本信息</h4>
+        <div>
+          {{ registration_form.last_name.label }}{{ registration_form.last_name() }}
+        </div>
+        <div>
+          {{ registration_form.first_name.label }}{{ registration_form.first_name() }}
+        </div>
+        <div>
+          {{ registration_form.degrees.label }}{{ registration_form.degrees() }}
+          <div style="clear:both"></div>
+        </div>
+        <div>
+          {{ registration_form.other_degrees.label }}{{ registration_form.other_degrees() }}
+        </div>
+        <div>
+          {{ registration_form.position.label }}{{ registration_form.position() }}
+        </div>
+        <h4>通讯地址</h4>
+        <div>
+          {{ registration_form.work_environment.label }}{{ registration_form.work_environment() }}
+        </div>
+        <div>
+          {{ registration_form.mailing_address() }}
+        </div>
+        <h4>联系方式</h4>
+        <div>
+          {{ registration_form.work_phone.label }}{{ registration_form.work_phone() }}
+        </div>
+        <div>
+          {{ registration_form.fax.label }}{{ registration_form.fax() }}
+        </div>
+        <div>
+          {{ registration_form.email.label }}{{ registration_form.email() }}
+        </div>
+        <div>
+          {{ registration_form.alternate_email.label }}{{ registration_form.alternate_email() }}
+        </div>
+        <h4>兴趣领域</h4>
+        <div>
+          {{ registration_form.primary_interests }}
+        </div>
         {{ registration_form.submit() }}
 
-    </form>
-</div>
+      </form>
+    </div>
+  </div>
+  <div class="footer">
+    <span>中国国家卫生技术评估</span><br>
+    <span>CHINA NATIONAL HEALTH TECHNOLOGY ASSESSMENT</span><br>
+    <span>©Copyright CNHTA, 2016</span>
+  </div>
 
+{% endblock %}
+{% block script %}
+  <script>
+    function isEmail(str) {
+      var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+      return reg.test(str);
+    }
+    $(document).ready(function () {
+      $('#registration').submit(function (e) {
+        var data = $(e.target).serializeArray();
+        $('.warning').remove();
+        $.each(data, function (i, field) {
+          console.log(field.name + ":" + field.value);
+          debugger;
+          if (field.name == "alternate_email" || field.name == "email") {
+            if(field.value && !isEmail(field.value)){
+              $("#" + field.name).parent().append("<span class=\"warning\" style=\"color:red;margin-left: calc(187px - 50%);\">邮箱格式错误</span>");
+            e.preventDefault();
+            }
+          }
+          if (field.name == "other_degrees"
+              || field.name == "mailing_address-address2"
+              || field.name == "fax"
+              || field.name == "alternate_email"
+              || field.name == "other_degrees") {
+            if (!field.value)
+              return;
+          }
+          if (!field.value) {
+            $("#" + field.name).parent().append("<span class=\"warning\" style=\"color:red;margin-left: calc(187px - 50%);\">不能为空</span>");
+            e.preventDefault();
+          }
+        });
+      });
+    });
+  </script>
 {% endblock %}
 

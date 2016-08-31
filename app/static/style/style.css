@@ -149,7 +149,7 @@ td {
   padding: 0 20px;
 }
 
-h3, h4 {
+h3, h4, h5 {
   border-left: 6px solid #e03f2f;
   padding-left: 10px;
 }
@@ -187,11 +187,13 @@ h3, h4 {
 }
 
 #registration label {
-  width: 200px;
+  width: 120px;
   display: inline-block;
   text-align: left;
   font-size: 15px;
   font-weight: normal;
+  text-align: right;
+  background-color: #EEEEEE;
 }
 
 #registration table {
@@ -200,6 +202,7 @@ h3, h4 {
 
 #registration table td {
   padding: 0;
+  width: 450px;
 }
 
 #registration table th {
@@ -209,28 +212,36 @@ h3, h4 {
 
 #registration li {
   float: left; /* 往左浮动 */
+  width: 195px;
 }
 
-#registration input {
-  margin-right: calc(100% - 350px);
+#registration input,#registration select {
+  margin-right: calc(50% - 175px);
+  margin-left: 15px;
 }
-
+#registration input[type='text'], #registration select{
+  width: 300px;
+}
 #registration input[type='checkbox'] {
   margin-right: 0 !important;
 }
-
+#registration p{
+  margin-left: 60px;
+}
 #registration ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  /* margin-left: 200px; */
 }
 
 form#registration {
   width: 92%;
-  margin: 30px auto;
+  margin: 30px 20px;
 }
 #submit{
   height: 30px;
+  width: 150px;
   line-height: 30px;
   padding: 0 20px;
   background-color: #e03f2f;
@@ -238,4 +249,35 @@ form#registration {
   color: #FFFFFF;
   font-size: 15px;
   border-style: none;
+  margin-left: calc(50% - 75px) !important;
+  margin-top: 30px;
+}
+
+#registration li label {
+    text-align: left;
+    margin-left: 5px;
+    width: 150px;
+    background-color: transparent;
+}
+
+#registration ul#degrees {
+    margin-left: 120px;
+}
+#registration #degrees li {
+    width: 100px;
+}
+
+#registration #degrees li label {
+    width: 50px;
+}
+#registration div{
+  margin: 5px 0;
+}
+
+#registration table th{
+  padding: 5px 0;
+}
+#registration h4{
+  border-left: 4px solid #e03f2f;
+  /*margin-left: 30px;*/
 }

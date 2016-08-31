@@ -16,15 +16,9 @@ from wtforms.validators import DataRequired, Email
 
 class MailingAddressForm(Form):
 
-    organization = StringField(u"企业／学术组织名称:", [DataRequired()])
+    organization = StringField(u"组织名称:", [DataRequired()])
 
-    address1 = StringField(u"地址栏1:", [DataRequired()])
-
-    address2 = StringField(u"地址栏2:")
-
-    city = StringField(u"城市:", [DataRequired()])
-
-    state = SelectField(u"省:", [DataRequired()],
+    state = SelectField(u"省份:", [DataRequired()],
                         choices=[(u"北京市", u"北京市"), (u"天津市", u"天津市"), (u"上海市", u"上海市"),
                                  (u"重庆市", u"重庆市"), (u"河北省", u"河北省"), (u"陕西省", u"陕西省"),
                                  (u"山西省", u"山西省"), (u"辽宁省", u"辽宁省"), (u"吉林省", u"吉林省"),
@@ -38,6 +32,12 @@ class MailingAddressForm(Form):
                                  (u"西藏自治区", u"西藏自治区"), (u"宁夏回族自治区", u"宁夏回族自治区"),
                                  (u"新疆维吾尔自治区", u"新疆维吾尔自治区"), (u"香港特别行政区", u"香港特别行政区"),
                                  (u"澳门特别行政区", u"澳门特别行政区")])
+
+    city = StringField(u"城市:", [DataRequired()])
+
+    address1 = StringField(u"地址栏1:", [DataRequired()])
+
+    address2 = StringField(u"地址栏2:")
 
     zip_code = StringField(u"邮政编码:", [DataRequired()])
 
@@ -65,7 +65,7 @@ class RegistrationForm(Form):
 
     last_name = StringField(u"姓:", [DataRequired()])
 
-    degrees = SelectMultipleField(u"学历:", choices=[("None", "None"), ("BA", "BA"), ("BEc", "BEc"), ("BS", "BS"),
+    degrees = SelectMultipleField(u"学历:", [DataRequired()], choices=[("None", "None"), ("BA", "BA"), ("BEc", "BEc"), ("BS", "BS"),
                                                       ("BSc", "BSc"), ("DPhil", "DPhil"), ("DrPH", "DrPH"),
                                                       ("EdD", "EdD"), ("JD", "JD"), ("MA", "MA"), ("MASc", "MASc"),
                                                       ("MBA", "MBA"), ("MCom", "MCom"), ("MD", "MD"), ("MEd", "MEd"),
@@ -83,7 +83,7 @@ class RegistrationForm(Form):
 
     work_phone = StringField(u"电话:", [DataRequired()])
 
-    fax = StringField(u"传真:", [DataRequired()])
+    fax = StringField(u"传真:")
 
     email = StringField(u"邮箱:", [DataRequired(), Email()])
 
