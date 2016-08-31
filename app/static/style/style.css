@@ -1,0 +1,241 @@
+/*@import url(http://fonts.css.network/css?family=noto+sans+sc);*/
+
+html, body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited, a:link {
+  color: inherit;
+}
+
+td {
+  padding: 10px 10px;
+}
+
+.banner {
+  height: 90px;
+  width: 100%;
+  background-image: url("../images/head.jpeg");
+  background-repeat: repeat-x;
+}
+
+.banner img {
+  margin-left: 30px;
+}
+
+.header {
+  height: 160px;
+  width: 100%;
+  background-color: #666666;
+  position: relative;
+}
+
+.header img {
+  height: 160px;
+  width: 960px;
+  margin-left: calc(50% - 480px);
+}
+
+.header span {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.6);
+  line-height: 20px;
+  padding: 10px 30px;
+  left: calc(50% - 480px);
+  bottom: 30px;
+  font-size: 18px;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  background-color: #F6F6F6;
+  height: auto;
+  display: flex;
+}
+
+.nav {
+  width: 200px;
+  background-color: #2f2f2f;
+  color: #DDDDDD;
+}
+
+#nav {
+  width: 200px;
+  top: 0;
+}
+
+.nav a {
+  width: 160px;
+  height: 40px;
+  display: inline-block;
+  padding: 10px 20px;
+  line-height: 20px;
+  border-bottom: 1px solid #DDDDDD;
+  font-size: 15px;
+}
+
+.nav a:first-child {
+  border-bottom: 2px solid #DDDDDD;
+}
+
+.nav .selected {
+  position: relative;
+}
+
+.nav .selected:before {
+  content: " ";
+  background: #e03f2f;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+}
+
+.content {
+  width: 760px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.event-title {
+  border-bottom: 2px solid #e03f2f;
+  height: 40px;
+  padding: 10px 30px;
+  position: relative;
+}
+
+.event-title p {
+  margin: 0;
+}
+
+.event-title p:first-child {
+  color: #666666;
+  font-size: 13px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.event-title a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 30px;
+  margin: auto;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  background-color: #e03f2f;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+.block {
+  padding: 0 20px;
+}
+
+h3, h4 {
+  border-left: 6px solid #e03f2f;
+  padding-left: 10px;
+}
+
+.block p {
+  text-indent: 2em;
+}
+
+.lecturer {
+  margin: 10px 30px;
+}
+
+.lecturer img {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+.lecturer-info {
+  width: 550px;
+}
+
+.footer {
+  height: 77px;
+  background-image: url("../images/foot.jpeg");
+  background-repeat: repeat-x;
+  padding-top: 13px;
+  font-size: 15px;
+}
+
+.footer span {
+  margin-left: calc(50% - 480px);
+  background-color: #FFFFFF;
+  padding: 0 10px;
+}
+
+#registration label {
+  width: 200px;
+  display: inline-block;
+  text-align: left;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#registration table {
+  border-spacing: 0px;
+}
+
+#registration table td {
+  padding: 0;
+}
+
+#registration table th {
+  padding: 0;
+  vertical-align: top;
+}
+
+#registration li {
+  float: left; /* 往左浮动 */
+}
+
+#registration input {
+  margin-right: calc(100% - 350px);
+}
+
+#registration input[type='checkbox'] {
+  margin-right: 0 !important;
+}
+
+#registration ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form#registration {
+  width: 92%;
+  margin: 30px auto;
+}
+#submit{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  background-color: #e03f2f;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 15px;
+  border-style: none;
+}

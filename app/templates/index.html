@@ -1,65 +1,310 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img alt="Brand" src="{{ url_for('static', filename='images/bootstrap-punchout.svg') }}"></a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                    <li class=""><a href="#">Index</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-
-        </div>
+{% block title %}
+  CNHTA
+{% endblock %}
+{% block body %}
+  {{ super() }}
+  <div class="container">
+    <div class="nav">
+      <div style="clear:both"></div>
+      <div id="nav">
+        <a href="#" class="selected"><span>导航<br>Navigator</span></a>
+        <a href="#event"><span>会议介绍<br>Event Introduction</span></a>
+        <a href="#time"><span>时间与地点<br>Time & Venue</span></a>
+        <a href="#content"><span>研讨内容<br>Content</span></a>
+        <a href="#lecturers"><span>讲师简介<br>Lecturers Introduction</span></a>
+        <a href="#agenda"><span>会议日程<br>Agenda</span></a>
+        <a href="#fee"><span>会议费用<br>Fee</span></a>
+        <a href="#unenroll"><span>取消注册<br>Unenroll</span></a>
+        <a href="#contacts"><span>联系人<br>Contacts</span></a>
+      </div>
     </div>
+    <div class="content">
+      <div class="event-title">
+        <p>会议介绍 / Event Introduction</p>
+        <p>卫生技术评估研讨会001期</p>
+        <a class="right" href="/registration">注册与会/Enroll</a>
+      </div>
+      <div class="block" id="event">
+        <h3>会议介绍／Event introduction</h3>
+        <p>为提升我国医疗卫生领域相关行业人员对卫生技术评估的认知，推动我国卫生技术评估的发展，中国卫生经济学会与英国国家卫生与社会服务优化研究院（NICE international）积极开展合作，并定于2016年9月21日在上海市举办“卫生技术评估研讨会”。本次会议将邀请中、英卫生技术评估专家，围绕国内外卫生技术评估发展及政策转化开展研讨。</p>
+      </div>
+      <div class="block" id="time">
+        <h3>时间与地点／Time & Venue</h3>
+        <p>会议时间：2016年9月21日 （9月20日下午14:00报到）</p>
+        <p>
+          会议地点：上海市海悦酒店3号楼1层宴会B厅（地址：上海市徐汇区钦江路99号）</p>
+      </div>
+      <div class="block" id="content">
+        <h3>研讨内容／Content</h3>
+        <p>1. 国际卫生技术评估发展及案例介绍；</p>
+        <p>
+          2. 中国卫生技术评估发展及案例介绍；</p>
+        <p>
+          3. 卫生技术评估方法学介绍；</p>
+        <p>
+          4. 卫生技术评估成果转化。</p>
+      </div>
+      <div class="block" id="lecturers">
+        <h3>讲师简介／Lecturers introduction</h3>
+        <p>国家卫生政策专家：国家卫生计生委、上海卫生计生委相关政策专家；英国专家：英国国家卫生与社会服务优化研究院国际部(NICE international)专家；国家卫生技术评估专家：国家卫生计生委卫生发展研究中心、中国疾病预防与控制中心、上海卫生发展研究中心相关专家。
+        </p>
+        <div class="lecturer">
+          <img src="{{ url_for('static', filename='images/lecturer1.png') }}">
+          <div class="lecturer-info right">
+            <h4>Kalipso</h4>
+            <p>Kalipso Chalkidou was the founding director of NICE’s international programme and is now leading the international Decision Support Initiative from Imperial College London. Her work has focused on helping governments build technical and institutional capacity for using evidence to inform health policy. She is interested in how local information, local expertise and local institutions can drive scientific and legitimate healthcare resource allocation decisions. She has been involved in the Chinese rural health reform and also in national health reform projects in Colombia, Turkey and the Middle East, working with the World Bank, PAHO, DFID and the Inter-American Development Bank as well as national governments. Between 2007 and 2008, she spent a year at the Johns Hopkins School of Public Health, as a Harkness fellow in Health Policy and Practice, studying how comparative effectiveness research can inform policy and US government drug pricing policies.</p>
+            <p>She holds a doctorate on the molecular biology of prostate cancer from the University of Newcastle (UK), an MD (Hons) from the University of Athens and is a visiting Professor at King’s College London, a senior advisor on international policy at the Center for Medical Technology Policy (USA) and visiting faculty at the Johns Hopkins Berman Institute for Bioethics.
+            </p>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="lecturer">
+          <img src="{{ url_for('static', filename='images/lecturer2.png') }}">
+          <div class="lecturer-info right">
+            <h4>Francis</h4>
+            <p>Francis Ruiz joined the NICE International team as a senior adviser in 2010, and moved to the Imperial College London’s Institute of Global Health Innovation in September 2016 to continue as part of the core team developing the International Decision Support Initiative. He previously worked in the Guidelines and Technology Appraisal teams at NICE as a technical adviser and analyst from 2003-10. He has a specialist interest in health economics and has worked on a number of technology appraisals and guidelines in a variety of therapeutic areas. Prior to his work at NICE, Francis worked for over six years in clinical data management and health economics within the pharmaceutical sector. Francis graduated with a BSc in physiology from the University of Dundee in 1993. He also holds a post-graduate diploma in psychology from the Royal Holloway (University of London) and an MSc in Health Policy, Planning and Financing from the London School of Hygiene/London School of Economics.
+            </p>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+      </div>
+      <div class="block" id="agenda">
+        <h3>会议日程／Agenda</h3>
+        <table border="1" cellspacing="0" bordercolor="#BBBBBB" style="border-collapse:collapse;">
+          <thead>
+          <tr>
+            <th width="10%">日期<br>Date</th>
+            <th width="15%">时间<br>Time</th>
+            <th width="40%">讲座题目<br>Topic</th>
+            <th width="35%">演讲人<br>Speaker</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td colspan="4">主题：卫生技术评估国际经验 主持人：赵琨<br>Theme: International HTA experiences Host: Kun Zhao</td>
+          </tr>
+          <tr>
+            <td rowspan="9">上午<br>AM</td>
+            <td>0830-0845</td>
+            <td>致开幕词<br>Opening speech</td>
+            <td>傅卫，国家卫生计生委卫生发展研究中心 副主任<br>
+              Fu Wei, Deputy Director-General of CNHDRC<br>
+              上海卫生计生委领导<br>
+              Official from Shanghai health bureau<br>
+              中国外商投资企业协会药品研制和开发行业委员会代表<br>
+              Representative from RD PAC
+            </td>
+          </tr>
+          <tr>
+            <td>0845-0900</td>
+            <td>医疗技术临床应用与管理
+              <br>Regulation and application of clinical technologies in China
+            </td>
+            <td>医政医管局领导
+              <br>
+              Official from division of medical administration, MoH
+            </td>
+          </tr>
+          <tr>
+            <td>0900-0910</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>0910-1010</td>
+            <td>国际卫生技术评估发展趋势及英国卫生技术评估发展介绍
+              <br>HTA development around the world and introduction of HTA in UK
+            </td>
+            <td>Kalipso Chalkidou, 英国国家卫生与社会服务优化研究院国际部（NICE international） 主任</td>
+          </tr>
+          <tr>
+            <td>1010-1020</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1020-1050</td>
+            <td>照相和茶歇
+              <br>Photos and tea break
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1050-1150</td>
+            <td>国际卫生技术评估政策转化案例介绍
+              <br>Knowledge translation of HTA, globally and regionally
+            </td>
+            <td>Francis Ruiz, 英国国家卫生与社会服务优化研究院国际部（NICE international）高级咨询师</td>
+          </tr>
+          <tr>
+            <td>1150-1200</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1200-1400</td>
+            <td>午餐
+              <br>Launch
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="4">主题：卫生技术评估方法学及案例介绍 主持人：金春林
+              <br>Topic: HTA methodologies and case studies in China Host: Chunlin Jin
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="11">下午<br>PM</td>
+            <td>1400-1410</td>
+            <td>致辞
+              <br>Welcome speech
+            </td>
+            <td>金春林，上海卫生发展研究中心<br>
+              Jin Chunlin, Shanghai Health Development Research Center
+            </td>
+          </tr>
+          <tr>
+            <td>1410-1440</td>
+            <td>卫生经济学在卫生技术评估中的作用
+              <br>The role of health economics in HTA
+            </td>
+            <td>胡善联，上海卫生发展研究中心
+              <br>
+              Shanlian Hu, Shanghai Health Development Research Center
+            </td>
+          </tr>
+          <tr>
+            <td>1440-1450</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1450-1530</td>
+            <td>中国卫生技术评估发展现状及政策转化案例介绍
+              <br>State quo of China HTA and policy transformation
+            </td>
+            <td>赵琨，国家卫生计生委卫生发展研究中心卫生政策评价与技术评估研究室主任<br>Kun Zhao</td>
+          </tr>
+          <tr>
+            <td>1530-1540</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1540-1600</td>
+            <td>茶歇
+              <br>Tea break
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1600-1640</td>
+            <td>卫生技术评估方法学介绍--间断时间序列分析及倍差法的应用
+              <br>HTA methodologies--ITS and DID
+            </td>
+            <td>于石成，中国疾病预防控制中心/李雪，CNHDRC
+              <br>Shicheng Yu from China CDC/Michelle from CNHDRC
+            </td>
+          </tr>
+          <tr>
+            <td>1640-1650</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1650-1730</td>
+            <td>卫生技术评估案例介绍--基于模型
+              <br>HTA Case study--model based
+            </td>
+            <td>邱英鹏，国家卫生计生委卫生发展研究中心卫生政策评价与技术评估研究室 助理研究员
+              <br>Steven Qiu
+            </td>
+          </tr>
+          <tr>
+            <td>1730-1740</td>
+            <td>问答环节
+              <br>Q&A
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>1740-1900</td>
+            <td>午餐
+              <br>Launch
+            </td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="block" id="fee">
+        <h3>会议注册费／Fee</h3>
+        <p>非企业参会者：1000元，企业参会者：1500元</p>
+      </div>
+      <div class="block" id="unenroll">
+        <h3>取消注册／Unenroll</h3>
+        <p>如因个人原因注册并付费需要取消，请于2016年9月16日17:00前以邮件形式通知会务组，会务组将退回95%的注册费用，逾期告知恕不退还费用，敬请谅解。</p>
+      </div>
+      <div class="block" id="contacts">
+        <h3>联系人／Contacts</h3>
+        <p>联系人：房玮、李雪</p>
+        <p>
+          手 机：156-0055-5886、188-1035-2479</p>
+        <p>
+          邮 箱：chenyanzhu0101@163.com, lx0204@126.com</p>
+        <p>
+          电 话：010-82036625</p>
+        <p>
+          传 真：010-82032638
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <span>中国国家卫生技术评估</span><br>
+  <span>CHINA NATIONAL HEALTH TECHNOLOGY ASSESSMENT</span><br>
+  <span>©Copyright CNHTA, 2016</span>
+  </div>
+{% endblock %}
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      var nav_offset = $('.nav').offset().top; //获取.navbar 距离顶部的绝对值
+
+      $(window).on('scroll load', function () {
+        var now_offset = $(window).scrollTop(); //获取滚动条的位置
+        if (now_offset >= nav_offset) {
+          //如果滚动条的top位置大于或者等于.navbar距离顶部的值，就将position修改为fixed
+          $('#nav').css('position', 'fixed');
+        } else {
+          $('#nav').css('position', 'inherit');
+        }
+        $('.block').each(function (i) {
+          if ($(this).position().top <= now_offset + 50) {
+            $('.nav a.selected').removeClass('selected');
+            $('.nav a').eq(i + 1).addClass('selected');
+          }
+        });
+        if (now_offset < 100) {
+          $('.nav a.selected').removeClass('selected');
+          $('.nav a:first').addClass('selected');
+        }
+      });
+    });
+  </script>
 {% endblock %}
 
 

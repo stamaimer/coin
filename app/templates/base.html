@@ -1,33 +1,29 @@
-{% extends "bootstrap/base.html" %}
-
-{% block html_attribs %} lang="en"{% endblock %}
-
-{% block metas %}
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{ super() }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>
+{% block title %}
+{% endblock %}
+</title>
+<link href="{{ url_for('static',filename='style/style.css') }}" type="text/css" rel="stylesheet">
+{% block style %}
 
 {% endblock %}
-
-{% block title %}Coin{% endblock %}
-
-{% block head %}
-
-    {{ super() }}
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
+</head>
+<body>
+{% block body %}
+  <div class="banner">
+    <a href="/"><img src="{{ url_for('static', filename='images/banner.jpeg') }}"></a>
+  </div>
+  <div class="header">
+    <img src="{{ url_for('static', filename='images/header.jpg') }}">
+    <span>卫生技术评估研讨会</span>
+  </div>
+{% endblock %}
+<script src="https://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+{% block script %}
 
 {% endblock %}
-
-{% block scripts %}
-
-    {{ super() }}
-
-    {{ moment.include_moment() }}
-
-    {{ moment.lang("zh_CN") }}
-
-{% endblock %}
+</body>
+</html>
