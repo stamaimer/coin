@@ -87,7 +87,7 @@ class RegistrationForm(Form):
 
     email = StringField(u"邮箱:", [DataRequired(), Email()])
 
-    alternate_email = StringField(u"备用邮箱:", [Email()])
+    alternate_email = StringField(u"备用邮箱:")
 
     work_environment = SelectField(u"工作环境:", [DataRequired()],
                                    choices=[(u"学术机构", u"学术机构"),
