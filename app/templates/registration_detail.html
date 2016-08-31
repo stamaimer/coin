@@ -1,103 +1,137 @@
-<style>
-  h1{
-    text-align: center;
-    font-family: "Songti SC";
-  }
-  table{
-    font-family: "Songti SC";
-    width:70%;
-    margin:10px auto;
-    text-align: center;
-    font-size:18px;
-  }
-  table th{
-    width: 30%;
-    padding: 7px 0;
-  }
-  button{
-    position: absolute;}
-</style>
-<style type="text/css" media=print>
-.noprint{display : none }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>预览</title>
+  <style>
+    body{
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      font-family: "Songti SC";
+    }
+
+    table {
+      font-family: "Songti SC";
+      width: 70%;
+      margin: 10px auto 100px auto;
+      text-align: center;
+      font-size: 18px;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    table th {
+      width: 30%;
+      padding: 7px 0;
+    }
+
+    button {
+      position: absolute;
+      left: calc(50% - 40px);
+      bottom: -50px;
+      border-style: none;
+      background-color: #e03f2f;
+      color:#FFFFFF;
+      width: 80px;
+      height:30px;
+      border-radius:5px;
+      font-size: 16px;
+    }
+  </style>
+  <style type="text/css" media=print>
+    .noprint {
+      display: none
+    }
+
+    table {
+      width: 90%;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
 <button class="noprint" onclick="javascript:window.print();">打印</button>
 <h1>中国卫生技术评估研讨会<br>
-21st Sept. 2016 | 上海</h1>
-    <table border="1" cellspacing="0" bordercolor="#BBBBBB" style="border-collapse:collapse;">
-        <tr>
-            <th>编号</th>
-            <td>{{ registration.id }}</td>
-        </tr>
-        <tr>
-            <th>姓</th>
-            <td>{{ registration.last_name }}</td>
-        </tr>
-        <tr>
-            <th>名</th>
-            <td>{{ registration.first_name }}</td>
-        </tr>
-        <tr>
-            <th>学历</th>
-            <td>{{ registration.degrees }}</td>
-        </tr>
-        <tr>
-            <th>其他学历</th>
-            <td>{{ registration.other_degrees }}</td>
-        </tr>
-        <tr>
-            <th>职位</th>
-            <td>{{ registration.position }}</td>
-        </tr>
-        <tr>
-            <th>工作环境</th>
-            <td>{{ registration.work_environment }}</td>
-        </tr>
-        <tr>
-            <th>组织名称</th>
-            <td>{{ registration.organization }}</td>
-        </tr>
-        <tr>
-            <th>省份</th>
-            <td>{{ registration.state }}</td>
-        </tr>
-        <tr>
-            <th>城市</th>
-            <td>{{ registration.city }}</td>
-        </tr>
-        <tr>
-            <th>地址栏1</th>
-            <td>{{ registration.address1 }}</td>
-        </tr>
-        <tr>
-            <th>地址栏2</th>
-            <td>{{ registration.address2 }}</td>
-        </tr>
-        <tr>
-            <th>邮政编码</th>
-            <td>{{ registration.zip_code }}</td>
-        </tr>
-        <tr>
-            <th>电话</th>
-            <td>{{ registration.work_phone }}</td>
-        </tr>
-        <tr>
-            <th>传真</th>
-            <td>{{ registration.fax }}</td>
-        </tr>
-        <tr>
-            <th>邮箱</th>
-            <td>{{ registration.email }}</td>
-        </tr>
-        <tr>
-            <th>备用邮箱</th>
-            <td>{{ registration.alternate_email }}</td>
-        </tr>
-        <tr>
-            <th>卫生研究主题</th>
-            <td>{{ registration.health_research_topic }}</td>
-        </tr>
-        <tr>
-            <th>卫生研究方法学</th>
-            <td>{{ registration.health_research_method }}</td>
-        </tr>
-    </table>
+  21st Sept. 2016 | 上海</h1>
+<table border="1" cellspacing="0" bordercolor="#BBBBBB" style="border-collapse:collapse;">
+  <tr>
+    <th>编号</th>
+    <td>{{ registration.id }}</td>
+  </tr>
+  <tr>
+    <th>姓</th>
+    <td>{{ registration.last_name }}</td>
+  </tr>
+  <tr>
+    <th>名</th>
+    <td>{{ registration.first_name }}</td>
+  </tr>
+  <tr>
+    <th>学历</th>
+    <td>{{ registration.degrees }}</td>
+  </tr>
+  <tr>
+    <th>其他学历</th>
+    <td>{{ registration.other_degrees }}</td>
+  </tr>
+  <tr>
+    <th>职位</th>
+    <td>{{ registration.position }}</td>
+  </tr>
+  <tr>
+    <th>工作环境</th>
+    <td>{{ registration.work_environment }}</td>
+  </tr>
+  <tr>
+    <th>组织名称</th>
+    <td>{{ registration.organization }}</td>
+  </tr>
+  <tr>
+    <th>省份</th>
+    <td>{{ registration.state }}</td>
+  </tr>
+  <tr>
+    <th>城市</th>
+    <td>{{ registration.city }}</td>
+  </tr>
+  <tr>
+    <th>地址栏1</th>
+    <td>{{ registration.address1 }}</td>
+  </tr>
+  <tr>
+    <th>地址栏2</th>
+    <td>{{ registration.address2 }}</td>
+  </tr>
+  <tr>
+    <th>邮政编码</th>
+    <td>{{ registration.zip_code }}</td>
+  </tr>
+  <tr>
+    <th>电话</th>
+    <td>{{ registration.work_phone }}</td>
+  </tr>
+  <tr>
+    <th>传真</th>
+    <td>{{ registration.fax }}</td>
+  </tr>
+  <tr>
+    <th>邮箱</th>
+    <td>{{ registration.email }}</td>
+  </tr>
+  <tr>
+    <th>备用邮箱</th>
+    <td>{{ registration.alternate_email }}</td>
+  </tr>
+  <tr>
+    <th>卫生研究主题</th>
+    <td>{{ registration.health_research_topic }}</td>
+  </tr>
+  <tr>
+    <th>卫生研究方法学</th>
+    <td>{{ registration.health_research_method }}</td>
+  </tr>
+</table>
+</body>
+</html>
