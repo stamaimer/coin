@@ -100,7 +100,7 @@ def post_registration():
 
         db.session.commit()
 
-        return redirect(url_for("main.show_registrations"))
+        return redirect(url_for("main.show_registration_detail", id=registration.id))
     else:
 
         return redirect(url_for("main.show_registration"))
