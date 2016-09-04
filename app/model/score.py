@@ -15,79 +15,123 @@ from app.model import db
 
 
 class Score(db.Model):
+	__tablename__ = "score"
 
-    __tablename__ = "score"
+	id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+	yw = db.Column(db.Float())  # 语文
 
-    yw = db.Column(db.Float()) #语文
+	sx = db.Column(db.Float())  # 数学
 
-    sx = db.Column(db.Float()) #数学
+	yy = db.Column(db.Float())  # 英语
 
-    yy = db.Column(db.Float()) #英语
+	wl = db.Column(db.Float())  # 物理
 
-    wl = db.Column(db.Float()) #物理
+	hx = db.Column(db.Float())  # 化学
 
-    hx = db.Column(db.Float()) #化学
+	sw = db.Column(db.Float())  # 生物
 
-    sw = db.Column(db.Float()) #生物
+	ls = db.Column(db.Float())  # 历史
 
-    ls = db.Column(db.Float()) #历史
+	zz = db.Column(db.Float())  # 政治
 
-    zz = db.Column(db.Float()) #政治
+	dl = db.Column(db.Float())  # 地理
 
-    dl = db.Column(db.Float()) #地理
+	sum_3 = db.Column(db.Float())  # 三门总分
 
-    sum_3 = db.Column(db.Float()) #三门总分
+	sum_5 = db.Column(db.Float())  # 五门总分
 
-    sum_5 = db.Column(db.Float()) #五门总分
+	class_rank_3 = db.Column(db.Integer())  # 三门班级排名
 
-    class_rank_3 = db.Column(db.Integer()) #三门班级排名
+	class_rank_5 = db.Column(db.Integer())  # 五门班级排名
 
-    class_rank_5 = db.Column(db.Integer()) #五门班级排名
+	grade_rank_3 = db.Column(db.Integer())  # 三门年级排名
 
-    grade_rank_3 = db.Column(db.Integer()) #三门年级排名
+	grade_rank_5 = db.Column(db.Integer())  # 五门年级排名
 
-    grade_rank_5 = db.Column(db.Integer()) #五门年级排名
+	student_id = db.Column(db.Integer(), db.ForeignKey("student.id"))
 
-    student_id = db.Column(db.Integer(), db.ForeignKey("student.id"))
+	exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
 
-    exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
+	# __mapper_args__ = {"order_by": exam.create_time}
 
-    # __mapper_args__ = {"order_by": exam.create_time}
+	def __init__(self, yw="", sx="", yy="", wl="", hx="", sw="", ls="", zz="", dl="", sum_3="", sum_5="", class_rank_3="", class_rank_5="", grade_rank_3="", grade_rank_5="", exam_id="", student_id=""):
 
-    # def __init__(self, email="", password=""):
+		self.yw = yw
 
-    #     self.email = email
+		self.sx = sx
 
-    #     self.password = password
+		self.yy = yy
 
-    # def __repr__(self):
-    #
-    #     return self.email
+		self.wl = wl
 
-    # def to_json(self):
-    #
-    #     user = dict()
-    #
-    #     user["id"] = self.id
-    #
-    #     user["email"] = self.email
-    #
-    #     user["roles"] = self.roles
-    #
-    #     user["active"] = self.active
-    #
-    #     user["confirmed_at"] = self.confirmed_at
-    #
-    #     user["login_count"] = self.login_count
-    #
-    #     user["last_login_at"] = self.last_login_at
-    #
-    #     user["last_login_ip"] = self.last_login_ip
-    #
-    #     user["current_login_at"] = self.current_login_at
-    #
-    #     user["current_login_ip"] = self.current_login_ip
-    #
-    #     return user
+		self.hx = hx
+
+		self.sw = sw
+
+		self.ls = ls
+
+		self.zz = zz
+
+		self.dl = dl
+
+		self.sum_3 = sum_3
+
+		self.sum_5 = sum_5
+
+		self.class_rank_3 = class_rank_3
+
+		self.class_rank_5 = class_rank_5
+
+		self.grade_rank_3 = grade_rank_3
+
+		self.grade_rank_5 = grade_rank_5
+
+		self.student_id = student_id
+
+		self.exam_id = exam_id
+
+	# def __repr__(self):
+	#
+	#     return self.email
+
+	def to_json(self):
+		score = dict()
+
+		score["id"] = self.id
+
+		score["yw"] = self.yw
+
+		score["sx"] = self.sx
+
+		score["yy"] = self.yy
+
+		score["wl"] = self.wl
+
+		score["hx"] = self.hx
+
+		score["sw"] = self.sw
+
+		score["ls"] = self.ls
+
+		score["zz"] = self.zz
+
+		score["dl"] = self.dl
+
+		score["sum_3"] = self.sum_3
+
+		score["sum_5"] = self.sum_5
+
+		score["class_rank_3"] = self.class_rank_3
+
+		score["class_rank_5"] = self.class_rank_5
+
+		score["grade_rank_3"] = self.grade_rank_3
+
+		score["grade_rank_5"] = self.grade_rank_5
+
+		score["student_id"] = self.student_id
+
+		score["exam_id"] = self.exam_id
+
+		return score

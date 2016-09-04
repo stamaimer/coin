@@ -1,5 +1,5 @@
-from flask import jsonify
-from app.model.exam import Exam
+from flask import jsonify,request
+from app.model.exam import Exam,db
 from . import api
 
 @api.route('/exam', methods=['GET'])
@@ -22,12 +22,33 @@ def get_exam():
 
 @api.route('/exam', methods=['POST'])
 def add_exam():
+	name = request.form['name']
 
-	return ''
+	exam = Exam(name=name)
+
+	db.session.add(exam)
+
+	db.session.commit()
+
+	return jsonify(exam.to_json())
 
 
 @api.route('/exam/<int:exam_id>', methods=['POST'])
 def set_exam(exam_id):
 
 	return exam_id
+
+
+@api.route('/exam', methods=['DELETE'])
+def delete_exam():
+
+	id = request.form['id']
+
+	exam = Exam.query.filter_by(id=id).first()
+
+	db.session.delete(exam)
+
+	db.session.commit()
+
+	return "success"
 

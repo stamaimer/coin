@@ -28,38 +28,25 @@ class Student(db.Model):
 
 	open_id = db.Column(db.String(255))
 
-	# def __init__(self, email="", password=""):
+	def __init__(self, name="", student_id=""):
 
-	#     self.email = email
+		self.name = name
 
-	#     self.password = password
+		self.student_id = student_id
+
 
 	# def __repr__(self):
 	#
 	#     return self.email
 
-	# def to_json(self):
-	#
-	#     user = dict()
-	#
-	#     user["id"] = self.id
-	#
-	#     user["email"] = self.email
-	#
-	#     user["roles"] = self.roles
-	#
-	#     user["active"] = self.active
-	#
-	#     user["confirmed_at"] = self.confirmed_at
-	#
-	#     user["login_count"] = self.login_count
-	#
-	#     user["last_login_at"] = self.last_login_at
-	#
-	#     user["last_login_ip"] = self.last_login_ip
-	#
-	#     user["current_login_at"] = self.current_login_at
-	#
-	#     user["current_login_ip"] = self.current_login_ip
-	#
-	#     return user
+	def to_json(self):
+
+		student = dict()
+
+		student["id"] = self.id
+
+		student["name"] = self.name
+
+		student["student_id"] = self.student_id
+
+		return student

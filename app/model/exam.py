@@ -11,37 +11,36 @@
 
 from app.model import db
 import datetime
+import time
+
 
 class Exam(db.Model):
+	__tablename__ = "exam"
 
-    __tablename__ = "exam"
+	id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+	scores = db.relation("Score", backref=db.backref("exam"))
 
-    scores = db.relation("Score", backref=db.backref("exam"))
+	name = db.Column(db.String(255))
 
-    name = db.Column(db.String(255))
+	create_time = db.Column(db.Date())
 
-    create_time = db.Column(db.Date())
+	def __init__(self, name="", create_time=datetime.date.today()):
+		self.name = name
 
-    def __init__(self, name="", create_time=""):
+		self.create_time = create_time
 
-        self.name = name
+	# def __repr__(self):
+	#
+	#     return self.email
 
-        self.create_time = create_time
+	def to_json(self):
+		exam = dict()
 
-    # def __repr__(self):
-    #
-    #     return self.email
+		exam["id"] = self.id
 
-    def to_json(self):
+		exam["name"] = self.name
 
-        exam = dict()
+		exam["create_time"] = self.create_time
 
-        exam["id"] = self.id
-
-        exam["name"] = self.name
-
-        exam["create_time"] = self.create_time
-
-        return exam
+		return exam
