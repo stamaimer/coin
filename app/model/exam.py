@@ -34,14 +34,14 @@ class Exam(db.Model):
 	#
 	#     return self.email
 
-	def to_json(self):
+    def to_json(self):
             
-            exam = dict()
-
-	    exam["id"] = self.id
-
-	    exam["name"] = self.name
-
-	    exam["create_time"] = self.create_time
+        exam = dict()
         
-            return exam
+        exam["id"] = self.id
+        
+        exam["name"] = self.name
+        
+        exam["create_time"] = self.create_time
+        
+        return exam
