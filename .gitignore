@@ -3,4 +3,5 @@
 .vagrant/
 venv/
 instance/config.py
+instance/weixin.py
 *.pyc
