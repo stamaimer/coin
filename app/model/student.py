@@ -28,12 +28,26 @@ class Student(db.Model):
 
 	open_id = db.Column(db.String(255))
 
-    # @staticmethod
-    # def generate_fake(count=47):
-    #
-    #     from random import seed
-    #     import forgery_py
-    #
-    #     for i in xrange(count):
-    #
-    #         s = Student(name=)
+
+	def __init__(self, name="", student_id=""):
+
+		self.name = name
+
+		self.student_id = student_id
+
+
+	# def __repr__(self):
+	#
+	#     return self.email
+
+	def to_json(self):
+
+		student = dict()
+
+		student["id"] = self.id
+
+		student["name"] = self.name
+
+		student["student_id"] = self.student_id
+
+		return student

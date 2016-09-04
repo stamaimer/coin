@@ -43,6 +43,25 @@ $(document).ready(function () {
     $('td').focus(function (evt) {
         $(this).selectText();
     });
+    $('#submit').click(function () {
+        if (!$("#exam-name").val()) {
+            $("#exam-name").parent().addClass('has-error');
+            return;
+        }
+        var arr = [];
+        if (!$("#exam-id").val()) {
+            $.ajax({
+                url: '/exam',
+                data: {name: $("#exam-name").val()},
+                type: 'POST',
+                success: function (result) {
+                    sendData(result.id, result.name);
+                }
+            })
+        } else {
+            sendData($("#exam-id").val(), $("#exam-name").val());
+        }
+    });
     $('#calc').click(function () {
         autoCalc();
     });
@@ -60,22 +79,23 @@ $(document).ready(function () {
         //    $('#score tbody').append($(this));
         //})
         tmp.detach().appendTo('#score tbody');
-    })
-});
+    });
+})
+;
 
 function autoCalc() {
     $('.score').each(function (index, value) {
-        var sum3 = parseInt($(this).find('td:eq(1)').text()) + parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text());
-        var sum5 = parseInt($(this).find('td:eq(1)').text()) + parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text()) + parseInt($(this).find('td:eq(4)').text()) + parseInt($(this).find('td:eq(5)').text());
-        $(this).find('td:eq(10)').text(sum3);
-        $(this).find('td:eq(13)').text(sum5);
+        var sum3 = parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text()) + parseInt($(this).find('td:eq(4)').text());
+        var sum5 = parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text()) + parseInt($(this).find('td:eq(4)').text()) + parseInt($(this).find('td:eq(5)').text()) + parseInt($(this).find('td:eq(6)').text());
+        $(this).find('td:eq(11)').text(sum3);
+        $(this).find('td:eq(14)').text(sum5);
         sortBy3();
         sortBy5();
     });
 }
 function sortBy3() {
     $('.score')
-        .find('td:eq(10)')
+        .find('td:eq(11)')
         .sort(function (a, b) {
             return b.innerText - a.innerText
         })
@@ -87,7 +107,7 @@ function sortBy3() {
 
 function sortBy5() {
     $('.score')
-        .find('td:eq(13)')
+        .find('td:eq(14)')
         .sort(function (a, b) {
             return b.innerText - a.innerText
         })
@@ -109,4 +129,41 @@ function sortRevertBy(index) {
         //    return 1;
         return $(a).children().eq(index).text() - $(b).children().eq(index).text()
     }
+}
+function sendData(examId, examName) {
+    var data = {};
+    data.exam_id = examId;
+    data.exam_name = examName;
+    data.scores = [];
+    $('.score').each(function (i) {
+        var score = {};
+        score.student_id = $(this).find('.student_id').text();
+        score.yw = $(this).find('.yw').text();
+        score.sx = $(this).find('.sx').text();
+        score.yy = $(this).find('.yy').text();
+        score.wl = $(this).find('.wl').text();
+        score.hx = $(this).find('.hx').text();
+        score.sw = $(this).find('.sw').text();
+        score.ls = $(this).find('.ls').text();
+        score.zz = $(this).find('.zz').text();
+        score.dl = $(this).find('.dl').text();
+        score.sum_3 = $(this).find('.sum_3').text();
+        score.class_rank_3 = $(this).find('.class_rank_3').text();
+        score.grade_rank_3 = $(this).find('.grade_rank_3').text();
+        score.sum_5 = $(this).find('.sum_5').text();
+        score.class_rank_5 = $(this).find('.class_rank_5').text();
+        score.grade_rank_5 = $(this).find('.grade_rank_5').text();
+        data.scores.push(score);
+    });
+    $.ajax({
+        url: '/score',
+        data: JSON.stringify(data),
+        type: 'POST',
+        success: function (result) {
+            if(result == 'success')
+                window.location.href = '/list';
+            else
+                alert(result);
+        }
+    })
 }

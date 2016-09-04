@@ -17,18 +17,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="score">
-            <th scope="row">1</th>
-            <td>沈宗存</td>
+        {% for student in students['students'] %}
+          <tr class="score">
+            <th scope="row" class="student-id">{{ student['student_id'] }}</th>
+            <td style="display: none" class="id">{{ student['id'] }}</td>
+            <td class="name">{{ student['name'] }}</td>
             <td class="list-buttons-column">
-                <a class="icon" href="#" title="编辑">
-                    <span class="glyphicon glyphicon-pencil"></span>编辑
-                </a>
-                <a class="icon" href="#" title="删除">
+                <a class="icon delete" href="#" title="删除">
                     <span class="glyphicon glyphicon-trash"></span>删除
                 </a>
             </td>
         </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}

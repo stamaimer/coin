@@ -11,9 +11,10 @@
 
 from app.model import db
 import datetime
+import time
+
 
 class Exam(db.Model):
-
     __tablename__ = "exam"
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -24,46 +25,23 @@ class Exam(db.Model):
 
     create_time = db.Column(db.Date())
 
-    def __init__(self, name="", create_time=""):
+    def __init__(self, name="", create_time=datetime.date.today()):
+	self.name = name
 
-        self.name = name
+	self.create_time = create_time
 
-        self.create_time = create_time
+	# def __repr__(self):
+	#
+	#     return self.email
 
-    # def __repr__(self):
-    #
-    #     return self.email
+	def to_json(self):
+            
+            exam = dict()
 
-    def to_json(self):
+	    exam["id"] = self.id
 
-        exam = dict()
+	    exam["name"] = self.name
 
-        exam["id"] = self.id
-
-        exam["name"] = self.name
-
-        exam["create_time"] = self.create_time
-
-        return exam
-
-    @staticmethod
-    def generate_fake(count=47):
-
-        from random import seed
-        import forgery_py
-
-        seed()
-
-        for i in xrange(count):
-
-            e = Exam(name=u"高X第X学期期X考试", create_time=forgery_py.date.date())
-
-            db.session.add(e)
-
-            try:
-
-                db.session.commit()
-
-            except:
-
-                db.session.rollback()
+	    exam["create_time"] = self.create_time
+        
+            return exam
