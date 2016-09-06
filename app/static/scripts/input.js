@@ -66,19 +66,11 @@ $(document).ready(function () {
         autoCalc();
     });
     $('thead th').clickToggle(function (evt) {
-        var tmp = $('.score').sort(sortBy($(this).index()));
-        //$('#score tbody').empty();
-        //tmp.each(function (index) {
-        //    $('#score tbody').append($(this));
-        //})
-        tmp.detach().appendTo('#score tbody');
+        var tmp = $('.score').sort(sortBy($(this).index()+1));
+        tmp.detach().prependTo('#score tbody');
     }, function (evt) {
-        var tmp = $('.score').sort(sortRevertBy($(this).index()));
-        //$('#score tbody').empty();
-        //tmp.each(function (index) {
-        //    $('#score tbody').append($(this));
-        //})
-        tmp.detach().appendTo('#score tbody');
+        var tmp = $('.score').sort(sortRevertBy($(this).index()+1));
+        tmp.detach().prependTo('#score tbody');
     });
 })
 ;
@@ -92,7 +84,26 @@ function autoCalc() {
         sortBy3();
         sortBy5();
     });
+    calcAverage()
 }
+
+
+function calcAverage() {
+    for(var i = 1 ;i <= 9;i++){
+        var sum = 0;
+        var count = 0;
+        $('.included').each(function (index, value) {
+            var tmp = parseFloat($(this).find('td').eq(i+1).text());
+            if( tmp!= 0){
+                sum+=tmp;
+                count++;
+            }
+        });
+        $('.average').find('td').eq(i).text((sum/count || 0).toFixed(2));
+    }
+}
+
+
 function sortBy3() {
     $('.score')
         .find('td:eq(11)')
@@ -155,6 +166,15 @@ function sendData(examId, examName) {
         score.grade_rank_5 = $(this).find('.grade_rank_5').text();
         data.scores.push(score);
     });
+    data.yw_av = $('.yw-av').text();
+    data.sx_av = $('.sx-av').text();
+    data.yy_av = $('.yy-av').text();
+    data.wl_av = $('.wl-av').text();
+    data.hx_av = $('.hx-av').text();
+    data.sw_av = $('.sw-av').text();
+    data.ls_av = $('.ls-av').text();
+    data.zz_av = $('.zz-av').text();
+    data.dl_av = $('.dl-av').text();
     $.ajax({
         url: '/score',
         data: JSON.stringify(data),

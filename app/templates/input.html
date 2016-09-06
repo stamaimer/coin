@@ -34,8 +34,9 @@
     <tbody>
     {% if scores %}
       {% for student in students['students'] %}
+        {% set outer = loop.index0 %}
         {% for score in scores if score.student_id == student.id %}
-          <tr class="score">
+          <tr class="score {% if outer < 36 %}included{% endif %}">
             <th class="student-id" scope="row">{{ student.student_id }}</th>
             <td class="student_id" style="display: none">{{ student.id }}</td>
             <td class="student-name">{{ student.name }}</td>
@@ -59,7 +60,7 @@
       {% endfor %}
     {% else %}
       {% for student in students['students'] %}
-          <tr class="score">
+          <tr class="score {% if loop.index0 < 36 %}included{% endif %}">
             <th class="student-id" scope="row">{{ student.student_id }}</th>
             <td class="student_id" style="display: none">{{ student.id }}</td>
             <td class="student-name">{{ student.name }}</td>
@@ -81,6 +82,25 @@
           </tr>
       {% endfor %}
     {% endif %}
+    <tr class="average">
+            <th scope="row">-</th>
+            <td>平均分</td>
+            <td class="yw-av">{{ exam.yw_av }}</td>
+            <td class="sx-av">{{ exam.sx_av }}</td>
+            <td class="yy-av">{{ exam.yy_av }}</td>
+            <td class="wl-av">{{ exam.wl_av }}</td>
+            <td class="hx-av">{{ exam.hx_av }}</td>
+            <td class="sw-av">{{ exam.sw_av }}</td>
+            <td class="ls-av">{{ exam.ls_av }}</td>
+            <td class="zz-av">{{ exam.zz_av }}</td>
+            <td class="dl-av">{{ exam.dl_av }}</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
     </tbody>
   </table>
   <button class="btn btn-default" id="calc" type="submit">计算</button>

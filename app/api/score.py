@@ -6,41 +6,59 @@ from . import api
 
 @api.route('/score', methods=['POST'])
 def add_score():
-	try:
+    try:
 
-		tmp = request.get_json(force=True)
+        tmp = request.get_json(force=True)
 
-		exam_name = tmp['exam_name']
+        exam_name = tmp['exam_name']
 
-		exam_id = tmp['exam_id']
+        exam_id = tmp['exam_id']
 
-		scores_data = tmp['scores']
+        scores_data = tmp['scores']
 
-		exam = Exam.query.filter_by(id=exam_id).first()
+        exam = Exam.query.filter_by(id=exam_id).first()
 
-		exam.name = exam_name
+        exam.name = exam_name
 
-		db.session.commit()
+        exam.yw_av = tmp['yw_av']
 
-		scores = Score.query.filter_by(exam_id=exam_id).all()
+        exam.sx_av = tmp['sx_av']
 
-		for score in scores:
-			db.session.delete(score)
+        exam.yy_av = tmp['yy_av']
 
-			db.session.commit()
+        exam.wl_av = tmp['wl_av']
 
-		for score_data in scores_data:
-			score = Score(score_data['yw'], score_data['sx'], score_data['yy'], score_data['wl'], score_data['hx'],
-						  score_data['sw'], score_data['ls'], score_data['zz'], score_data['dl'], score_data['sum_3'],
-						  score_data['sum_5'], score_data['class_rank_3'], score_data['class_rank_5'],
-						  score_data['grade_rank_3'], score_data['grade_rank_5'], exam_id, score_data['student_id'])
+        exam.hx_av = tmp['hx_av']
 
-			db.session.add(score)
+        exam.sw_av = tmp['sw_av']
 
-			db.session.commit()
+        exam.ls_av = tmp['ls_av']
 
-		return 'success'
+        exam.zz_av = tmp['zz_av']
 
-	except Exception as e:
+        exam.dl_av = tmp['dl_av']
 
-		return e
+        db.session.commit()
+
+        scores = Score.query.filter_by(exam_id=exam_id).all()
+
+        for score in scores:
+            db.session.delete(score)
+
+            db.session.commit()
+
+        for score_data in scores_data:
+            score = Score(score_data['yw'], score_data['sx'], score_data['yy'], score_data['wl'], score_data['hx'],
+                          score_data['sw'], score_data['ls'], score_data['zz'], score_data['dl'], score_data['sum_3'],
+                          score_data['sum_5'], score_data['class_rank_3'], score_data['class_rank_5'],
+                          score_data['grade_rank_3'], score_data['grade_rank_5'], exam_id, score_data['student_id'])
+
+            db.session.add(score)
+
+            db.session.commit()
+
+        return 'success'
+
+    except Exception as e:
+
+        print e

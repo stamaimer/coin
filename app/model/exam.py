@@ -25,17 +25,48 @@ class Exam(db.Model):
 
     create_time = db.Column(db.Date())
 
-    def __init__(self, name="", create_time=datetime.date.today()):
-	self.name = name
+    yw_av = db.Column(db.Float())
 
-	self.create_time = create_time
+    sx_av = db.Column(db.Float())
 
-	# def __repr__(self):
-	#
-	#     return self.email
+    yy_av = db.Column(db.Float())
+
+    wl_av = db.Column(db.Float())
+
+    hx_av = db.Column(db.Float())
+
+    sw_av = db.Column(db.Float())
+
+    ls_av = db.Column(db.Float())
+
+    zz_av = db.Column(db.Float())
+
+    dl_av = db.Column(db.Float())
+
+    def __init__(self, name="", create_time=datetime.date.today(), yw_av="", sx_av="", yy_av="", wl_av="", hx_av="", sw_av="", ls_av="", zz_av="", dl_av=""):
+        self.name = name
+
+        self.create_time = create_time
+
+        self.yw_av = yw_av
+
+        self.sx_av = sx_av
+
+        self.yy_av = yy_av
+
+        self.wl_av = wl_av
+
+        self.hx_av = hx_av
+
+        self.sw_av = sw_av
+
+        self.ls_av = ls_av
+
+        self.zz_av = zz_av
+
+        self.dl_av = dl_av
 
     def to_json(self):
-            
         exam = dict()
         
         exam["id"] = self.id
@@ -43,5 +74,23 @@ class Exam(db.Model):
         exam["name"] = self.name
         
         exam["create_time"] = self.create_time
-        
+
+        exam["yw_av"] = self.yw_av
+
+        exam["sx_av"] = self.sx_av
+
+        exam["yy_av"] = self.yy_av
+
+        exam["wl_av"] = self.wl_av
+
+        exam["hx_av"] = self.hx_av
+
+        exam["sw_av"] = self.sw_av
+
+        exam["ls_av"] = self.ls_av
+
+        exam["zz_av"] = self.zz_av
+
+        exam["dl_av"] = self.dl_av
+
         return exam
