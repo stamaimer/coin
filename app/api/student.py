@@ -5,7 +5,7 @@ from . import api
 
 @api.route('/student', methods=['GET'])
 def get_student():
-	students = Student.query.all()
+	students = Student.query.order_by(Student.student_id).all()
 
 	response = dict()
 
