@@ -193,6 +193,7 @@ def get_grade(open_id, flag):
 
 
 @main.route("/input", methods=["GET"])
+@login_required
 def _input():
 	student = current_app.test_client().get(url_for('api.get_student', _external=True))
 
@@ -212,6 +213,7 @@ def _input():
 
 
 @main.route("/list", methods=["GET"])
+@login_required
 def _list():
 	exams = current_app.test_client().get(url_for('api.get_exam', _external=True))
 
@@ -227,6 +229,7 @@ def app_contect_processor():
 
 
 @main.route("/students", methods=["GET"])
+@login_required
 def students():
 	student = current_app.test_client().get(url_for('api.get_student', _external=True))
 
