@@ -1,0 +1,121 @@
+{% extends "thin-side.html" %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/tooltipster/css/tooltipster.bundle.min.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css') }}"/>
+{% endblock %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <button class="btn red-btn" id="profile">PROFILE</button>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="header">
+    <p style="font-size: 18px;">
+      {% if user=='1' %}
+        <span style="font-weight: bold">Gjilberta Lucaj</span><br>
+        <span>Associate Professor of</span><br>
+        <span>Concert Cellist, Educator</span><br>
+      {% else %}
+        <span style="font-weight: bold">William Bevington</span><br>
+        <span>Professor of</span><br>
+        <span>Information Mapping</span><br>
+      {% endif %}
+    </p>
+  </div>
+  <div class="content">
+    <div class="pip-block">
+      <div class="left-block">
+        <div class="left-top-block pip-content">
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
+          </p>
+        </div>
+        <div class="left-bottom-block pip-content">
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
+          </p>
+        </div>
+      </div>
+      <div class="right-block">
+        <div class="right-top-block pip-content">
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
+          </p>
+        </div>
+        <div class="right-bottom-block pip-content">
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
+          </p>
+          <p>
+            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script type="text/javascript" src="{{ url_for('static', filename='lib/tooltipster/js/tooltipster.bundle.min.js') }}"></script>
+  <script>
+    $(document).ready(function () {
+      $('#invite').click(function () {
+        document.location.href = '/invite'
+      });
+      $('#speaker').click(function () {
+        document.location.href = '/speaker'
+      });
+      $('#podcast').click(function () {
+        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+      });
+      $('#profile').click(function () {
+        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+      });
+      $('#cv').click(function () {
+        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+      });
+      $('#news').click(function () {
+        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+      });
+      $('#portfolio').click(function () {
+        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+      });
+      $('#pip-block').click(function () {
+        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+      });
+      $('.tooltip').tooltipster({
+        animation: 'fade',
+        delay: 200,
+        theme: 'tooltipster-light',
+        trigger: 'click',
+        maxWidth: 300
+      });
+    });
+    $('.pip-content p').each(function (i) {
+      var arr = ["left", "right", "center"];
+      var n = Math.floor(Math.random() * arr.length + 1) - 1;
+      $(this).css('text-align', arr[n]);
+    });
+  </script>
+{% endblock %}

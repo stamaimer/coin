@@ -13,7 +13,9 @@ import os
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app
-from app.model import db, User, Role
+from app.model import db
+from app.model.user import User
+from app.model.role import Role
 from app.security import user_datastore
 from config import config
 

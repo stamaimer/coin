@@ -15,11 +15,13 @@ class Config(object):
 
     HOST = "0.0.0.0"
 
-    PORT = 5000
+    PORT = 5555
 
     DEBUG = 1
 
     TESTING = 0
+
+    MAX_CONTENT_LENGTH = 1024*1024*1024
 
     # configuration of flask-debugtoolbar
 

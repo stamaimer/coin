@@ -1,0 +1,102 @@
+{% extends "thin-side.html" %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <button class="btn red-btn" id="profile">PROFILE</button>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="header">
+    <p style="font-size: 18px;">
+      <span style="font-weight: bold">Gjilberta Lucaj</span><br>
+      <span>Associate Professor of</span><br>
+      <span>Concert Cellist, Educator</span><br>
+    </p>
+  </div>
+  <div class="content">
+    <div class="photo sm-photo">
+      <img src="{{ url_for('static', filename="images/photo.png") }}">
+    </div>
+    <div class="profile-detail">
+      <div class="description">
+        <p style="font-size: 18px;">Experience</p>
+        <div class="exp">
+          <h4>Violoncello Professor</h4>
+          <p>Allen-Stevenson School</p>
+          <p>2009 - Present</p>
+        </div>
+        <div class="exp">
+          <h4>President/Founder</h4>
+          <p>Our Lady Of Shkodra, Albanian-American International Foundation</p>
+          <p>2008 – Present</p>
+        </div>
+        <div class="exp">
+          <h4>Concert cellist</h4>
+          <p>http://www.facebook.com/gjilbertalucaj</p>
+          <p>2002 – Present</p>
+        </div>
+        <p style="font-size: 18px;">Skills</p>
+        <p class="skills">
+          Music, Orchestral Music, Chamber Music, Classical, Cello, Symphony,Solo Performance, Composition, Teaching, Editing, Grant Writing, Italian, Research, Strategic Planning, Public Relations, Event Management, Fundraising,Event Planning, Public Speaking, Project Management, Social Media, Non-profits
+        </p>
+        <p style="font-size: 18px;">Education</p>
+        <div class="edu">
+          <h4>New York University</h4>
+          <p>MA, Education</p>
+          <p>2007 - 2008</p>
+        </div>
+        <div class="edu">
+          <h4>Mannes college of music, Juilliard music school New School University</h4>
+          <p>Performance Program/Artist Diploma, Music/Cello</p>
+          <p>2004 – 2007</p>
+        </div>
+        <div class="edu">
+          <h4>Purchase College, SUNY</h4>
+          <p>BFA, Music</p>
+          <p>2000 – 2004</p>
+        </div>
+      </div>
+      <div class="content-btn-group">
+        <button class="btn red-btn left" id="podcast">PODCAST</button>
+        {% if user=='1' %}
+          <button class="btn red-btn left selected" id="cv">CV</button>
+          <button class="btn red-btn left" id="news">NEWS</button>
+        {% endif %}
+      {% if user == '2' %}
+        <button class="btn red-btn left" id="portfolio">PORTFOLIO</button>
+      {% endif %}
+        <img id="pip-block" src="{{ url_for('static', filename="images/mark.png") }}">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $('#invite').click(function () {
+        document.location.href = '/invite'
+      });
+      $('#speaker').click(function () {
+        document.location.href = '/speaker'
+      });
+      $('#podcast').click(function () {
+        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+      });
+      $('#profile').click(function () {
+        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+      });
+      $('#cv').click(function () {
+        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+      });
+      $('#news').click(function () {
+        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+      });
+      $('#portfolio').click(function () {
+        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+      });
+      $('#pip-block').click(function () {
+        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+      });
+    });
+  </script>
+{% endblock %}

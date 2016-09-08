@@ -93,29 +93,3 @@ class User(db.Model, UserMixin):
         user["current_login_ip"] = self.current_login_ip
 
         return user
-
-    @staticmethod
-    def generate_fake(count=47):
-
-        from random import seed
-        import forgery_py
-
-        seed()
-
-        for i in xrange(count):
-
-            u = User(email=forgery_py.internet.email_address(),
-                     username=forgery_py.internet.user_name(),
-                     password=forgery_py.lorem_ipsum.word(),
-                     active=True,
-                     confirmed_at=forgery_py.date.date())
-
-            db.session.add(u)
-
-            try:
-
-                db.session.commit()
-
-            except:
-
-                db.session.rollback()

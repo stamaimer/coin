@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="side">
+    {% block side %}
+      <a class="logo"><img src="{{ url_for('static',filename="images/logo.png") }}"></a>
+    {% endblock %}
+    </div>
+    <div class="container">
+    {% block container %}
+    {% endblock %}
+    </div>
+{% endblock %}

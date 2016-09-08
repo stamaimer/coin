@@ -1,0 +1,37 @@
+{% extends "side.html" %}
+{% block container %}
+  <input id="email" class="input first-child" type="text" placeholder="Enter Username"/>
+  <input id="password" class="input" type="password" placeholder="Enter Password"/>
+  <button class="lg-btn red-btn" id="confirm">LOG IN</button>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}
+
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $('#confirm').click(function () {
+        $.ajax({
+          url: '/api/login',
+          method: "POST",
+          data: {
+            email: $('#email').val(),
+            password: $('#password').val()
+          },
+          success:function (result) {
+            if(result == 'failed')
+                return;
+            window.location.href = '/profile'+result;
+          }
+        })
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "side.html" %}
+{% block side %}
+  {{ super() }}
+{% endblock %}
+{% block container %}
+  <button class="lg-btn first-child red-btn" style="margin-left: 30%;" onclick="window.location.href='/welcome'">Member</button>
+  <button class="lg-btn red-btn" style="margin-left: 30%;margin-top: 30px;" onclick="window.location.href='/access'">Not Member</button>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}
+{% block script %}
+<script>
+$(document).ready(function () {
+  $('#login').click(function () {
+    document.location.href = '/signin'
+  });
+  $('#nomination').click(function () {
+    document.location.href = '/nomination'
+  });
+});
+  </script>
+{% endblock %}

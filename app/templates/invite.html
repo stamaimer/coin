@@ -1,0 +1,26 @@
+{% extends "side.html" %}
+{% block container %}
+  <input class="input first-child" type="text" placeholder="Enter Full Name"/>
+  <input class="input" type="password" placeholder="Enter Email Address"/>
+  <button class="lg-btn red-btn" id="confirm">INVITE</button>
+  <p class="dark info padding note">By clicking the "INVITE" button above, you acknoledge having consented Profiles in Perspective to send an invitation email to the email address you entered. Thank-you for your invitation and we look forward to serving our members and guests in pursuit of creating high quality profiles.</p>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function () {
+  $('#confirm').click(function () {
+    document.location.href = '/access'
+  });
+});
+  </script>
+{% endblock %}

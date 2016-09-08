@@ -1,42 +1,20 @@
-{% extends "bootstrap/base.html" %}
-
-{% block html_attribs %} lang="en"{% endblock %}
-
-{% block metas %}
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{ super() }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{% block title %}{% endblock %}
+<link href="{{ url_for('static',filename='style/style.css') }}" type="text/css" rel="stylesheet">
+{% block style %}
 
 {% endblock %}
-
-{% block title %}Coin{% endblock %}
-
-{% block head %}
-
-    {{ super() }}
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
+</head>
+<body>
+{% block body %}
 
 {% endblock %}
-
-{% block content %}
-
-    {{ super() }}
-
-    <a href="http://flask.pocoo.org/"><img src="http://flask.pocoo.org/static/badges/made-with-flask-s.png" border="0"
-                                           alt="made with Flask" title="made with Flask"></a>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+{% block script %}
 
 {% endblock %}
-
-{% block scripts %}
-
-    {{ super() }}
-
-    {{ moment.include_moment() }}
-
-    {{ moment.lang("zh_CN") }}
-
-{% endblock %}
+</body>
+</html>

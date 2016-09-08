@@ -1,0 +1,44 @@
+{% extends "side.html" %}
+{% block container %}
+  <div class="access">
+    <input id="access-input" class="input left access-input" type="text" placeholder="Enter Access Code"/>
+
+    <button class="lg-btn red-btn left" id="access">VIEW PROFILE</button>
+  </div>
+  <h2 class="title bold first-child">
+    Profiles in Perspective(PIP).
+    <br>
+    To know, and to act effectively
+  </h2>
+  <p>
+    The soure of high-end personal profiles, featuring the leaders and trend-makes from all channels of human endeavor. Our network is "purposefully disconnected" serving as an immersive, yet concise portrait change agents.
+  </p>
+  <p>
+    Offering a highly consistent platform, in a succinct and accessible layout, uor dossiers immediately despense with noise, anst, hype and hyperbole to bring individual quality and dignity to the forfront.
+  </p>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}
+{% block script %}
+<script>
+$(document).ready(function () {
+  $('#access').click(function () {
+    if($('#access-input').val() == 'access-token-1')
+      document.location.href = '/auth?user=1&owner=false';
+    else if($('#access-input').val() == 'access-token-2')
+        document.location.href = '/auth?user=2&owner=false';
+    else
+        return;
+  });
+});
+  </script>
+{% endblock %}
+
+

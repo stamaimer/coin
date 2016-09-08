@@ -1,0 +1,116 @@
+{% extends "thin-side.html" %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <button class="btn red-btn" id="profile">PROFILE</button>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="header">
+    <p style="font-size: 18px;">
+      <span style="font-weight: bold">William Bevington</span><br>
+      <span>Professor of</span><br>
+      <span>Information Mapping</span><br>
+    </p>
+  </div>
+  <div class="content">
+    <div class="portfolio-list">
+      <div class="portfolio-item">
+        <div class="portfolio-pic">
+          <img src="{{ url_for('static',filename='images/Number01.jpg') }}">
+        </div>
+        <div class="portfolio-info">
+          <h4>Nichibei Fuji Cycles</h4>
+          <p>Design of logo for collateral purposes</p>
+          <p>My design career began via a wonderful opportunity while working in a bicycle shop in my youth. The owner, who was something of a mentor to me, considered a criticism I had of the then, Fuji logotype. I had recently seen the Bianchi bicycle logo, even at fourteen years old I was taken aback by the modernist simplicity of the formal block letters and clean design. When I gently complained to the shop’s owner (who was also the key and first importer of the Fuji bicycle brand) he said, “We do not make complaints, we offer suggestions for improvement….” That very day I began research and discovered the remarkable field of graphic design! About two weeks later, after learning all I could and inking up a suggested logo, I presented my idea. Mr. Moriya passed the logo on to Fuji and they adopted it; now, decades later, it is still in usage.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-pic">
+          <img src="{{ url_for('static',filename='images/Number02.jpg') }}">
+        </div>
+        <div class="portfolio-info">
+          <h4>The Cooper Union</h4>
+          <p>The Center for Design and Typography</p>
+          <p>I taught at The Cooper Union, beginning as an assistant and becoming a professor there after eight years. Except for a brief and quite wonderful class I gave on “The Design of the Chair,” (!) my focus was on typography. At first I taught with the preeminent James Craig, later with the amazing scholar/designer George Sadek. In 1991 Merganthaler corporation, in conjunction with The Cooper Union, developed a series of seminars for professionals — these were the days when digital type was eclipsing all former technical methods for typesetting. As part of that effort I wrote a book which concisely captured all the principles of typography, and the best-practice for teaching these principles.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-pic">
+          <img src="{{ url_for('static',filename='images/Number03.jpg') }}">
+        </div>
+        <div class="portfolio-info">
+          <h4>BMW Olympic Torch Relay Car</h4>
+          <p>1996 Summer Olympics — XXVI Olympiad held in Atlanta, Georgia, USA</p>
+          <p>For many years I had provided design services to BMW North America through my design agency. This effort culminated in our creation of the official Olympic Torch Relay car. The concept of the vehicle was to create a “living map” with the route unfolding across the states and the names of the participants signed upon the surface of the 5-series vehicle as the event unfolded. It took two weeks and 16 applications of paint to prepare the vehicle. The BMW Zentrum museum, which also opened in 1996, and is part of BMW’s facilities at “Plant Spartenburg” in Greer, South Carolina, maintains the car in its collection. One of the benefits of being a generalist designer is the range of projects and people experienced through the creative process — this was one of many unforgettable experiences I have had as a designer.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-pic">
+          <img src="{{ url_for('static',filename='images/Number04.jpg') }}">
+        </div>
+        <div class="portfolio-info">
+          <h4>The Geospace and Media Tool</h4>
+          <p>Designed while serving a Executive Director,<br>PIIM: The Parsons Institue for Information Mapping</p>
+          <p>After serving as Chair of the Communication Design Department, Parsons School of Design, I co-founded PIIM, The Parsons Institute for Information Mapping with Bob Kerrey, then President of The New School. Here, serving as Executive Director I mapped" out the original idea for an application that would incorporporate Media with Geospace. The original proposal was grew into a major design and engineering program at PIIM from concept in 2004 until completion about 4 years later. The total budget for the program was $12.5M supported by a contarct with a DoD entity. The “GMT" was a powerful search tool that focused on extracting media from thousands of feeds and tying them to geographic aspects. Of particular interest was the fact that the tool could search by location and topic. These searches were not superficial; the location searches relied on sophisticated software from MetaCarta, persons searches relied on special software that had specific listings of all persons in government worldwide, the news feed seraches were processed through Factiva, etc. This strength was also a weakness the cost of subscriptions to each service precluded this from ever becoming a consumer tool — we had a stff of nearly 40 at the height of PIIM’s endeavors, including a group involved in experimental next-geneartion modeling.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-pic">
+          <img src="{{ url_for('static',filename='images/Number05.jpg') }}">
+        </div>
+        <div class="portfolio-info">
+          <h4>chaäckmuisc: the creation of an audio brand</h4>
+          <p>Popular music derived from English Renaissance Forms</p>
+          <p>During all the years of service to the design and education industries an undying passion for poetry was ever-present. I had become particularly fascinated by the poets of the Elizabethan age, even more specialized was an interest in the metaphysical poets. Concurrently I was enthralled with a project, that had proceeded for decades, on deciphering out some supposedly unfinished poems. This long, slow effort had a profound effect upon me. A serendipitous meeting put me in touch with Malvina Maury, a singer with a remarkable and compelling voice, and Andrin Jaquenoud, a brilliantly gifted composer. Together we formed a writing group named chaäck; on a near monthly basis we release a song with my lyrics and their incredible way of building great songs from inspired beginnings… the image to left is song 003, Fire Fire Fire, the catalyst of which was a Campion “air” or light song of the day. Our goal is to produce 100 songs, hence our numbering system.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="content-btn-group">
+        <button class="btn red-btn left" id="podcast">PODCAST</button>
+        {% if user=='1' %}
+          <button class="btn red-btn left" id="cv">CV</button>
+          <button class="btn red-btn left" id="news">NEWS</button>
+        {% endif %}
+      {% if user == '2' %}
+        <button class="btn red-btn left selected" id="portfolio">PORTFOLIO</button>
+      {% endif %}
+        <img id="pip-block" src="{{ url_for('static', filename="images/mark.png") }}">
+    </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $('#invite').click(function () {
+        document.location.href = '/invite'
+      });
+      $('#speaker').click(function () {
+        document.location.href = '/speaker'
+      });
+      $('#podcast').click(function () {
+        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+      });
+      $('#profile').click(function () {
+        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+      });
+      $('#cv').click(function () {
+        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+      });
+      $('#news').click(function () {
+        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+      });
+      $('#portfolio').click(function () {
+        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+      });
+      $('#pip-block').click(function () {
+        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+      });
+    });
+  </script>
+{% endblock %}

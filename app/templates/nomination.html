@@ -1,0 +1,24 @@
+{% extends "side.html" %}
+{% block style %}
+  {{ super() }}
+  <style>
+    html {
+      background-color: #1f1f1f;
+    }
+  </style>
+{% endblock %}
+{% block container %}
+  <input class="input light first-child" type="text" placeholder="Enter Nominee's Full Name"/>
+  <input class="input light" type="password" placeholder="Enter Nominee's Email Address"/>
+  <button class="lg-btn red-btn" id="nominate">NOMINATE</button>
+  <p class="light info padding note">By clicking the "NOMINATE" button above, you acknoledge having consented Profiles in Perspective to send an invitation email to the email address you entered. Thank-you for your nomination and we look forward to serving our members and guests in pursuit of creating high quality profiles.</p>
+  <footer class="light note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}

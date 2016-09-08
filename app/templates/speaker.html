@@ -1,0 +1,90 @@
+{% extends "side.html" %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <a class="side-nav" href="/speaker"><span class="active">Speakers</span><span>24</span></a>
+    <a class="side-nav" href="/recruiter"><span>Recruiters</span><span>34</span></a>
+    <p class="note">By clicking the "INVITE" button above, you acknoledge having consented Profiles in Perspective to send a notification to the person you invite. Thank-you for your invitation and we look forward to serving our members and guests in pursuit of creating high quality profiles.</p>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="access">
+    <input class="input left access-input" type="text" placeholder="Search Available Speakers"/>
+
+    <button class="lg-btn red-btn left" id="access">SEARCH</button>
+  </div>
+  <div class="speaker-list">
+    <div class="speaker-item">
+      <div class="speaker-photo">
+        <img src="{{ url_for('static', filename='images/speaker.png') }}">
+      </div>
+      <div class="speaker-info">
+        <h2>Gjilberta Lucaj</h2>
+        <p>Concert Cellist, Educator</p>
+        <p>Topic:Music Cello Education</p>
+      </div>
+      <div class="speaker-action">
+        <button class="btn red-btn">INVITE</button>
+      </div>
+    </div>
+  <div class="speaker-item">
+      <div class="speaker-photo">
+        <img src="{{ url_for('static', filename='images/speaker.png') }}">
+      </div>
+      <div class="speaker-info">
+        <h2>Gjilberta Lucaj</h2>
+        <p>Concert Cellist, Educator</p>
+        <p>Topic:Music Cello Education</p>
+      </div>
+      <div class="speaker-action">
+        <button class="btn red-btn">INVITE</button>
+      </div>
+    </div>
+  <div class="speaker-item">
+      <div class="speaker-photo">
+        <img src="{{ url_for('static', filename='images/speaker.png') }}">
+      </div>
+      <div class="speaker-info">
+        <h2>Gjilberta Lucaj</h2>
+        <p>Concert Cellist, Educator</p>
+        <p>Topic:Music Cello Education</p>
+      </div>
+      <div class="speaker-action">
+        <button class="btn red-btn">INVITE</button>
+      </div>
+    </div>
+  <div class="speaker-item">
+      <div class="speaker-photo">
+        <img src="{{ url_for('static', filename='images/speaker.png') }}">
+      </div>
+      <div class="speaker-info">
+        <h2>Gjilberta Lucaj</h2>
+        <p>Concert Cellist, Educator</p>
+        <p>Topic:Music Cello Education</p>
+      </div>
+      <div class="speaker-action">
+        <button class="btn red-btn">INVITE</button>
+      </div>
+    </div>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
+
+  </footer>
+{% endblock %}
+{% block script %}
+<script>
+$(document).ready(function () {
+  $('#login').click(function () {
+    document.location.href = '/signin'
+  });
+  $('#nomination').click(function () {
+    document.location.href = '/nomination'
+  });
+});
+  </script>
+{% endblock %}

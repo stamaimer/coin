@@ -1,65 +1,43 @@
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img alt="Brand" src="{{ url_for('static', filename='images/bootstrap-punchout.svg') }}"></a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                    <li class=""><a href="#">Index</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-
-        </div>
-    </div>
+{% extends "side.html" %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <button class="lg-btn red-btn" id="login">MEMBER LOGIN</button>
+    <button class="lg-btn blue-btn" id="nomination">NOMINATION</button>
+    <p class="note">Note to non-members:find out about Profiles in Perspective--the "calling card" that aligns your capability with worthy representation and presentation. Stand out from other luckluster, hodge-podge social media platforms through the mechanism of high quality content.</p>
+  </div>
 {% endblock %}
+{% block container %}
+  <h2 class="title bold first-child">
+    Profiles in Perspective(PIP).
+    <br>
+    To know, and to act effectively
+  </h2>
+  <p>
+    The soure of high-end personal profiles, featuring the leaders and trend-makes from all channels of human endeavor. Our network is "purposefully disconnected" serving as an immersive, yet concise portrait change agents.
+  </p>
+  <p>
+    Offering a highly consistent platform, in a succinct and accessible layout, uor dossiers immediately despense with noise, anst, hype and hyperbole to bring individual quality and dignity to the forfront.
+  </p>
+  <footer class="note">
+    <div class="copy">
+      <span>©2016, YH Cohen & Co., LLC</span>
+    </div>
+    <div class="copy-right">
+      <span>Profiles in Perspective(PIP) is a private company and subsidiary of YH Cohen & Co., LLC. All rights reserved.</span>
+    </div>
 
-
+  </footer>
+{% endblock %}
+{% block script %}
+<script>
+$(document).ready(function () {
+  $('#login').click(function () {
+    document.location.href = '/signin'
+  });
+  $('#nomination').click(function () {
+    document.location.href = '/nomination'
+  });
+});
+  </script>
+{% endblock %}

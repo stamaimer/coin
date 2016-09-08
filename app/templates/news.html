@@ -1,0 +1,97 @@
+{% extends "thin-side.html" %}
+{% block side %}
+  {{ super() }}
+  <div class="side-content">
+    <button class="btn red-btn" id="profile">PROFILE</button>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="header">
+    <p style="font-size: 18px;">
+      <span style="font-weight: bold">Gjilberta Lucaj</span><br>
+      <span>Associate Professor of</span><br>
+      <span>Concert Cellist, Educator</span><br>
+    </p>
+  </div>
+  <div class="content">
+    <div class="photo sm-photo">
+      <img src="{{ url_for('static', filename="images/photo.png") }}">
+    </div>
+    <div class="profile-detail">
+      <div class="description">
+        <p style="font-size: 18px;">Events</p>
+        <div class="exp">
+          <h4>Classical Sundays New York City</h4>
+          <p>SUN, AUG 28TH 4:00 PM & 4 MORE</p>
+          <p>Caffe Vivaldi</p>
+        </div>
+        <div class="exp">
+          <h4>Vivaldi on Ludlow</h4>
+          <p>THU, SEP 8TH 6:30 PM</p>
+          <p>Ludlow Studios</p>
+        </div>
+        <div class="exp">
+          <h4>Concert by Vox Clamantis</h4>
+          <p>SUN, SEP 18 6:30 PM</p>
+          <p>Church of St. Francis Xavier</p>
+        </div>
+        <div class="exp">
+          <h4>The Chelsea Symphony: September 10 feat. Tchaikovsky 4</h4>
+          <p>SAT, SEP 10 7:30 PM</p>
+          <p>German Lutheran Church of St. Paul</p>
+        </div>
+        <div class="exp">
+          <h4>Classical Music Festival</h4>
+          <p>MON, AUG 22 8:30 PM & 1 MORE</p>
+          <p>The Cornelia Street Cafe</p>
+        </div>
+        <div class="exp">
+          <h4>Music by the Glass: Ariel Quartet</h4>
+          <p>THU, SEP 22 7:30 PM</p>
+          <p>Louis K. Meisel Gallery</p>
+        </div>
+      </div>
+      <div class="content-btn-group">
+        <button class="btn red-btn left" id="podcast">PODCAST</button>
+        {% if user=='1' %}
+          <button class="btn red-btn left" id="cv">CV</button>
+          <button class="btn red-btn left selected" id="news">NEWS</button>
+        {% endif %}
+      {% if user == '2' %}
+        <button class="btn red-btn left" id="portfolio">PORTFOLIO</button>
+      {% endif %}
+        <img id="pip-block" src="{{ url_for('static', filename="images/mark.png") }}">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+  <script>
+    $(document).ready(function () {
+      $('#invite').click(function () {
+        document.location.href = '/invite'
+      });
+      $('#speaker').click(function () {
+        document.location.href = '/speaker'
+      });
+      $('#podcast').click(function () {
+        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+      });
+      $('#profile').click(function () {
+        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+      });
+      $('#cv').click(function () {
+        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+      });
+      $('#news').click(function () {
+        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+      });
+      $('#portfolio').click(function () {
+        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+      });
+      $('#pip-block').click(function () {
+        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+      });
+    });
+  </script>
+{% endblock %}
