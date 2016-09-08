@@ -43,7 +43,7 @@ class Exam(db.Model):
 
     dl_av = db.Column(db.Float())
 
-    def __init__(self, name="", create_time=datetime.date.today(), yw_av="", sx_av="", yy_av="", wl_av="", hx_av="", sw_av="", ls_av="", zz_av="", dl_av=""):
+    def __init__(self, name="", create_time=datetime.date.today(), yw_av="0", sx_av="0", yy_av="0", wl_av="0", hx_av="0", sw_av="0", ls_av="0", zz_av="0", dl_av="0"):
         self.name = name
 
         self.create_time = create_time
