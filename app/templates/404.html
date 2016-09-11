@@ -1,6 +1,6 @@
 {% extends "side.html" %}
 {% block container %}
-  <h1 class="first-child">Page not found.</h1>
+  <h1 class="first-child">{% if error %}{{ error }}{% else %}Page not found.{% endif %}</h1>
   <footer class="note">
     <div class="copy">
       <span>©2016, YH Cohen & Co., LLC</span>
