@@ -26,9 +26,12 @@
             password: $('#password').val()
           },
           success:function (result) {
-            if(result == 'failed')
-                return;
-            window.location.href = '/profile'+result;
+            result = JSON.parse(result);
+            if(result.status == 'success'){
+              window.location.href = "/profile/"+result.user.id;
+            }else{
+              alert(result.reason);
+            }
           }
         })
       });

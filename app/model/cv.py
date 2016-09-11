@@ -16,20 +16,28 @@ class Cv(db.Model):
     __tablename__ = "cv"
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    #
+    # photo = db.Column(db.Integer(), db.ForeignKey("resource.id"))
 
-    photo = db.Column(db.Integer(), db.ForeignKey("resource.id"))
+    name = db.Column(db.Text())
 
     content = db.Column(db.Text())
 
-    def __init__(self, photo="", content=""):
-        self.photo = photo
+    def __init__(self, name="", content=""):
+        self.name = name
 
         self.content = content
+
+    def __repr__(self):
+
+        return self.name
 
     def to_json(self):
         cv = dict()
 
         cv['id'] = self.id
+
+        cv['name'] = self.name
 
         cv['content'] = self.content
 

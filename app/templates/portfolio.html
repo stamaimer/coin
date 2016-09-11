@@ -8,16 +8,16 @@
 {% block container %}
   <div class="header">
     <p style="font-size: 18px;">
-      <span style="font-weight: bold">William Bevington</span><br>
-      <span>Professor of</span><br>
-      <span>Information Mapping</span><br>
+      <span style="font-weight: bold">{{ user.name }}</span><br>
+      <span>{{ user.title }} of</span><br>
+      <span>{{ user.department }}</span><br>
     </p>
   </div>
   <div class="content">
     <div class="portfolio-list">
       <div class="portfolio-item">
         <div class="portfolio-pic">
-          <img src="{{ url_for('static',filename='images/Number01.jpg') }}">
+          <img src="{{ url_for('static',filename='upload/'+user.photo.path) }}">
         </div>
         <div class="portfolio-info">
           <h4>Nichibei Fuji Cycles</h4>

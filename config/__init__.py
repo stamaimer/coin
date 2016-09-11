@@ -8,6 +8,7 @@
 
 """
 
+import os
 
 class Config(object):
 
@@ -20,6 +21,8 @@ class Config(object):
     DEBUG = 1
 
     TESTING = 0
+
+    UPLOAD_DIR = os.getcwd() + "/app/static/upload"
 
     MAX_CONTENT_LENGTH = 1024*1024*1024
 

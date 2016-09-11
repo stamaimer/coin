@@ -1,18 +1,22 @@
 {% extends "side.html" %}
 {% block container %}
-  <p class="first-child">
-    <span class="bold" style="color:#e03f2f;font-size:20px;">Thank you for your interest in member of </span><br>
-  <span class="bold" style="color:#e03f2f;font-size:20px;">Profiles in Perspective</span><br>
-  <span class="bold" style="color:#e03f2f;font-size:20px;">You are about to review the profile of </span><br>
-  <span class="bold" style="color:#525da6;font-size:20px;">Gjilberta Lucaj</span><br>
-  <span style="color:#525da6">Associate Professor of Music Theory</span><br>
-  <span style="color:#525da6">Concert Cellist</span>
-  </p>
-  <p class="bold" style="color:#e03f2f;font-size:20px;">
-  Do you have permission to do so?
-  </p>
-  <button class="btn blue-btn" id="yes">YES</button>
-  <p class="info note">By clicking the "YES" button above, you acknoledge having received the requisite access code from the member identified, or from Profiles in Persective. Thank-you for your request and we look forward to serving our members and guests in pursuit of creating high quality profiles.</p>
+  {% if user %}
+    <p class="first-child">
+      <span class="bold" style="color:#e03f2f;font-size:20px;">Thank you for your interest in member of </span><br>
+      <span class="bold" style="color:#e03f2f;font-size:20px;">Profiles in Perspective</span><br>
+      <span class="bold" style="color:#e03f2f;font-size:20px;">You are about to review the profile of </span><br>
+      <span class="bold" style="color:#525da6;font-size:20px;">{{ user.name }}</span><br>
+      <span style="color:#525da6">{{ user.title }} of </span><br>
+      <span style="color:#525da6">{{ user.department }}</span>
+    </p>
+    <p class="bold" style="color:#e03f2f;font-size:20px;">
+      Do you have permission to do so?
+    </p>
+    <button class="btn blue-btn" id="yes">YES</button>
+    <p class="info note">By clicking the "YES" button above, you acknoledge having received the requisite access code from the member identified, or from Profiles in Persective. Thank-you for your request and we look forward to serving our members and guests in pursuit of creating high quality profiles.</p>
+    {% else %}
+    <h3 class="first-child">The access code you have given does not exists.</h3>
+  {% endif %}
   <footer class="note">
     <div class="copy">
       <span>©2016, YH Cohen & Co., LLC</span>
@@ -24,11 +28,11 @@
   </footer>
 {% endblock %}
 {% block script %}
-<script>
-$(document).ready(function () {
-  $('#yes').click(function () {
-    document.location.href = '/profile?owner={{ owner }}&user={{ user }}'
-  });
-});
+  <script>
+    $(document).ready(function () {
+      $('#yes').click(function () {
+        document.location.href = '/profile?owner={{ owner }}&user={{ user }}'
+      });
+    });
   </script>
 {% endblock %}

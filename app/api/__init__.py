@@ -9,14 +9,15 @@
 
 """
 
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, Response, render_template
+from app.model.pip_user import Pip_user
+import time, json, hashlib
 
 api = Blueprint("api", __name__)
 
 
 @api.route('/')
 def index():
-
     return "failed"
 
 
@@ -26,12 +27,51 @@ def login():
 
     password = request.form['password']
 
-    if email == 'example1@pip.com' and password == 'example1':
+    try:
+        user = Pip_user.query.filter_by(email=email).first()
 
-        return "?owner=true&user=1"
+        if not user:
+            raise Exception("Email not exist. ", email)
 
-    if email == 'example2@pip.com' and password == 'example2':
+        if not user.password == password:
+            raise Exception("Password not correct. ", email)
 
-        return "?owner=true&user=2"
+        res = Response()
 
-    return "failed"
+        res.set_cookie(key='v', value=hashlib.md5(user.email + user.password).hexdigest(),
+                       expires=time.time() + 60 * 60)
+
+        data = {}
+
+        data['status'] = "success"
+
+        data['user'] = user.to_json()
+
+        res.data = json.dumps(data)
+
+        return res
+
+    except Exception as e:
+
+        res = Response()
+
+        data = {}
+
+        data['status'] = "fail"
+
+        data['reason'] = ''.join(e.args)
+
+        res.data = json.dumps(data)
+
+        return res
+
+
+        # if email == 'example1@pip.com' and password == 'example1':
+        #
+        #     return "?owner=true&user=1"
+        #
+        # if email == 'example2@pip.com' and password == 'example2':
+        #
+        #     return "?owner=true&user=2"
+        #
+        # return "failed"

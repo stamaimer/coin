@@ -1,7 +1,7 @@
 {% extends "thin-side.html" %}
 {% block side %}
   {{ super() }}
-  {% if owner == 'true' %}
+  {% if owner %}
     <div class="side-btn-group">
       <button class="btn red-btn" id="invite">INVITE</button>
       <button class="btn blue-btn" id="speaker">SPEAKER</button>
@@ -11,49 +11,43 @@
 {% block container %}
   <div class="header">
     <p style="font-size: 18px;">
-      {% if user=='1' %}
-        <span style="font-weight: bold">Gjilberta Lucaj</span><br>
-        <span>Associate Professor of</span><br>
-        <span>Concert Cellist, Educator</span><br>
-      {% else %}
-        <span style="font-weight: bold">William Bevington</span><br>
-        <span>Professor of</span><br>
-        <span>Information Mapping</span><br>
-      {% endif %}
+      <span style="font-weight: bold">{{ user.name }}</span><br>
+      <span>{{ user.title }} of</span><br>
+      <span>{{ user.department }}</span><br>
     </p>
   </div>
   <div class="content">
     <div class="photo">
-      {% if user=='1' %}
-        <img src="{{ url_for('static', filename="images/photo.png") }}">
-      {% else %}
-      <img src="{{ url_for('static', filename="images/william.jpg") }}">
-      {% endif %}
+      <img src="/static/upload/{{ user.photo.path }}">
     </div>
     <div class="profile-detail">
       <div class="video">
         <video controls=true>
 
-          <source src="/v/test.mp4" type="video/mp4">
+          <source src="/static/upload/{{ user.video.path }}" type="video/mp4">
         </video>
       </div>
       <div class="description">
         <p>
-          My pursuit has always been to infuse design activity with a critical, systematic, and highly-considered approach that cycles between: creating, observing, and, re-creating.
-          I believe this instills meaning into the design process through the realization of the growth and change that occurs within these cycles. My first fourteen years of teaching were primarily ar The Cooper Union. For the last twenty-one years,
-          I have been teaching at The New School, Parsons School of Design. There is no better location (New York), or...
+          {{ user.info }}
         </p>
       </div>
       <div class="content-btn-group">
-        <button class="btn red-btn left" id="podcast">PODCAST</button>
-        {% if user=='1' %}
+        {% if user.podcast %}
+          <button class="btn red-btn left" id="podcast">PODCAST</button>
+        {% endif %}
+        {% if user.cv %}
           <button class="btn red-btn left" id="cv">CV</button>
+        {% endif %}
+        {% if user.news %}
           <button class="btn red-btn left" id="news">NEWS</button>
         {% endif %}
-      {% if user == '2' %}
-        <button class="btn red-btn left" id="portfolio">PORTFOLIO</button>
-      {% endif %}
-        <img id="pip-block" src="{{ url_for('static', filename="images/mark.png") }}">
+        {% if user.portfolio %}
+          <button class="btn red-btn left" id="portfolio">PORTFOLIO</button>
+        {% endif %}
+        {% if user.pip_block %}
+          <img id="pip-block" src="{{ url_for('static', filename="images/mark.png") }}">
+        {% endif %}
       </div>
     </div>
   </div>
@@ -62,28 +56,28 @@
   <script>
     $(document).ready(function () {
       $('#invite').click(function () {
-        document.location.href = '/invite'
+        document.location.href = '/profile/{{ user.id }}/invite'
       });
       $('#speaker').click(function () {
-        document.location.href = '/speaker'
+        document.location.href = '/profile/{{ user.id }}/speaker'
       });
       $('#podcast').click(function () {
-        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/podcast'
       });
       $('#profile').click(function () {
-        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}'
       });
       $('#cv').click(function () {
-        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/cv'
       });
       $('#news').click(function () {
-        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/news'
       });
       $('#portfolio').click(function () {
-        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/portfolio'
       });
       $('#pip-block').click(function () {
-        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/pip'
       });
     });
   </script>

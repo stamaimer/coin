@@ -32,19 +32,33 @@ class Pip_user(db.Model):
 
     access_code = db.Column(db.String(255))
 
-    photo = db.Column(db.Integer(), db.ForeignKey("resource.id"))
+    photo_id = db.Column(db.Integer(), db.ForeignKey("resource.id"))
 
-    video = db.Column(db.Integer(), db.ForeignKey("resource.id"))
+    photo = db.relationship('Resource', foreign_keys=photo_id)
 
-    podcast = db.Column(db.Integer(), db.ForeignKey("podcast.id"))
+    video_id = db.Column(db.Integer(), db.ForeignKey("resource.id"))
 
-    cv = db.Column(db.Integer(), db.ForeignKey("cv.id"))
+    video = db.relationship('Resource', foreign_keys=video_id)
 
-    news = db.Column(db.Integer(), db.ForeignKey("news.id"))
+    podcast_id = db.Column(db.Integer(), db.ForeignKey("podcast.id"))
 
-    portfolio = db.Column(db.Integer(), db.ForeignKey("portfolio.id"))
+    podcast = db.relationship('Podcast', foreign_keys=podcast_id)
 
-    pip_block = db.Column(db.Integer(), db.ForeignKey("pip_block.id"))
+    cv_id = db.Column(db.Integer(), db.ForeignKey("cv.id"))
+
+    cv = db.relationship('Cv', foreign_keys=cv_id)
+
+    news_id = db.Column(db.Integer(), db.ForeignKey("news.id"))
+
+    news = db.relationship('News', foreign_keys=news_id)
+
+    portfolio_id = db.Column(db.Integer(), db.ForeignKey("portfolio.id"))
+
+    portfolio = db.relationship('Portfolio', foreign_keys=portfolio_id)
+
+    pip_block_id = db.Column(db.Integer(), db.ForeignKey("pip_block.id"))
+
+    pip_block = db.relationship('Pip_block', foreign_keys=pip_block_id)
 
     def __init__(self, email=None, password=None, name=None, title=None, department=None, info=None, access_code=None, photo=None, video=None, podcast=None, cv=None, news=None, portfolio=None, pip_block=None):
 
@@ -100,18 +114,18 @@ class Pip_user(db.Model):
 
         pip_user['access_code'] = self.access_code
 
-        pip_user['photo'] = self.photo
+        pip_user['photo_id'] = self.photo_id
 
-        pip_user['video'] = self.video
+        pip_user['video_id'] = self.video_id
 
-        pip_user['podcast'] = self.podcast
+        pip_user['podcast_id'] = self.podcast_id
 
-        pip_user['cv'] = self.cv
+        pip_user['cv_id'] = self.cv_id
 
-        pip_user['news'] = self.news
+        pip_user['news_id'] = self.news_id
 
-        pip_user['portfolio'] = self.portfolio
+        pip_user['portfolio_id'] = self.portfolio_id
 
-        pip_user['pip_block'] = self.pip_block
+        pip_user['pip_block_id'] = self.pip_block_id
 
         return pip_user

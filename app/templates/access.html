@@ -30,12 +30,10 @@
 <script>
 $(document).ready(function () {
   $('#access').click(function () {
-    if($('#access-input').val() == 'access-token-1')
-      document.location.href = '/auth?user=1&owner=false';
-    else if($('#access-input').val() == 'access-token-2')
-        document.location.href = '/auth?user=2&owner=false';
+    if($("#access-input").val())
+      document.location.href = '/auth?access-code='+$("#access-input").val();
     else
-        return;
+        return
   });
 });
   </script>

@@ -12,65 +12,43 @@
 {% block container %}
   <div class="header">
     <p style="font-size: 18px;">
-      {% if user=='1' %}
-        <span style="font-weight: bold">Gjilberta Lucaj</span><br>
-        <span>Associate Professor of</span><br>
-        <span>Concert Cellist, Educator</span><br>
-      {% else %}
-        <span style="font-weight: bold">William Bevington</span><br>
-        <span>Professor of</span><br>
-        <span>Information Mapping</span><br>
-      {% endif %}
+      <span style="font-weight: bold">{{ user.name }}</span><br>
+      <span>{{ user.title }} of</span><br>
+      <span>{{ user.department }}</span><br>
     </p>
   </div>
   <div class="content">
     <div class="pip-block">
       <div class="left-block">
         <div class="left-top-block pip-content">
+          {% for block in pip['left-top'] %}
           <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+            <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
-          </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
-          </p>
+          {% endfor %}
         </div>
         <div class="left-bottom-block pip-content">
+          {% for block in pip['left-bottom'] %}
           <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+            <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
-          </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
-          </p>
+          {% endfor %}
         </div>
       </div>
       <div class="right-block">
         <div class="right-top-block pip-content">
+          {% for block in pip['right-top'] %}
           <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+            <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
-          </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
-          </p>
+          {% endfor %}
         </div>
         <div class="right-bottom-block pip-content">
+          {% for block in pip['right-bottom'] %}
           <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Performance</span>
+            <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Adaptive</span>
-          </p>
-          <p>
-            <span class="tooltip" title="Music, Orchestral Music, Chamber Music,Classical, Cello, Symphony, SoloPerformance, Composition, Teaching,Editing, Grant Writing, Italian, Research,Strategic Planning, Public Relations">Team-oriented</span>
-          </p>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -80,29 +58,23 @@
   <script type="text/javascript" src="{{ url_for('static', filename='lib/tooltipster/js/tooltipster.bundle.min.js') }}"></script>
   <script>
     $(document).ready(function () {
-      $('#invite').click(function () {
-        document.location.href = '/invite'
-      });
-      $('#speaker').click(function () {
-        document.location.href = '/speaker'
-      });
       $('#podcast').click(function () {
-        document.location.href = '/podcast?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/podcast'
       });
       $('#profile').click(function () {
-        document.location.href = '/profile?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}'
       });
       $('#cv').click(function () {
-        document.location.href = '/cv?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/cv'
       });
       $('#news').click(function () {
-        document.location.href = '/news?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/news'
       });
       $('#portfolio').click(function () {
-        document.location.href = '/portfolio?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/portfolio'
       });
       $('#pip-block').click(function () {
-        document.location.href = '/pip?user={{ user }}&owner={{ owner }}'
+        document.location.href = '/profile/{{ user.id }}/pip'
       });
       $('.tooltip').tooltipster({
         animation: 'fade',

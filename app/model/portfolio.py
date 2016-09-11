@@ -17,15 +17,24 @@ class Portfolio(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 
+    name = db.Column(db.Text())
+
     content = db.Column(db.Text())
 
-    def __init__(self, content=""):
+    def __init__(self, name="", content=""):
+        self.name = name
+
         self.content = content
+
+    def __repr__(self):
+        return self.name
 
     def to_json(self):
         portfolio = dict()
 
         portfolio['id'] = self.id
+
+        portfolio['name'] = self.name
 
         portfolio['content'] = self.content
 
