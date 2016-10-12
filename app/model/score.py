@@ -41,6 +41,12 @@ class Score(db.Model):
 
 	sum_5 = db.Column(db.Float())  # 五门总分
 
+	yw_stand = db.Column(db.Float())  # 语文标准分
+
+	sx_stand = db.Column(db.Float())  # 数学标准分
+
+	yy_stand = db.Column(db.Float())  # 英语标准分
+
 	class_rank_3 = db.Column(db.Integer())  # 三门班级排名
 
 	class_rank_5 = db.Column(db.Integer())  # 五门班级排名
@@ -55,7 +61,7 @@ class Score(db.Model):
 
 	# __mapper_args__ = {"order_by": exam.create_time}
 
-	def __init__(self, yw="", sx="", yy="", wl="", hx="", sw="", ls="", zz="", dl="", sum_3="", sum_5="", class_rank_3="", class_rank_5="", grade_rank_3="", grade_rank_5="", exam_id="", student_id=""):
+	def __init__(self, yw="", sx="", yy="", wl="", hx="", sw="", ls="", zz="", dl="", sum_3="", sum_5="", yw_stand="", sx_stand="", yy_stand="", class_rank_3="", class_rank_5="", grade_rank_3="", grade_rank_5="", exam_id="", student_id=""):
 
 		self.yw = yw
 
@@ -78,6 +84,12 @@ class Score(db.Model):
 		self.sum_3 = sum_3
 
 		self.sum_5 = sum_5
+
+		self.yw_stand = yw_stand
+
+		self.sx_stand = sx_stand
+
+		self.yy_stand = yy_stand
 
 		self.class_rank_3 = class_rank_3
 
@@ -121,6 +133,12 @@ class Score(db.Model):
 		score["sum_3"] = self.sum_3
 
 		score["sum_5"] = self.sum_5
+
+		score["yw_stand"] = self.yw_stand
+
+		score["sx_stand"] = self.sx_stand
+
+		score["yy_stand"] = self.yy_stand
 
 		score["class_rank_3"] = self.class_rank_3
 
