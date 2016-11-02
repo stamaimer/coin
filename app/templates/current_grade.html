@@ -4,23 +4,15 @@
         学生学号:{{ score.student.student_id }}<br>
         考试名称{{ score.exam.name }}<br>
         考试时间{{ score.exam.create_time }}<br>
-        语文:{{ score.yw }} 班级平均分:{{ score.exam.yw_av }}<br>
-        数学:{{ score.sx }} 班级平均分:{{ score.exam.sx_av }}<br>
-        英语:{{ score.yy }} 班级平均分:{{ score.exam.yy_av }}<br>
-        物理:{{ score.wl }} 班级平均分:{{ score.exam.wl_av }}<br>
-        化学:{{ score.hx }} 班级平均分:{{ score.exam.hx_av }}<br>
-        生物:{{ score.sw }} 班级平均分:{{ score.exam.sw_av }}<br>
-        历史:{{ score.ls }} 班级平均分:{{ score.exam.ls_av }}<br>
-        地理:{{ score.dl }} 班级平均分:{{ score.exam.dl_av }}<br>
-        政治:{{ score.zz }} 班级平均分:{{ score.exam.zz_av }}<br>
-        语文标准分:{{ score.yw_stand }}
-        数学标准分:{{ score.sx_stand }}
-        英语标准分:{{ score.yy_stand }}
+        语文:{{ score.yw }} 班级平均分:{{ score.exam.yw_av }} 语文标准分:{{ score.yw_stand }}<br>
+        数学:{{ score.sx }} 班级平均分:{{ score.exam.sx_av }} 数学标准分:{{ score.sx_stand }}<br>
+        英语:{{ score.yy }} 班级平均分:{{ score.exam.yy_av }} 英语标准分:{{ score.yy_stand }}<br>
+        物理合格考:{{ score.wl_hg }} 物理等级考:{{ score.wl_dj }} 物理标准分:{{ score.wl_stand }} 班级平均分:{{ score.exam.wl_av }}<br>}
+        化学合格考:{{ score.hx_hg }} 化学等级考:{{ score.hx_dj }} 化学标准分:{{ score.hx_stand }} 班级平均分:{{ score.exam.hx_av }}<br>
+        生物:{{ score.sw }} 班级平均分:{{ score.exam.sw_av }} 生物标准分:{{ score.sw_stand }}<br>
+        地理:{{ score.dl }} 班级平均分:{{ score.exam.dl_av }} 地理标准分:{{ score.dl_stand }}<br>
         三门总分{{ score.sum_3 }}<br>
         三门班级排名{{ score.class_rank_3 }}<br>
         三门年级排名{{ score.grade_rank_3 }}<br>
-        五门总分{{ score.sum_5 }}<br>
-        五门班级排名{{ score.class_rank_5 }}<br>
-        五门年级排名{{ score.grade_rank_5 }}<br>
 
     {% endif %}

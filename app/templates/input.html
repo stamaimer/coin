@@ -15,23 +15,24 @@
       <th>学号</th>
       <th>姓名</th>
       <th>语文</th>
-      <th>数学</th>
-      <th>英语</th>
-      <th>物理</th>
-      <th>化学</th>
-      <th>生物</th>
-      <th>历史</th>
-      <th>政治</th>
-      <th>地理</th>
         <th>语文标准分</th>
+      <th>数学</th>
         <th>数学标准分</th>
+      <th>英语</th>
         <th>英语标准分</th>
+      <th>物理合格考</th>
+        <th>物理等级考</th>
+        <th>物理标准分</th>
+      <th>化学合格考</th>
+        <th>化学等级考</th>
+        <th>化学标准分</th>
+      <th>生物</th>
+        <th>生物标准分</th>
+      <th>地理</th>
+        <th>地理标准分</th>
       <th>三门总分</th>
       <th>三门班级排名</th>
       <th>三门年级排名</th>
-      <th>五门总分</th>
-      <th>五门班级排名</th>
-      <th>五门年级排名</th>
     </tr>
     </thead>
     <tbody>
@@ -44,17 +45,15 @@
             <td class="student_id" style="display: none">{{ student.id }}</td>
             <td class="student-name">{{ student.name }}</td>
             <td class="yw" contenteditable>{{ score.yw }}</td>
+              <td contenteditable>{{ score.yw_stand }}</td>
             <td class="sx" contenteditable>{{ score.sx }}</td>
+              <td contenteditable>{{ score.sx_stand }}</td>
             <td class="yy" contenteditable>{{ score.yy }}</td>
+              <td contenteditable>{{ score.yy_stand }}</td>
             <td class="wl" contenteditable>{{ score.wl }}</td>
             <td class="hx" contenteditable>{{ score.hx }}</td>
             <td class="sw" contenteditable>{{ score.sw }}</td>
-            <td class="ls" contenteditable>{{ score.ls }}</td>
-            <td class="zz" contenteditable>{{ score.zz }}</td>
             <td class="dl" contenteditable>{{ score.dl }}</td>
-              <td contenteditable>{{ score.yw_stand }}</td>
-              <td contenteditable>{{ score.sx_stand }}</td>
-              <td contenteditable>{{ score.yy_stand }}</td>
             <td class="sum_3">{{ score.sum_3 }}</td>
             <td class="class_rank_3">{{ score.class_rank_3 }}</td>
             <td class="grade_rank_3" contenteditable>{{ score.grade_rank_3 }}</td>

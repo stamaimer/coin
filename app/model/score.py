@@ -15,141 +15,153 @@ from app.model import db
 
 
 class Score(db.Model):
-	__tablename__ = "score"
 
-	id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    __tablename__ = "score"
 
-	yw = db.Column(db.Float())  # 语文
+    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
 
-	sx = db.Column(db.Float())  # 数学
+    yw = db.Column(db.Float())  # 语文
 
-	yy = db.Column(db.Float())  # 英语
+    yw_stand = db.Column(db.Float())  # 语文标准分
 
-	wl = db.Column(db.Float())  # 物理
+    sx = db.Column(db.Float())  # 数学
 
-	hx = db.Column(db.Float())  # 化学
+    sx_stand = db.Column(db.Float())  # 数学标准分
 
-	sw = db.Column(db.Float())  # 生物
+    yy = db.Column(db.Float())  # 英语
 
-	ls = db.Column(db.Float())  # 历史
+    yy_stand = db.Column(db.Float())  # 英语标准分
 
-	zz = db.Column(db.Float())  # 政治
+    wl_hg = db.Column(db.Float())  # 物理合格
 
-	dl = db.Column(db.Float())  # 地理
+    wl_dj = db.Column(db.Float())  # 物理等级
 
-	sum_3 = db.Column(db.Float())  # 三门总分
+    wl_stand = db.Column(db.Float())  # 物理标准分
 
-	sum_5 = db.Column(db.Float())  # 五门总分
+    hx_hg = db.Column(db.Float())  # 化学合格
 
-	yw_stand = db.Column(db.Float())  # 语文标准分
+    hx_dj = db.Column(db.Float())  # 化学等级
 
-	sx_stand = db.Column(db.Float())  # 数学标准分
+    hx_stand = db.Column(db.Float())  #化学标准分
 
-	yy_stand = db.Column(db.Float())  # 英语标准分
+    sw = db.Column(db.Float())  # 生物
 
-	class_rank_3 = db.Column(db.Integer())  # 三门班级排名
+    sw_stand = db.Column(db.Float())  # 生物标准分
 
-	class_rank_5 = db.Column(db.Integer())  # 五门班级排名
+    dl = db.Column(db.Float())  # 地理
 
-	grade_rank_3 = db.Column(db.Integer())  # 三门年级排名
+    dl_stand = db.Column(db.Float())  # 地理标准分
 
-	grade_rank_5 = db.Column(db.Integer())  # 五门年级排名
+    sum_3 = db.Column(db.Float())  # 三门总分
 
-	student_id = db.Column(db.Integer(), db.ForeignKey("student.id"))
+    class_rank_3 = db.Column(db.Integer())  # 三门班级排名
 
-	exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
+    grade_rank_3 = db.Column(db.Integer())  # 三门年级排名
 
-	# __mapper_args__ = {"order_by": exam.create_time}
+    student_id = db.Column(db.Integer(), db.ForeignKey("student.id"))
 
-	def __init__(self, yw="", sx="", yy="", wl="", hx="", sw="", ls="", zz="", dl="", sum_3="", sum_5="", yw_stand="", sx_stand="", yy_stand="", class_rank_3="", class_rank_5="", grade_rank_3="", grade_rank_5="", exam_id="", student_id=""):
+    exam_id = db.Column(db.Integer(), db.ForeignKey("exam.id"))
 
-		self.yw = yw
+    # __mapper_args__ = {"order_by": exam.create_time}
 
-		self.sx = sx
+    def __init__(self, yw="", yw_stand="", sx="", sx_stand="", yy="", yy_stand="",
+                    wl_hg="", wl_dj="", wl_stand="",
+                    hx_hg="", hx_dj="", hx_stand="",
+                    sw="", sw_stand="", dl="", dl_stand="",
+                    sum_3="", class_rank_3="", grade_rank_3="", exam_id="", student_id=""):
 
-		self.yy = yy
+        self.yw = yw
 
-		self.wl = wl
+        self.yw_stand = yw_stand
 
-		self.hx = hx
+        self.sx = sx
 
-		self.sw = sw
+        self.sx_stand = sx_stand
 
-		self.ls = ls
+        self.yy = yy
 
-		self.zz = zz
+        self.yy_stand = yy_stand
 
-		self.dl = dl
+        self.wl_hg = wl_hg
 
-		self.sum_3 = sum_3
+        self.wl_dj = wl_dj
 
-		self.sum_5 = sum_5
+        self.wl_stand = wl_stand
 
-		self.yw_stand = yw_stand
+        self.hx_hg = hx_hg
 
-		self.sx_stand = sx_stand
+        self.hx_dj = hx_dj
 
-		self.yy_stand = yy_stand
+        self.hx_stand = hx_stand
 
-		self.class_rank_3 = class_rank_3
+        self.sw = sw
 
-		self.class_rank_5 = class_rank_5
+        self.sw_stand = sw_stand
 
-		self.grade_rank_3 = grade_rank_3
+        self.dl = dl
 
-		self.grade_rank_5 = grade_rank_5
+        self.dl_stand = dl_stand
 
-		self.student_id = student_id
+        self.sum_3 = sum_3
 
-		self.exam_id = exam_id
+        self.class_rank_3 = class_rank_3
 
-	# def __repr__(self):
-	#
-	#     return self.email
+        self.grade_rank_3 = grade_rank_3
 
-	def to_json(self):
-		score = dict()
+        self.student_id = student_id
 
-		score["id"] = self.id
+        self.exam_id = exam_id
 
-		score["yw"] = self.yw
+    # def __repr__(self):
+    #
+    #     return self.email
 
-		score["sx"] = self.sx
+    def to_json(self):
 
-		score["yy"] = self.yy
+        score = dict()
 
-		score["wl"] = self.wl
+        score["id"] = self.id
 
-		score["hx"] = self.hx
+        score["yw"] = self.yw
 
-		score["sw"] = self.sw
+        score["yw_stand"] = self.yw_stand
 
-		score["ls"] = self.ls
+        score["sx"] = self.sx
 
-		score["zz"] = self.zz
+        score["sx_stand"] = self.sx_stand
 
-		score["dl"] = self.dl
+        score["yy"] = self.yy
 
-		score["sum_3"] = self.sum_3
+        score["yy_stand"] = self.yy_stand
 
-		score["sum_5"] = self.sum_5
+        score["wl_hg"] = self.wl_hg
 
-		score["yw_stand"] = self.yw_stand
+        score["wl_dj"] = self.wl_dj
 
-		score["sx_stand"] = self.sx_stand
+        score["wl_stand"] = self.wl_stand
 
-		score["yy_stand"] = self.yy_stand
+        score["hx_hg"] = self.hx_hg
 
-		score["class_rank_3"] = self.class_rank_3
+        score["hx_dj"] = self.hx_dj
 
-		score["class_rank_5"] = self.class_rank_5
+        score["hx_stand"] = self.hx_stand
 
-		score["grade_rank_3"] = self.grade_rank_3
+        score["sw"] = self.sw
 
-		score["grade_rank_5"] = self.grade_rank_5
+        score["sw_stand"] = self.sw_stand
 
-		score["student_id"] = self.student_id
+        score["dl"] = self.dl
 
-		score["exam_id"] = self.exam_id
+        score["dl_stand"] = self.dl_stand
 
-		return score
+        score["sum_3"] = self.sum_3
+
+        score["class_rank_3"] = self.class_rank_3
+
+        score["grade_rank_3"] = self.grade_rank_3
+
+        score["student_id"] = self.student_id
+
+        score["exam_id"] = self.exam_id
+
+        return score
