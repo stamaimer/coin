@@ -52,6 +52,14 @@ class Score(db.Model):
 
     dl_stand = db.Column(db.Float())  # 地理标准分
 
+    ls = db.Column(db.Float())  # 历史
+
+    ls_stand = db.Column(db.Float())  # 历史标准分
+
+    zz = db.Column(db.Float())  # 政治
+
+    zz_stand = db.Column(db.Float())  # 政治标准分
+
     sum_3 = db.Column(db.Float())  # 三门总分
 
     class_rank_3 = db.Column(db.Integer())  # 三门班级排名
@@ -67,7 +75,7 @@ class Score(db.Model):
     def __init__(self, yw="", yw_stand="", sx="", sx_stand="", yy="", yy_stand="",
                     wl_hg="", wl_dj="", wl_stand="",
                     hx_hg="", hx_dj="", hx_stand="",
-                    sw="", sw_stand="", dl="", dl_stand="",
+                    sw="", sw_stand="", dl="", dl_stand="", ls="", ls_stand="", zz="", zz_stand="",
                     sum_3="", class_rank_3="", grade_rank_3="", exam_id="", student_id=""):
 
         self.yw = yw
@@ -101,6 +109,14 @@ class Score(db.Model):
         self.dl = dl
 
         self.dl_stand = dl_stand
+
+        self.ls = ls
+
+        self.ls_stand = ls_stand
+
+        self.zz = zz
+
+        self.zz_stand = zz_stand
 
         self.sum_3 = sum_3
 
@@ -153,6 +169,14 @@ class Score(db.Model):
         score["dl"] = self.dl
 
         score["dl_stand"] = self.dl_stand
+
+        score["ls"] = self.ls
+
+        score["ls_stand"] = self.ls_stand
+
+        score["zz"] = self.zz
+
+        score["zz_stand"] = self.zz_stand
 
         score["sum_3"] = self.sum_3
 

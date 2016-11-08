@@ -9,30 +9,34 @@
     <input type="text" id="exam-id" style="display: none" value="{{ exam.id }}">
   </div>
   <br>
-  <table class="table table-bordered" id="score">
+  <table class="table table-bordered" id="score" style="font-size: 12px;">
     <thead>
     <tr>
       <th>学号</th>
       <th>姓名</th>
       <th>语文</th>
-        <th>语文标准分</th>
-      <th>数学</th>
-        <th>数学标准分</th>
-      <th>英语</th>
-        <th>英语标准分</th>
-      <th>物理合格考</th>
-        <th>物理等级考</th>
-        <th>物理标准分</th>
-      <th>化学合格考</th>
-        <th>化学等级考</th>
-        <th>化学标准分</th>
-      <th>生物</th>
-        <th>生物标准分</th>
-      <th>地理</th>
-        <th>地理标准分</th>
-      <th>三门总分</th>
-      <th>三门班级排名</th>
-      <th>三门年级排名</th>
+        <th>语标</th>
+      <th>数</th>
+        <th>数标</th>
+      <th>英</th>
+        <th>英标</th>
+      <th>物合</th>
+        <th>物等</th>
+        <th>物等标</th>
+      <th>化合</th>
+        <th>化等</th>
+        <th>化等标</th>
+      <th>生</th>
+        <th>生标</th>
+      <th>地</th>
+        <th>地标</th>
+      <th>史</th>
+        <th>史标</th>
+      <th>政</th>
+        <th>政标</th>
+      <th>三总</th>
+      <th>三班</th>
+      <th>三年级</th>
     </tr>
     </thead>
     <tbody>
@@ -45,21 +49,28 @@
             <td class="student_id" style="display: none">{{ student.id }}</td>
             <td class="student-name">{{ student.name }}</td>
             <td class="yw" contenteditable>{{ score.yw }}</td>
-              <td contenteditable>{{ score.yw_stand }}</td>
+            <td class="yw_stand" contenteditable>{{ score.yw_stand }}</td>
             <td class="sx" contenteditable>{{ score.sx }}</td>
-              <td contenteditable>{{ score.sx_stand }}</td>
+            <td class="sx_stand" contenteditable>{{ score.sx_stand }}</td>
             <td class="yy" contenteditable>{{ score.yy }}</td>
-              <td contenteditable>{{ score.yy_stand }}</td>
-            <td class="wl" contenteditable>{{ score.wl }}</td>
-            <td class="hx" contenteditable>{{ score.hx }}</td>
+            <td class="yy_stand" contenteditable>{{ score.yy_stand }}</td>
+            <td class="wl_hg" contenteditable>{{ score.wl_hg }}</td>
+            <td class="wl_dj" contenteditable>{{ score.wl_dj }}</td>
+            <td class="wl_stand" contenteditable>{{ score.wl_stand }}</td>
+            <td class="hx_hg" contenteditable>{{ score.hx_hg }}</td>
+            <td class="hx_dj" contenteditable>{{ score.hx_dj }}</td>
+            <td class="hx_stand" contenteditable>{{ score.hx_stand }}</td>
             <td class="sw" contenteditable>{{ score.sw }}</td>
+            <td class="sw_stand" contenteditable>{{ score.sw_stand }}</td>
             <td class="dl" contenteditable>{{ score.dl }}</td>
+            <td class="dl_stand" contenteditable>{{ score.dl_stand }}</td>
+            <td class="ls" contenteditable>{{ score.ls }}</td>
+            <td class="ls_stand" contenteditable>{{ score.ls_stand }}</td>
+            <td class="zz" contenteditable>{{ score.zz }}</td>
+            <td class="zz_stand" contenteditable>{{ score.zz_stand }}</td>
             <td class="sum_3">{{ score.sum_3 }}</td>
             <td class="class_rank_3">{{ score.class_rank_3 }}</td>
             <td class="grade_rank_3" contenteditable>{{ score.grade_rank_3 }}</td>
-            <td class="sum_5">{{ score.sum_5 }}</td>
-            <td class="class_rank_5">{{ score.class_rank_5 }}</td>
-            <td class="grade_rank_5" contenteditable>{{ score.grade_rank_5 }}</td>
           </tr>
         {% endfor %}
       {% endfor %}
@@ -70,41 +81,54 @@
             <td class="student_id" style="display: none">{{ student.id }}</td>
             <td class="student-name">{{ student.name }}</td>
             <td class="yw" contenteditable>0</td>
+            <td class="yw_stand" contenteditable>0</td>
             <td class="sx" contenteditable>0</td>
+            <td class="sx_stand" contenteditable>0</td>
             <td class="yy" contenteditable>0</td>
-            <td class="wl" contenteditable>0</td>
-            <td class="hx" contenteditable>0</td>
+            <td class="yy_stand" contenteditable>0</td>
+            <td class="wl_hg" contenteditable>0</td>
+            <td class="wl_dj" contenteditable>0</td>
+            <td class="wl_stand" contenteditable>0</td>
+            <td class="hx_hg" contenteditable>0</td>
+            <td class="hx_dj" contenteditable>0</td>
+            <td class="hx_stand" contenteditable>0</td>
             <td class="sw" contenteditable>0</td>
-            <td class="ls" contenteditable>0</td>
-            <td class="zz" contenteditable>0</td>
+            <td class="sw_stand" contenteditable>0</td>
             <td class="dl" contenteditable>0</td>
-              <td contenteditable>0</td>
-              <td contenteditable>0</td>
-              <td contenteditable>0</td>
+            <td class="dl_stand" contenteditable>0</td>
+            <td class="ls" contenteditable>0</td>
+            <td class="ls_stand" contenteditable>0</td>
+            <td class="zz" contenteditable>0</td>
+            <td class="zz_stand" contenteditable>0</td>
             <td class="sum_3">0</td>
             <td class="class_rank_3">0</td>
             <td class="grade_rank_3" contenteditable>0</td>
-            <td class="sum_5">0</td>
-            <td class="class_rank_5">0</td>
-            <td class="grade_rank_5" contenteditable>0</td>
           </tr>
       {% endfor %}
     {% endif %}
     <tr class="average">
             <th scope="row">-</th>
             <td>平均分</td>
-            <td class="yw-av">{{ exam.yw_av }}</td>
-            <td class="sx-av">{{ exam.sx_av }}</td>
-            <td class="yy-av">{{ exam.yy_av }}</td>
-            <td class="wl-av">{{ exam.wl_av }}</td>
-            <td class="hx-av">{{ exam.hx_av }}</td>
-            <td class="sw-av">{{ exam.sw_av }}</td>
-            <td class="ls-av">{{ exam.ls_av }}</td>
-            <td class="zz-av">{{ exam.zz_av }}</td>
-            <td class="dl-av">{{ exam.dl_av }}</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
+            <td class="yw_av">{{ exam.yw_av }}</td>
+            <td class="yw_stand_av">{{ exam.yw_stand_av }}</td>
+            <td class="sx_av">{{ exam.sx_av }}</td>
+            <td class="sx_stand_av">{{ exam.sx_stand_av }}</td>
+            <td class="yy_av">{{ exam.yy_av }}</td>
+            <td class="yy_stand_av">{{ exam.yy_stand_av }}</td>
+            <td class="wl_hg_av">{{ exam.wl_hg_av }}</td>
+            <td class="wl_dj_av">{{ exam.wl_dj_av }}</td>
+            <td class="wl_stand_av">{{ exam.wl_stand_av }}</td>
+            <td class="hx_hg_av">{{ exam.hx_hg_av }}</td>
+            <td class="hx_dj_av">{{ exam.hx_dj_av }}</td>
+            <td class="hx_stand_av">{{ exam.hx_stand_av }}</td>
+            <td class="sw_av">{{ exam.sw_av }}</td>
+            <td class="sw_stand_av">{{ exam.sw_stand_av }}</td>
+            <td class="dl_av">{{ exam.dl_av }}</td>
+            <td class="dl_stand_av">{{ exam.dl_stand_av }}</td>
+            <td class="ls_av">{{ exam.ls_av }}</td>
+            <td class="ls_stand_av">{{ exam.ls_stand_av }}</td>
+            <td class="zz_av">{{ exam.zz_av }}</td>
+            <td class="zz_stand_av">{{ exam.zz_stand_av }}</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>

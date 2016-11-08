@@ -77,19 +77,16 @@ $(document).ready(function () {
 
 function autoCalc() {
     $('.score').each(function (index, value) {
-        var sum3 = parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text()) + parseInt($(this).find('td:eq(4)').text());
-        var sum5 = parseInt($(this).find('td:eq(2)').text()) + parseInt($(this).find('td:eq(3)').text()) + parseInt($(this).find('td:eq(4)').text()) + parseInt($(this).find('td:eq(5)').text()) + parseInt($(this).find('td:eq(6)').text());
-        $(this).find('td:eq(11)').text(sum3);
-        $(this).find('td:eq(14)').text(sum5);
+        var sum3 = parseInt($(this).find('.yw').text()) + parseInt($(this).find('.sx').text()) + parseInt($(this).find('.yy').text());
+        $(this).find('.sum_3').text(sum3);
         sortBy3();
-        sortBy5();
     });
     calcAverage()
 }
 
 
 function calcAverage() {
-    for(var i = 1 ;i <= 9;i++){
+    for(var i = 1 ;i <= 20;i++){
         var sum = 0;
         var count = 0;
         $('.included').each(function (index, value) {
@@ -106,7 +103,7 @@ function calcAverage() {
 
 function sortBy3() {
     $('.score')
-        .find('td:eq(11)')
+        .find('.sum_3')
         .sort(function (a, b) {
             return b.innerText - a.innerText
         })
@@ -152,29 +149,51 @@ function sendData(examId, examName) {
         score.yw = $(this).find('.yw').text();
         score.sx = $(this).find('.sx').text();
         score.yy = $(this).find('.yy').text();
-        score.wl = $(this).find('.wl').text();
-        score.hx = $(this).find('.hx').text();
+        score.wl_hg = $(this).find('.wl_hg').text();
+        score.wl_dj = $(this).find('.wl_dj').text();
+        score.hx_hg = $(this).find('.hx_hg').text();
+        score.hx_dj = $(this).find('.hx_dj').text();
         score.sw = $(this).find('.sw').text();
         score.ls = $(this).find('.ls').text();
         score.zz = $(this).find('.zz').text();
         score.dl = $(this).find('.dl').text();
+
+        score.yw_stand = $(this).find('.yw_stand').text();
+        score.sx_stand = $(this).find('.sx_stand').text();
+        score.yy_stand = $(this).find('.yy_stand').text();
+        score.wl_stand = $(this).find('.wl_stand').text();
+        score.hx_stand = $(this).find('.hx_stand').text();
+        score.sw_stand = $(this).find('.sw_stand').text();
+        score.ls_stand = $(this).find('.ls_stand').text();
+        score.zz_stand = $(this).find('.zz_stand').text();
+        score.dl_stand = $(this).find('.dl_stand').text();
         score.sum_3 = $(this).find('.sum_3').text();
         score.class_rank_3 = $(this).find('.class_rank_3').text();
         score.grade_rank_3 = $(this).find('.grade_rank_3').text();
-        score.sum_5 = $(this).find('.sum_5').text();
-        score.class_rank_5 = $(this).find('.class_rank_5').text();
-        score.grade_rank_5 = $(this).find('.grade_rank_5').text();
         data.scores.push(score);
     });
-    data.yw_av = $('.yw-av').text();
-    data.sx_av = $('.sx-av').text();
-    data.yy_av = $('.yy-av').text();
-    data.wl_av = $('.wl-av').text();
-    data.hx_av = $('.hx-av').text();
-    data.sw_av = $('.sw-av').text();
-    data.ls_av = $('.ls-av').text();
-    data.zz_av = $('.zz-av').text();
-    data.dl_av = $('.dl-av').text();
+    data.yw_av = $('.yw_av').text();
+    data.sx_av = $('.sx_av').text();
+    data.yy_av = $('.yy_av').text();
+    data.wl_hg_av = $('.wl_hg_av').text();
+    data.hx_hg_av = $('.hx_hg_av').text();
+    data.wl_dj_av = $('.wl_dj_av').text();
+    data.hx_dj_av = $('.hx_dj_av').text();
+    data.sw_av = $('.sw_av').text();
+    data.ls_av = $('.ls_av').text();
+    data.zz_av = $('.zz_av').text();
+    data.dl_av = $('.dl_av').text();
+
+    data.yw_stand_av = $('.yw_stand_av').text();
+    data.sx_stand_av = $('.sx_stand_av').text();
+    data.yy_stand_av = $('.yy_stand_av').text();
+    data.wl_stand_av = $('.wl_stand_av').text();
+    data.hx_stand_av = $('.hx_stand_av').text();
+    data.sw_stand_av = $('.sw_stand_av').text();
+    data.ls_stand_av = $('.ls_stand_av').text();
+    data.zz_stand_av = $('.zz_stand_av').text();
+    data.dl_stand_av = $('.dl_stand_av').text();
+
     $.ajax({
         url: '/score',
         data: JSON.stringify(data),
