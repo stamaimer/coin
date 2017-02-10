@@ -21,12 +21,12 @@ class News(db.Model):
 
     name = db.Column(db.Text())
 
-    content = db.Column(db.Text())
+    news_piece = db.relationship('News_piece', backref='owner_news', lazy='dynamic')
 
-    def __init__(self, name="", content=""):
+    owner_user = db.relationship('Pip_user', backref='news', lazy='dynamic')
+
+    def __init__(self, name=None):
         self.name = name
-
-        self.content = content
 
     def __repr__(self):
         return self.name
@@ -38,6 +38,10 @@ class News(db.Model):
 
         news['name'] = self.name
 
-        news['content'] = self.content
+        news['news_piece'] = list()
+
+        for piece in self.news_piece:
+
+            news['news_piece'].append(piece.to_json())
 
         return news

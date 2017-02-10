@@ -20,11 +20,11 @@
     <div class="profile-detail">
       <div class="description">
         <p style="font-size: 18px;">Events</p>
-        {% for exp in news %}
+        {% for piece in user.news.news_piece %}
           <div class="exp">
-            <h4>{{ exp.topic }}</h4>
-            <p>{{ exp.time }}</p>
-            <p>{{ exp.location }}</p>
+            <h4>{{ piece.topic }}</h4>
+            <p>{{ piece.time }}</p>
+            <p>{{ piece.location }}</p>
           </div>
         {% endfor %}
       </div>

@@ -22,7 +22,7 @@ main = Blueprint("main", __name__)
 
 @main.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html", error=''.join(e.description.args)), 404
+    return render_template("404.html", error=''.join(e.description)), 404
 
 
 @main.before_app_first_request
@@ -133,10 +133,32 @@ def invite():
     return render_template("invite.html")
 
 
-@main.route('/speaker')
+@main.route('/profile/<int:user_id>/talks')
 # @login_required
-def speaker():
-    return render_template("speaker.html")
+def talks(user_id):
+
+    try:
+
+        user = Pip_user.query.filter_by(id=user_id).first()
+
+        if not user:
+            raise Exception('Page not found')
+
+        # podcast = json.loads(user.podcast.content)
+        #
+        # audio = user.podcast.audio
+
+        if hashlib.md5(user.email + user.password).hexdigest() == request.cookies.get('v'):
+
+            return render_template("talks.html", user=user, owner=True)
+
+        else:
+
+            return render_template("talks.html", user=user, owner=False)
+
+    except Exception as e:
+
+        abort(404)
 
 
 @main.route('/recruiter')
@@ -182,15 +204,13 @@ def cv(user_id):
         if not user:
             raise Exception('Page not found')
 
-        cv = json.loads(user.cv.content)
-
         if hashlib.md5(user.email + user.password).hexdigest() == request.cookies.get('v'):
 
-            return render_template("cv.html", user=user, cv=cv, owner=True)
+            return render_template("cv.html", user=user, owner=True)
 
         else:
 
-            return render_template("cv.html", user=user, cv=cv, owner=False)
+            return render_template("cv.html", user=user, owner=False)
 
     except Exception as e:
 
@@ -207,25 +227,40 @@ def news(user_id):
         if not user:
             raise Exception('Page not found')
 
-        news = json.loads(user.news.content)
-
         if hashlib.md5(user.email + user.password).hexdigest() == request.cookies.get('v'):
 
-            return render_template("news.html", user=user, news=news, owner=True)
+            return render_template("news.html", user=user, owner=True)
 
         else:
 
-            return render_template("news.html", user=user, news=news, owner=False)
+            return render_template("news.html", user=user, owner=False)
 
     except Exception as e:
 
         abort(404)
 
 
-@main.route('/portfolio')
+@main.route('/profile/<int:user_id>/portfolio')
 # @login_required
-def portfolio():
-    return render_template("portfolio.html", owner=request.args.get('owner'), user=request.args.get('user'))
+def portfolio(user_id):
+    try:
+
+        user = Pip_user.query.filter_by(id=user_id).first()
+
+        if not user:
+            raise Exception('Page not found')
+
+        if hashlib.md5(user.email + user.password).hexdigest() == request.cookies.get('v'):
+
+            return render_template("portfolio.html", user=user, owner=True)
+
+        else:
+
+            return render_template("portfolio.html", user=user, owner=False)
+
+    except Exception as e:
+
+        abort(404)
 
 
 @main.route('/profile/<int:user_id>/pip')
@@ -238,15 +273,13 @@ def pip(user_id):
         if not user:
             raise Exception('Page not found')
 
-        pip = json.loads(user.pip_block.content)
-
         if hashlib.md5(user.email + user.password).hexdigest() == request.cookies.get('v'):
 
-            return render_template("pip.html", user=user, pip=pip, owner=True)
+            return render_template("pip.html", user=user)
 
         else:
 
-            return render_template("pip.html", user=user, pip=pip, owner=False)
+            return render_template("pip.html", user=user)
 
     except Exception as e:
 

@@ -42,23 +42,13 @@ class Pip_user(db.Model):
 
     podcast_id = db.Column(db.Integer(), db.ForeignKey("podcast.id"))
 
-    podcast = db.relationship('Podcast', foreign_keys=podcast_id)
-
     cv_id = db.Column(db.Integer(), db.ForeignKey("cv.id"))
-
-    cv = db.relationship('Cv', foreign_keys=cv_id)
 
     news_id = db.Column(db.Integer(), db.ForeignKey("news.id"))
 
-    news = db.relationship('News', foreign_keys=news_id)
-
     portfolio_id = db.Column(db.Integer(), db.ForeignKey("portfolio.id"))
 
-    portfolio = db.relationship('Portfolio', foreign_keys=portfolio_id)
-
     pip_block_id = db.Column(db.Integer(), db.ForeignKey("pip_block.id"))
-
-    pip_block = db.relationship('Pip_block', foreign_keys=pip_block_id)
 
     def __init__(self, email=None, password=None, name=None, title=None, department=None, info=None, access_code=None, photo=None, video=None, podcast=None, cv=None, news=None, portfolio=None, pip_block=None):
 
@@ -80,19 +70,9 @@ class Pip_user(db.Model):
 
         self.video = video
 
-        self.podcast = podcast
+    def __repr__(self):
 
-        self.cv = cv
-
-        self.news = news
-
-        self.portfolio = portfolio
-
-        self.pip_block = pip_block
-
-    # def __repr__(self):
-    #
-    #     return self.email
+        return self.name
 
     def to_json(self):
 

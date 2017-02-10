@@ -20,7 +20,7 @@
     <div class="profile-detail">
       <div class="description">
         <p style="font-size: 18px;">Experience</p>
-        {% for exp in cv['experience'] %}
+        {% for exp in user.cv.experience %}
           <div class="exp">
             <h4>{{ exp.title }}</h4>
             <p>{{ exp.org }}</p>
@@ -29,10 +29,10 @@
         {% endfor %}
         <p style="font-size: 18px;">Skills</p>
         <p class="skills">
-          {{ cv['skills'] }}
+          {{ user.cv.skills }}
         </p>
         <p style="font-size: 18px;">Education</p>
-        {% for edu in cv['education'] %}
+        {% for edu in user.cv.education %}
           <div class="edu">
             <h4>{{ edu.school }}</h4>
             <p>{{ edu.major }}</p>

@@ -4,7 +4,8 @@
   {% if owner %}
     <div class="side-btn-group">
       <button class="btn red-btn" id="invite">INVITE</button>
-      <button class="btn blue-btn" id="speaker">SPEAKER</button>
+      <button class="btn blue-btn" id="talks">TALKS</button>
+{#      <button class="btn blue-btn" id="interview">INTERVIEW</button>#}
     </div>
   {% endif %}
 {% endblock %}
@@ -56,10 +57,13 @@
   <script>
     $(document).ready(function () {
       $('#invite').click(function () {
-        document.location.href = '/profile/{{ user.id }}/invite'
+        document.location.href = '/invite'
       });
-      $('#speaker').click(function () {
-        document.location.href = '/profile/{{ user.id }}/speaker'
+      $('#talks').click(function () {
+        document.location.href = '/profile/{{ user.id }}/talks'
+      });
+      $('#interview').click(function () {
+        document.location.href = '/profile/{{ user.id }}/interview'
       });
       $('#podcast').click(function () {
         document.location.href = '/profile/{{ user.id }}/podcast'

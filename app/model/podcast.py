@@ -23,12 +23,13 @@ class Podcast(db.Model):
 
     # photo = db.Column(db.Integer(), db.ForeignKey("resource.id"))
 
-    name = db.Column(db.Text())
+    name = db.Column(db.String())
 
     content = db.Column(db.Text())
 
-    def __init__(self, audio_id="", name="", content=""):
-        self.audio_id = audio_id
+    owner_user = db.relationship('Pip_user', backref='podcast', lazy='dynamic')
+
+    def __init__(self, name="", content=""):
 
         self.name = name
 

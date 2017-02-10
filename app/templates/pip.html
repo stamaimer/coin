@@ -21,33 +21,41 @@
     <div class="pip-block">
       <div class="left-block">
         <div class="left-top-block pip-content">
-          {% for block in pip['left-top'] %}
+          {% for block in user.pip_block.pip_block_piece %}
+            {% if block.position == 'left-top' %}
           <p>
             <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
+            {% endif %}
           {% endfor %}
         </div>
         <div class="left-bottom-block pip-content">
-          {% for block in pip['left-bottom'] %}
+          {% for block in user.pip_block.pip_block_piece %}
+          {% if block.position == 'left-bottom' %}
           <p>
             <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
+            {% endif %}
           {% endfor %}
         </div>
       </div>
       <div class="right-block">
         <div class="right-top-block pip-content">
-          {% for block in pip['right-top'] %}
+          {% for block in user.pip_block.pip_block_piece %}
+          {% if block.position == 'right-top' %}
           <p>
             <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
+            {% endif %}
           {% endfor %}
         </div>
         <div class="right-bottom-block pip-content">
-          {% for block in pip['right-bottom'] %}
+          {% for block in user.pip_block.pip_block_piece %}
+          {% if block.position == 'right-bottom' %}
           <p>
             <span class="tooltip" title="{{ block.description }}">{{ block.keyword }}</span>
           </p>
+            {% endif %}
           {% endfor %}
         </div>
       </div>

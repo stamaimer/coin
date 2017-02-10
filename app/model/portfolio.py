@@ -19,12 +19,12 @@ class Portfolio(db.Model):
 
     name = db.Column(db.Text())
 
-    content = db.Column(db.Text())
+    portfolio_piece = db.relationship('Portfolio_piece', backref='owner_portfolio', lazy='dynamic')
 
-    def __init__(self, name="", content=""):
+    owner_user = db.relationship('Pip_user', backref='portfolio', lazy='dynamic')
+
+    def __init__(self, name=None):
         self.name = name
-
-        self.content = content
 
     def __repr__(self):
         return self.name
@@ -36,6 +36,10 @@ class Portfolio(db.Model):
 
         portfolio['name'] = self.name
 
-        portfolio['content'] = self.content
+        portfolio['portfolio_piece'] = list()
+
+        for piece in self.portfolio_piece:
+
+            portfolio['portfolio_piece'].append(piece.to_json())
 
         return portfolio

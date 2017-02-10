@@ -18,10 +18,15 @@ from app.model import db
 from app.model.pip_user import Pip_user
 from app.model.resource import Resource
 from app.model.cv import Cv
+from app.model.cv_edu import Cv_edu
+from app.model.cv_exp import Cv_exp
 from app.model.news import News
+from app.model.news_piece import News_piece
 from app.model.pip_block import Pip_block
+from app.model.pip_block_piece import Pip_block_piece
 from app.model.podcast import Podcast
 from app.model.portfolio import Portfolio
+from app.model.portfolio_piece import Portfolio_piece
 import os
 import os.path as op
 file_path = './app/static/upload'
@@ -92,8 +97,13 @@ admin = Admin(name="PIP Admin", template_mode="bootstrap3")
 
 admin.add_view(PipUserView(Pip_user, db.session, name='User'))
 admin.add_view(ResourceView(Resource, db.session, name='Resource'))
-admin.add_view(SecurityModelView(Cv, db.session, name='CV'))
-admin.add_view(SecurityModelView(News, db.session, name='News'))
-admin.add_view(SecurityModelView(Pip_block, db.session, name='Block'))
+admin.add_view(SecurityModelView(Cv, db.session, name='CV', category='CV'))
+admin.add_view(SecurityModelView(Cv_exp, db.session, name='Experience', category='CV'))
+admin.add_view(SecurityModelView(Cv_edu, db.session, name='Education', category='CV'))
+admin.add_view(SecurityModelView(News, db.session, name='News', category='News'))
+admin.add_view(SecurityModelView(News_piece, db.session, name='News Piece', category='News'))
+admin.add_view(SecurityModelView(Pip_block, db.session, name='Block', category='Block'))
+admin.add_view(SecurityModelView(Pip_block_piece, db.session, name='Block Piece', category='Block'))
 admin.add_view(SecurityModelView(Podcast, db.session, name='Podcast'))
-admin.add_view(SecurityModelView(Portfolio, db.session, name='Portfolio'))
+admin.add_view(SecurityModelView(Portfolio, db.session, name='Portfolio', category='Portfolio'))
+admin.add_view(SecurityModelView(Portfolio_piece, db.session, name='Portfolio Piece', category='Portfolio'))

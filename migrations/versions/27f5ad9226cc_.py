@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 07d95c62e67c
+Revision ID: 27f5ad9226cc
 Revises: None
-Create Date: 2016-09-11 12:48:55.933903
+Create Date: 2016-10-18 15:32:48.929608
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '07d95c62e67c'
+revision = '27f5ad9226cc'
 down_revision = None
 
 from alembic import op
@@ -19,25 +19,22 @@ def upgrade():
     op.create_table('cv',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.Text(), nullable=True),
-    sa.Column('content', sa.Text(), nullable=True),
+    sa.Column('skills', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('news',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.Text(), nullable=True),
-    sa.Column('content', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('pip_block',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.Text(), nullable=True),
-    sa.Column('content', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('portfolio',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.Text(), nullable=True),
-    sa.Column('content', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('resource',
@@ -70,12 +67,58 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
+    op.create_table('cv_edu',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('school', sa.String(), nullable=True),
+    sa.Column('major', sa.String(), nullable=True),
+    sa.Column('duration', sa.String(), nullable=True),
+    sa.Column('owner_cv_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['owner_cv_id'], ['cv.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('cv_exp',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(), nullable=True),
+    sa.Column('org', sa.String(), nullable=True),
+    sa.Column('duration', sa.String(), nullable=True),
+    sa.Column('owner_cv_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['owner_cv_id'], ['cv.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('news_piece',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('topic', sa.String(), nullable=True),
+    sa.Column('time', sa.String(), nullable=True),
+    sa.Column('location', sa.String(), nullable=True),
+    sa.Column('owner_news_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['owner_news_id'], ['news.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('pip_block_piece',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('keyword', sa.String(), nullable=True),
+    sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('position', sa.Enum('left-top', 'left-bottom', 'right-top', 'right-bottom'), nullable=True),
+    sa.Column('owner_pip_block_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['owner_pip_block_id'], ['pip_block.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('podcast',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('audio_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.Text(), nullable=True),
-    sa.Column('content', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['audio_id'], ['resource.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('portfolio_piece',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(), nullable=True),
+    sa.Column('summary', sa.String(), nullable=True),
+    sa.Column('detail', sa.Text(), nullable=True),
+    sa.Column('pic_id', sa.Integer(), nullable=True),
+    sa.Column('owner_portfolio_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['owner_portfolio_id'], ['portfolio.id'], ),
+    sa.ForeignKeyConstraint(['pic_id'], ['resource.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('roles_users',
@@ -118,7 +161,12 @@ def downgrade():
     op.drop_index(op.f('ix_pip_user_email'), table_name='pip_user')
     op.drop_table('pip_user')
     op.drop_table('roles_users')
+    op.drop_table('portfolio_piece')
     op.drop_table('podcast')
+    op.drop_table('pip_block_piece')
+    op.drop_table('news_piece')
+    op.drop_table('cv_exp')
+    op.drop_table('cv_edu')
     op.drop_index(op.f('ix_users_email'), table_name='users')
     op.drop_table('users')
     op.drop_table('roles')

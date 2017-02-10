@@ -21,12 +21,18 @@ class Cv(db.Model):
 
     name = db.Column(db.Text())
 
-    content = db.Column(db.Text())
+    skills = db.Column(db.Text())
 
-    def __init__(self, name="", content=""):
+    experience = db.relationship('Cv_exp', backref='owner_cv', lazy='dynamic')
+
+    education = db.relationship('Cv_edu', backref='owner_cv', lazy='dynamic')
+
+    owner_user = db.relationship('Pip_user', backref='cv', lazy='dynamic')
+
+    def __init__(self, name=None, skills=None):
         self.name = name
 
-        self.content = content
+        self.skills = skills
 
     def __repr__(self):
 
@@ -39,6 +45,18 @@ class Cv(db.Model):
 
         cv['name'] = self.name
 
-        cv['content'] = self.content
+        cv['skills'] = self.skills
+
+        cv['experience'] = list()
+
+        for exp in self.experience:
+
+            cv['experience'].append(exp.to_json())
+
+        cv['education'] = list()
+
+        for edu in self.experience:
+
+            cv['education'].append(edu.to_json())
 
         return cv

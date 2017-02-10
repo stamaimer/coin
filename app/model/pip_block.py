@@ -19,12 +19,12 @@ class Pip_block(db.Model):
 
     name = db.Column(db.Text())
 
-    content = db.Column(db.Text())
+    pip_block_piece = db.relationship('Pip_block_piece', backref='owner_pip_block', lazy='dynamic')
 
-    def __init__(self, name="", content=""):
+    owner_user = db.relationship('Pip_user', backref='pip_block', lazy='dynamic')
+
+    def __init__(self, name=""):
         self.name = name
-
-        self.content = content
 
     def __repr__(self):
         return self.name
@@ -36,6 +36,10 @@ class Pip_block(db.Model):
 
         pip_block['name'] = self.name
 
-        pip_block['content'] = self.content
+        pip_block['pip_block_piece'] = list()
+
+        for piece in self.pip_block_piece:
+
+            pip_block['pip_block_piece'].append(piece.to_json())
 
         return pip_block
